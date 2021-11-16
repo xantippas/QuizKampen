@@ -14,11 +14,13 @@ public class Client extends JFrame {
 
 
     MainMenu menu = new MainMenu();
+    GameStatusPage gameStatus = new GameStatusPage();
 
     Client(){
 
 
         add(menu.createMenu());
+        //add(gameStatus.currentGameStatus());
 
         setVisible(true);
         setSize(420,420);
@@ -26,9 +28,6 @@ public class Client extends JFrame {
         setLocationRelativeTo(null);
 
     }
-
-
-
 
 
     public static void main(String[] args) {
@@ -62,6 +61,7 @@ public class Client extends JFrame {
         }*/
 
         Client client = new Client();
+        //GameStatusPage gameStatus = new GameStatusPage();
 
     }
 }

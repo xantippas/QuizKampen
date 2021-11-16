@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu implements ActionListener {
+public class MainMenu extends JFrame implements ActionListener {
 
     JPanel mainPanel = new JPanel();
     JPanel title = new JPanel();
@@ -29,7 +29,11 @@ public class MainMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == play) {
-
+            GameStatusPage gameStatus = new GameStatusPage();
+            mainPanel.removeAll();
+            mainPanel.add(gameStatus.currentGameStatus().mainPanel);
+            mainPanel.revalidate();
+            mainPanel.repaint();
         }
     }
 }
