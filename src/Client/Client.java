@@ -11,30 +11,14 @@ import java.util.Arrays;
 public class Client extends JFrame {
 
     //private quizQuestions quizQuestions;
-    JPanel mainPanel = new JPanel();
-    JPanel topPanel = new JPanel();
-    JPanel centerPanel = new JPanel();
-    JPanel bottomPanel = new JPanel();
-    JLabel question = new JLabel();
 
-    JButton choice1 = new JButton();
-    JButton choice2 = new JButton();
-    JButton choice3 = new JButton();
-    JButton choice4 = new JButton();
-    JButton choices;
+
+    MainMenu menu = new MainMenu();
 
     Client(){
-        mainPanel.setLayout(new GridLayout(2, 1));
-        topPanel.add(question);
-        //getQuestions();
-        centerPanel.setLayout(new GridLayout(2,2));
 
-      //  setButtonText();
 
-        mainPanel.add(topPanel);
-        mainPanel.add(centerPanel);
-
-        add(mainPanel);
+        add(menu.createMenu());
 
         setVisible(true);
         setSize(420,420);
@@ -43,33 +27,13 @@ public class Client extends JFrame {
 
     }
 
-    /*public JLabel getQuestions(){
-        quizQuestions q = new quizQuestions();
-        String question1 = Arrays.toString(q.getQuestions());
-        question.setText(question1);
-        return question;
-    }
-
-    public JPanel setButtonText(){
-        quizQuestions q = new quizQuestions();
-        String[] answer = q.getAnswers();
-        for (int i = 0; i < answer.length ; i++) {
-            String text = answer[i];
-            choices = new JButton(text);
-            centerPanel.add(choices);
-        }
-
-        return centerPanel;
-
-
-    } */
 
 
 
 
     public static void main(String[] args) {
 
-        int portNummer = 12345;
+        /*int portNummer = 12345;
         String hostName = "172.20.208.134";
 
         try {
@@ -95,7 +59,9 @@ public class Client extends JFrame {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
+
+        Client client = new Client();
 
     }
 }
