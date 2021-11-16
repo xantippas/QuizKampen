@@ -1,26 +1,14 @@
 package Client;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Arrays;
 
 public class Client extends JFrame {
 
-    //private quizQuestions quizQuestions;
-
-
     MainMenu menu = new MainMenu();
-    GameStatusPage gameStatus = new GameStatusPage();
 
     Client(){
 
-
         add(menu.createMenu());
-        //add(gameStatus.currentGameStatus());
 
         setVisible(true);
         setSize(420,420);
@@ -61,7 +49,6 @@ public class Client extends JFrame {
         }*/
 
         Client client = new Client();
-        //GameStatusPage gameStatus = new GameStatusPage();
 
     }
 }
