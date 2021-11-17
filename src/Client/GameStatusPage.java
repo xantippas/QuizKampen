@@ -9,7 +9,7 @@ public class GameStatusPage extends JPanel{
     JPanel currentPlayers = new JPanel();
     JPanel buttonToPlay = new JPanel();
     JPanel showState = new JPanel();
-    JButton play = new JButton("Spela");
+    String play = new String("Spela");
     JLabel currentState = new JLabel();
 
     //player class create List<Player> amountOfPlayers = new ArrayList<>();
@@ -24,9 +24,9 @@ public class GameStatusPage extends JPanel{
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
 
         if (false){
-            /*currentPlayers.add(new JButton("Player 1"));
-            currentPlayers.add(new JButton("Player 2"));
-            currentPlayers.add(new JButton("Player 3"));
+            /*currentPlayers.add(new String("Player 1"));
+            currentPlayers.add(new String("Player 2"));
+            currentPlayers.add(new String("Player 3"));
             currentPlayers.add(new JButton("Player 4"));*/
             //amountOfPlayers.size() >= 2
             buttonToPlay.add(play);
