@@ -7,7 +7,7 @@ public class Player {
     private int questionCounter;
     private int playerPoints;
     private String currentCategory;
-    //boolean hasAnswered; move to Game class?
+    boolean hasAnswered;
     private List<Player> playersInGame = new ArrayList<>();
 
     Player(){
@@ -36,5 +36,13 @@ public class Player {
 
     public void setCurrentCategory(String currentCategory) {
         this.currentCategory = currentCategory;
+    }
+
+    public boolean isHasAnswered() {
+        return hasAnswered;
+    }
+
+    public void setHasAnswered(boolean hasAnswered) {
+        this.hasAnswered = hasAnswered;
     }
 }
