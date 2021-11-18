@@ -1,10 +1,17 @@
 package Client;
 
+import Server.Player;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class GameStatusPage extends JPanel{
+public class GameStatusPage extends JPanel implements Runnable{
 
+    Thread aktivitet = new Thread(this);
     JPanel mainPanel = new JPanel();
     JPanel currentPlayers = new JPanel();
     JPanel buttonToPlay = new JPanel();
@@ -12,8 +19,18 @@ public class GameStatusPage extends JPanel{
     JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
 
-    //player class create List<Player> amountOfPlayers = new ArrayList<>();
+    Player player = new Player();
 
+    List<String> amountOfPlayers = new ArrayList<>();
+    String name;
+
+    GameStatusPage(){
+        System.out.println(player.getPlayersInGame());
+    }
+
+    public void getListOfPlayers(){
+        this.name = player.getName();
+    }
 
     public GameStatusPage currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
@@ -22,24 +39,37 @@ public class GameStatusPage extends JPanel{
         mainPanel.add(showState, BorderLayout.NORTH);
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
-
-        if (false){
-            /*currentPlayers.add(new JButton("Player 1"));
-            currentPlayers.add(new JButton("Player 2"));
-            currentPlayers.add(new JButton("Player 3"));
-            currentPlayers.add(new JButton("Player 4"));*/
-            //amountOfPlayers.size() >= 2
-            buttonToPlay.add(play);
-            currentState.setText("Ready to play!");
-
-        } else {
-            currentState.setText("Waiting for opponent...");
-        }
+        getListOfPlayers();
+        aktivitet.start();
 
         return this;
     }
 
 
+    ActionListener playButtonListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == play){
+                JOptionPane.showMessageDialog(null, "OK");
+            }
+        }
+    };
 
 
-}
+    @Override
+    public void run() {
+
+        currentPlayers.add(new JLabel(name));
+            if (amountOfPlayers.size() >= 2) {
+                play.addActionListener(playButtonListener);
+                buttonToPlay.add(play);
+                currentState.setText("Ready to play!");
+            } else {
+                currentState.setText("Waiting for opponent...");
+            }
+            mainPanel.revalidate();
+            mainPanel.repaint();
+        }
+    }
+
+

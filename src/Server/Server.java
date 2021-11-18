@@ -24,6 +24,7 @@ public class Server {
 
                 while ((toClient = in.readLine()) != null) {
                     printWriter.println(toClient);
+                    //Game game = new Game(Player)
                 }
 
 
