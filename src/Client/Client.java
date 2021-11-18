@@ -1,5 +1,7 @@
 package Client;
 
+import Server.Player;
+
 import javax.swing.*;
 
 public class Client extends JFrame {
@@ -7,6 +9,9 @@ public class Client extends JFrame {
     MainMenu menu = new MainMenu();
 
     Client(){
+        String name = JOptionPane.showInputDialog(null, "Enter your player name: ");
+        Player player = new Player();
+        player.setPlayer(name);
 
         add(menu.createMenu());
 
@@ -49,6 +54,7 @@ public class Client extends JFrame {
         }*/
 
         Client client = new Client();
+
 
     }
 }

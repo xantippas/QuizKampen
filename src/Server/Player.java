@@ -7,11 +7,15 @@ public class Player {
     private int questionCounter;
     private int playerPoints;
     private String currentCategory;
-    boolean hasAnswered;
-    private List<Player> playersInGame = new ArrayList<>();
+    private boolean hasAnswered;
+    private List<String> playersInGame = new ArrayList<>();
+    String name;
 
-    Player(){
-        playersInGame.add(new Player());
+
+    public void setPlayer(String name){
+        this.name = name;
+        this.playersInGame.add(name);
+        System.out.println(playersInGame.toString());
     }
 
     public int getQuestionCounter() {
@@ -44,5 +48,17 @@ public class Player {
 
     public void setHasAnswered(boolean hasAnswered) {
         this.hasAnswered = hasAnswered;
+    }
+
+    public List<String> getPlayersInGame() {
+        return playersInGame;
+    }
+
+    public void setPlayersInGame(List<String> playersInGame) {
+        this.playersInGame = playersInGame;
+    }
+
+    public String getName() {
+        return name;
     }
 }
