@@ -6,10 +6,12 @@ public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
     CategoryPanel categoryPanel = new CategoryPanel();
+    QuizPanel quizPanel = new QuizPanel();
 
     Client(){
 
-        add(menu.createMenu());
+        add(quizPanel.quizWindow());
+      //  add(menu.createMenu());
 
         setVisible(true);
         setSize(420,420);
