@@ -9,7 +9,7 @@ public class GameStatusPage extends JPanel{
     JPanel currentPlayers = new JPanel();
     JPanel buttonToPlay = new JPanel();
     JPanel showState = new JPanel();
-    String play = new String("Spela");
+    JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
 
     //player class create List<Player> amountOfPlayers = new ArrayList<>();

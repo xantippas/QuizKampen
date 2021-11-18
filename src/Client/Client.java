@@ -5,6 +5,7 @@ import javax.swing.*;
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
+    CategoryPanel categoryPanel = new CategoryPanel();
 
     Client(){
 
