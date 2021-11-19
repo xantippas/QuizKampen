@@ -1,6 +1,7 @@
 package Client;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,13 +19,26 @@ public class CategoryPanel extends JPanel implements ActionListener{
     JButton categoryMusic = new JButton("Music");
 
     public JPanel categoryPicker(){
-        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBorder(new EmptyBorder(10,20,20,20));
+        mainPanel.setBackground(new Color(0,162,255));
+        mainPanel.setLayout(new BorderLayout(5,5));
+        header.setFont(new Font("Montserrat", Font.BOLD, 18));
+        header.setForeground(Color.white);
+        headerPanel.setBackground(Color.BLUE);
         headerPanel.add(header);
         mainPanel.add(headerPanel, BorderLayout.NORTH);
+
+        categoryHistory.setPreferredSize(new Dimension(180,40));
+        categoryScience.setPreferredSize(new Dimension(180,40));
+        categoryGaming.setPreferredSize(new Dimension(180,40));
+        categoryMusic.setPreferredSize(new Dimension(180,40));
+
         categoryPanel.add(categoryHistory);
         categoryPanel.add(categoryScience);
         categoryPanel.add(categoryGaming);
         categoryPanel.add(categoryMusic);
+        categoryPanel.setBorder(new EmptyBorder(40,20,20,20));
+        categoryPanel.setBackground(new Color(0,162,255));
         mainPanel.add(categoryPanel, BorderLayout.CENTER);
 
         return mainPanel;

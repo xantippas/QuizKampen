@@ -22,6 +22,7 @@ public class Client extends JFrame {
         setSize(420,420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
     }
 
 
