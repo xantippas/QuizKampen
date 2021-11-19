@@ -24,15 +24,11 @@ public class GameStatusPage extends JPanel implements Runnable{
     List<String> amountOfPlayers = new ArrayList<>();
     String name;
 
-    GameStatusPage(){
-        System.out.println(player.getPlayersInGame());
-    }
-
     public void getListOfPlayers(){
         this.name = player.getName();
     }
 
-    public GameStatusPage currentGameStatus(){
+    public JPanel currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
         currentPlayers.setLayout(new GridLayout(4,1));
         showState.add(currentState);
@@ -42,7 +38,8 @@ public class GameStatusPage extends JPanel implements Runnable{
         getListOfPlayers();
         aktivitet.start();
 
-        return this;
+
+        return mainPanel;
     }
 
 
@@ -58,18 +55,18 @@ public class GameStatusPage extends JPanel implements Runnable{
 
     @Override
     public void run() {
-
-        currentPlayers.add(new JLabel(name));
-            if (amountOfPlayers.size() >= 2) {
-                play.addActionListener(playButtonListener);
-                buttonToPlay.add(play);
-                currentState.setText("Ready to play!");
-            } else {
-                currentState.setText("Waiting for opponent...");
-            }
-            mainPanel.revalidate();
-            mainPanel.repaint();
+        currentPlayers.add(new JLabel("Hello"));
+        if (amountOfPlayers.size() >= 2) {
+            play.addActionListener(playButtonListener);
+            buttonToPlay.add(play);
+            currentState.setText("Ready to play!");
+        } else {
+            currentState.setText("Waiting for opponent...");
         }
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
+}
+
 
 

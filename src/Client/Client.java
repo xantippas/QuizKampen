@@ -8,6 +8,7 @@ import java.awt.*;
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
+    GameStatusPage game = new GameStatusPage();
     CategoryPanel categoryPanel = new CategoryPanel();
     QuizPanel quizPanel = new QuizPanel();
 
@@ -15,7 +16,7 @@ public class Client extends JFrame {
         setTitle("Quiz Kampen");
         //add(quizPanel.quizWindow());
         add(menu.createMenu());
-
+        //add(game.currentGameStatus());
 
         setResizable(false);
         setVisible(true);

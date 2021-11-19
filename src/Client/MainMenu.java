@@ -1,9 +1,6 @@
 package Client;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,13 +8,12 @@ import java.awt.event.ActionListener;
 public class MainMenu extends JFrame implements ActionListener {
 
     JPanel mainPanel = new JPanel();
-    //JPanel title = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
     JPanel optionPanel = new JPanel();
     JButton play = new JButton("Spela");
 
     public JPanel createMenu() {
-        mainPanel.setLayout(null);
+        mainPanel.setLayout(new GridLayout(2,1));
 
         title.setPreferredSize(new Dimension(250,200));
         title.setBounds(4,50,400,200);
@@ -31,9 +27,9 @@ public class MainMenu extends JFrame implements ActionListener {
         play.addActionListener(this);
         optionPanel.add(play);
 
-        mainPanel.setBackground(Color.CYAN);
+        //mainPanel.setBackground(Color.CYAN);
         mainPanel.add(title);
-        mainPanel.add(play);
+        mainPanel.add(optionPanel);
 
         return mainPanel;
     }
@@ -43,9 +39,10 @@ public class MainMenu extends JFrame implements ActionListener {
         if (e.getSource() == play) {
             GameStatusPage gameStatus = new GameStatusPage();
             mainPanel.removeAll();
-            mainPanel.add(gameStatus.currentGameStatus().mainPanel);
+            mainPanel.add(gameStatus.currentGameStatus());
             mainPanel.revalidate();
             mainPanel.repaint();
+
         }
     }
 }
