@@ -47,7 +47,12 @@ public class GameStatusPage extends JPanel implements Runnable{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == play){
-                JOptionPane.showMessageDialog(null, "OK");
+                CategoryPanel chooseCategory = new CategoryPanel();
+                mainPanel.removeAll();
+                mainPanel.add(chooseCategory.categoryPicker());
+                mainPanel.revalidate();
+                mainPanel.repaint();
+
             }
         }
     };
@@ -66,6 +71,7 @@ public class GameStatusPage extends JPanel implements Runnable{
         mainPanel.revalidate();
         mainPanel.repaint();
     }
+
 }
 
 
