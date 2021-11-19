@@ -1,6 +1,7 @@
 package Client;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Client extends JFrame {
 
@@ -9,15 +10,16 @@ public class Client extends JFrame {
     QuizPanel quizPanel = new QuizPanel();
 
     Client(){
-
+        setTitle("Quiz Kampen");
         add(quizPanel.quizWindow());
       //  add(menu.createMenu());
 
+
+        setResizable(false);
         setVisible(true);
         setSize(420,420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
     }
 
 
