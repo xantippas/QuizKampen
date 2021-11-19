@@ -1,4 +1,4 @@
-package Client;
+package Server;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,10 +47,10 @@ public class Questions {
         
         science.add(scienceQ);
         science.add(scienceA);
-        gaming.add(scienceBogusA);
-        gaming.add(scienceBogusB);
-        gaming.add(scienceBogusC);
-        gaming.add(scienceBogusD);
+        science.add(scienceBogusA);
+        science.add(scienceBogusB);
+        science.add(scienceBogusC);
+        science.add(scienceBogusD);
 
     }
 
@@ -119,10 +119,10 @@ public class Questions {
 
         history.add(historyQ);
         history.add(historyA);
-        gaming.add(historyBogusA);
-        gaming.add(historyBogusB);
-        gaming.add(historyBogusC);
-        gaming.add(historyBogusD);
+        history.add(historyBogusA);
+        history.add(historyBogusB);
+        history.add(historyBogusC);
+        history.add(historyBogusD);
     }
 
 

@@ -3,23 +3,25 @@ package Client;
 import Server.Player;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
+    CategoryPanel categoryPanel = new CategoryPanel();
+    QuizPanel quizPanel = new QuizPanel();
 
     Client(){
-        String name = JOptionPane.showInputDialog(null, "Enter your player name: ");
-        Player player = new Player();
-        player.setPlayer(name);
+        setTitle("Quiz Kampen");
+        add(quizPanel.quizWindow());
+      //  add(menu.createMenu());
 
-        add(menu.createMenu());
 
+        setResizable(false);
         setVisible(true);
         setSize(420,420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
     }
 
 
@@ -54,7 +56,6 @@ public class Client extends JFrame {
         }*/
 
         Client client = new Client();
-
 
     }
 }

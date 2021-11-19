@@ -1,9 +1,5 @@
 package Server;
 
-public class Game extends Thread{
+public class Game {
     private quizQuestions quizQuestions;
-
-    Game(Player player){
-
-    }
 }
