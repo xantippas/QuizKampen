@@ -31,6 +31,9 @@ public class QuizPanel extends JPanel implements ActionListener {
         bottomPanelForChoices.setOpaque(true);
         bottomPanelForChoices.setBackground(new Color(135,200,255));
 
+        choice1.addActionListener(this);
+
+
         bottomPanelForChoices.add(choice1);
         bottomPanelForChoices.add(choice2);
         bottomPanelForChoices.add(choice3);
@@ -44,6 +47,8 @@ public class QuizPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //if (e.getSource() == )
+        if (e.getSource() == choice1){
+            choice1.setBackground(Color.GREEN);
+        }
     }
 }
