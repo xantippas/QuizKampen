@@ -1,6 +1,7 @@
 package Client;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,20 +15,23 @@ public class MainMenu extends JFrame implements ActionListener {
 
     public JPanel createMenu() {
         mainPanel.setLayout(new GridLayout(2,1));
+        mainPanel.setBackground(new Color(0,162,255));
+        mainPanel.setBorder(new EmptyBorder(20,20,20,20));
 
         title.setPreferredSize(new Dimension(250,200));
-        title.setBounds(4,50,400,200);
         title.setFont(new Font("Montserrat", Font.BOLD, 18));
-        //title.setForeground(Color.white); //color of text
-        play.setBounds(80,280,250,50);
+        title.setForeground(Color.white); //color of text
+
         play.setFont(new Font("Montserrat", Font.BOLD, 18));
         play.setForeground(Color.white);
         play.setBackground(Color.BLUE);
-
         play.addActionListener(this);
+
+        optionPanel.setLayout(null);
+        play.setBounds(85,50, 200,50);
+        optionPanel.setBackground(new Color(0,162,255));
         optionPanel.add(play);
 
-        //mainPanel.setBackground(Color.CYAN);
         mainPanel.add(title);
         mainPanel.add(optionPanel);
 
