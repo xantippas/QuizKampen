@@ -9,7 +9,8 @@ public class Client extends JFrame {
 
     Client(){
 
-        add(menu.createMenu());
+        //add(menu.createMenu());
+        add(categoryPanel.categoryPicker());
 
         setVisible(true);
         setSize(420,420);
