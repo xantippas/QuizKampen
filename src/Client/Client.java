@@ -13,8 +13,8 @@ public class Client extends JFrame {
 
     Client(){
         setTitle("Quiz Kampen");
-        add(quizPanel.quizWindow());
-      //  add(menu.createMenu());
+        //add(quizPanel.quizWindow());
+        add(menu.createMenu());
 
 
         setResizable(false);
