@@ -25,7 +25,9 @@ public class GameStatusPage extends JPanel implements Runnable{
     String name;
 
     public void getListOfPlayers(){
-        this.name = player.getName();
+        //this.name = player.getName();
+        amountOfPlayers.add("One");
+        amountOfPlayers.add("Two");
     }
 
     public JPanel currentGameStatus(){
@@ -35,6 +37,7 @@ public class GameStatusPage extends JPanel implements Runnable{
         mainPanel.add(showState, BorderLayout.NORTH);
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
+
         getListOfPlayers();
         aktivitet.start();
 
@@ -49,9 +52,11 @@ public class GameStatusPage extends JPanel implements Runnable{
             if (e.getSource() == play){
                 CategoryPanel chooseCategory = new CategoryPanel();
                 mainPanel.removeAll();
-                mainPanel.add(chooseCategory.categoryPicker());
                 mainPanel.revalidate();
                 mainPanel.repaint();
+                mainPanel.add(chooseCategory.categoryPicker());
+                //mainPanel.revalidate();
+                //mainPanel.repaint();
 
             }
         }
@@ -60,7 +65,7 @@ public class GameStatusPage extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        currentPlayers.add(new JLabel("Hello"));
+        //currentPlayers.add(new JLabel("Hello"));
         if (amountOfPlayers.size() >= 2) {
             play.addActionListener(playButtonListener);
             buttonToPlay.add(play);

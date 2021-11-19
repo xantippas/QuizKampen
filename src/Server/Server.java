@@ -6,9 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
     public static void main(String[]args) throws IOException {
+        List<Player> playerList = new ArrayList<>();
+
         int portNummer = 12345;
         ServerSocket serverSocket = new ServerSocket(portNummer);
 
@@ -21,6 +25,8 @@ public class Server {
 
                 String toClient;
                 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+                Game game = new Game();
 
                 while ((toClient = in.readLine()) != null) {
                     printWriter.println(toClient);

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends JFrame implements ActionListener {
+public class MainMenu extends JFrame {
 
     JPanel mainPanel = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
@@ -18,6 +18,7 @@ public class MainMenu extends JFrame implements ActionListener {
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setBorder(new EmptyBorder(20,20,20,20));
 
+
         title.setPreferredSize(new Dimension(250,200));
         title.setFont(new Font("Montserrat", Font.BOLD, 18));
         title.setForeground(Color.white); //color of text
@@ -25,7 +26,7 @@ public class MainMenu extends JFrame implements ActionListener {
         play.setFont(new Font("Montserrat", Font.BOLD, 18));
         play.setForeground(Color.white);
         play.setBackground(Color.BLUE);
-        play.addActionListener(this);
+        play.addActionListener(al);
 
         optionPanel.setLayout(null);
         play.setBounds(85,50, 200,50);
@@ -38,7 +39,25 @@ public class MainMenu extends JFrame implements ActionListener {
         return mainPanel;
     }
 
-    @Override
+    ActionListener al = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == play) {
+                GameStatusPage gameStatus = new GameStatusPage();
+                mainPanel.removeAll();
+                mainPanel.setLayout(new GridLayout(1,1));
+                mainPanel.revalidate();
+                mainPanel.repaint();
+                mainPanel.add(gameStatus.currentGameStatus());
+                //mainPanel.revalidate();
+                //mainPanel.repaint();
+
+            }
+        }
+    };
+
+
+   /* @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == play) {
             GameStatusPage gameStatus = new GameStatusPage();
@@ -48,5 +67,5 @@ public class MainMenu extends JFrame implements ActionListener {
             mainPanel.repaint();
 
         }
-    }
+    }*/
 }

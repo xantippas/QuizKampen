@@ -8,10 +8,12 @@ import java.awt.*;
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
+    QuizPanel panel = new QuizPanel();
 
     Client(){
         setTitle("Quiz Kampen");
         add(menu.createMenu());
+        //add(panel.quizWindow());
 
         setResizable(false);
         setVisible(true);

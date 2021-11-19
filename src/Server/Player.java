@@ -11,7 +11,6 @@ public class Player {
     private List<String> playersInGame = new ArrayList<>();
     String name;
 
-
     public void setPlayer(String name){
         this.name = name;
         this.playersInGame.add(name);

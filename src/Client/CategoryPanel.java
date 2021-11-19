@@ -19,6 +19,9 @@ public class CategoryPanel extends JPanel implements ActionListener{
     JButton categoryMusic = new JButton("Music");
 
     public JPanel categoryPicker(){
+        mainPanel.removeAll();
+        mainPanel.revalidate();
+        mainPanel.repaint();
         mainPanel.setBorder(new EmptyBorder(10,20,20,20));
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setLayout(new BorderLayout(5,5));
