@@ -37,6 +37,9 @@ public class CategoryPanel extends JPanel implements ActionListener{
         categoryMusic.setPreferredSize(new Dimension(180,40));
 
         categoryHistory.addActionListener(this);
+        categoryScience.addActionListener(this);
+        categoryGaming.addActionListener(this);
+        categoryMusic.addActionListener(this);
 
         categoryPanel.add(categoryHistory);
         categoryPanel.add(categoryScience);
@@ -61,13 +64,25 @@ public class CategoryPanel extends JPanel implements ActionListener{
 
         }
         else if (e.getSource() == categoryGaming){
-            categoryChosen = "Gaming";
+            categoryChosen = "gaming";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
         }
         else if (e.getSource() == categoryMusic){
-            categoryChosen = "Music";
+            categoryChosen = "music";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
         }
         else if (e.getSource() == categoryScience) {
-            categoryChosen = "Science";
+            categoryChosen = "science";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
         }
     }
 }

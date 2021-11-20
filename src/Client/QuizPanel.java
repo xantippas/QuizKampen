@@ -6,9 +6,12 @@ import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.TimerTask;
 
 public class QuizPanel extends JFrame{
+    CategoryPanel categoryPanel = new CategoryPanel();
+    boolean roundDone=false;
 
     JFrame frame = new JFrame();
     String[][] quiz = new String[10][6];
@@ -31,8 +34,12 @@ public class QuizPanel extends JFrame{
         quizWindow();
         if (category.equals("history")){
             historyQuiz();
-        } else {
-            initData();
+        } else if (category.equals("music")){
+            musicQuiz();
+        } else if (category.equals("science")){
+            scienceQuiz();
+        } else if (category.equals("gaming")){
+            gamingQuiz();
         }
         update();
 
@@ -90,14 +97,14 @@ public class QuizPanel extends JFrame{
         showScoreCard();
     }
 
-    public void initData(){
-        quiz[0][0] = "What is the capital of Sweden?";
-        quiz[0][1] = "Copenhagen"; quiz[0][2] = "Malmo"; quiz[0][3] = "Stockholm"; quiz[0][4] = "Gothenburg";
-        quiz[0][5] = "3";
+    public void musicQuiz(){
+        quiz[0][0] = "Vilket år dog Elvis Presley?";
+        quiz[0][1] = "2006"; quiz[0][2] = "1977"; quiz[0][3] = "1976"; quiz[0][4] = "1981";
+        quiz[0][5] = "2";
 
-        quiz[1][0] = "What is the color of the sky on a clear day?";
-        quiz[1][1] = "Purple"; quiz[1][2] = "Blue"; quiz[1][3] = "White"; quiz[1][4] = "Gray";
-        quiz[1][5] = "2";
+        quiz[1][0] = "Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?";
+        quiz[1][1] = "Folsom Prison"; quiz[1][2] = "The ADX"; quiz[1][3] = "Bangkok Hilton"; quiz[1][4] = "Walnut Grove";
+        quiz[1][5] = "1";
     }
 
     public void historyQuiz(){
@@ -110,11 +117,32 @@ public class QuizPanel extends JFrame{
         quiz[1][5] = "2";
     }
 
+    public void scienceQuiz(){
+        quiz[0][0] = "What is the first element in the Periodic table?";
+        quiz[0][1] = "Hydrogen"; quiz[0][2] = "Helium"; quiz[0][3] = "Oxygen"; quiz[0][4] = "Berryllium";
+        quiz[0][5] = "1";
+
+        quiz[1][0] = "Vilken planet är närmst solen?";
+        quiz[1][1] = "Pluto"; quiz[1][2] = "Mars"; quiz[1][3] = "Mercurius"; quiz[1][4] = "Venus";
+        quiz[1][5] = "3";
+    }
+
+    public void gamingQuiz(){
+        quiz[0][0] = "Vad hette världens första spel?";
+        quiz[0][1] = "Tetris"; quiz[0][2] = "Pong"; quiz[0][3] = "Minecraft"; quiz[0][4] = "Super Mario";
+        quiz[0][5] = "2";
+
+        quiz[1][0] = "Vilken är världens mest bästsäljande spelkonsol?";
+        quiz[1][1] = "Playstation 4"; quiz[1][2] = "Super Nintendo"; quiz[1][3] = "Playstation 2"; quiz[1][4] = "Nintendo-64";
+        quiz[1][5] = "3";
+    }
+
     public JPanel showScoreCard(){
         if (questionCounter == 2){
             mainPanel.removeAll();
             mainPanel.repaint();
             mainPanel.add(new JLabel("Your score" + score));
+            roundDone = true;
             return mainPanel;
         }
         return null;
