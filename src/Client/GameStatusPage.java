@@ -19,7 +19,7 @@ public class GameStatusPage extends JPanel{
     JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
 
-    private List<Player> amountOfPlayers = new ArrayList<>();
+    private List<String> amountOfPlayers = new ArrayList<>();
 
     public JPanel currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
@@ -28,6 +28,16 @@ public class GameStatusPage extends JPanel{
         mainPanel.add(showState, BorderLayout.NORTH);
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
+        amountOfPlayers.add("1");
+        amountOfPlayers.add("2");
+
+        if (amountOfPlayers.size() >= 2) {
+            play.addActionListener(playButtonListener);
+            buttonToPlay.add(play);
+            currentState.setText("Ready to play!");
+        } else {
+            currentState.setText("Waiting for opponent...");
+        }
 
         return mainPanel;
     }

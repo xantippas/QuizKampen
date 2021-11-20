@@ -36,6 +36,8 @@ public class CategoryPanel extends JPanel implements ActionListener{
         categoryGaming.setPreferredSize(new Dimension(180,40));
         categoryMusic.setPreferredSize(new Dimension(180,40));
 
+        categoryHistory.addActionListener(this);
+
         categoryPanel.add(categoryHistory);
         categoryPanel.add(categoryScience);
         categoryPanel.add(categoryGaming);
@@ -51,7 +53,12 @@ public class CategoryPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == categoryHistory){
-            categoryChosen = "History";
+            categoryChosen = "history";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
+
         }
         else if (e.getSource() == categoryGaming){
             categoryChosen = "Gaming";

@@ -12,7 +12,6 @@ import java.net.Socket;
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
-    QuizPanel panel = new QuizPanel();
 
     Client(){
         setTitle("Quiz Kampen");

@@ -19,15 +19,21 @@ public class QuizPanel extends JFrame{
     JPanel bottomPanelForChoices = new JPanel();
     JLabel questionCard = new JLabel("", SwingConstants.CENTER);
     JLabel scoreCard = new JLabel("");
+    String category;
 
     JButton choice1 = new JButton();
     JButton choice2 = new JButton();
     JButton choice3 = new JButton();
     JButton choice4 = new JButton();
 
-    public QuizPanel(){
+    public QuizPanel(String s){
+        this.category = s;
         quizWindow();
-        initData();
+        if (category.equals("history")){
+            historyQuiz();
+        } else {
+            initData();
+        }
         update();
 
         frame.setVisible(true);
@@ -92,6 +98,16 @@ public class QuizPanel extends JFrame{
         quiz[1][5] = "2";
     }
 
+    public void historyQuiz(){
+        quiz[0][0] = "WW2 ended?";
+        quiz[0][1] = "1945"; quiz[0][2] = "1944"; quiz[0][3] = "what?"; quiz[0][4] = "1939";
+        quiz[0][5] = "1";
+
+        quiz[1][0] = "Vilken stad var den första kapitalen i USA?";
+        quiz[1][1] = "Washington DC"; quiz[1][2] = "New York"; quiz[1][3] = "Boston"; quiz[1][4] = "San Francisco";
+        quiz[1][5] = "2";
+    }
+
     ActionListener button1 = e -> {
         if (quiz[questionCounter][5]=="1") {
             choice1.setBackground(Color.GREEN);
@@ -133,7 +149,7 @@ public class QuizPanel extends JFrame{
         update();
     };
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         QuizPanel quiz = new QuizPanel();
-    }
+    }*/
 }
