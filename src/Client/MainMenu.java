@@ -1,5 +1,7 @@
 package Client;
 
+import Server.Player;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class MainMenu extends JFrame {
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
     JPanel optionPanel = new JPanel();
     JButton play = new JButton("Spela");
+    Player player = new Player();
 
     public JPanel createMenu() {
         mainPanel.setLayout(new GridLayout(2,1));

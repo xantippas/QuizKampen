@@ -1,36 +1,24 @@
 package Server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
+import Client.GameStatusPage;
 
-public class Server {
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class Server extends Thread{
     public static void main(String[]args) throws IOException {
-        List<Player> playerList = new ArrayList<>();
 
         int portNummer = 12345;
         ServerSocket serverSocket = new ServerSocket(portNummer);
 
-        while (true) {
+            try {
+                while (true) {
+                    Player player1 = new Player(serverSocket.accept(), "Player 1");
+                    Player player2 = new Player(serverSocket.accept(), "Player 2");
+                    Player player3 = new Player(serverSocket.accept(), "Player 3");
+                    Player player4 = new Player(serverSocket.accept(), "Player 4");
 
-            try (
-                    Socket socket = serverSocket.accept();
-                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
-
-                String toClient;
-                BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-                Game game = new Game();
-
-                while ((toClient = in.readLine()) != null) {
-                    printWriter.println(toClient);
-                    //Game game = new Game(Player)
+                    Game newGame = new Game(player1, player2, player3, player4);
                 }
 
 
@@ -39,5 +27,9 @@ public class Server {
             }
 
         }
+
+        public void run(){
+
+        }
+
     }
-}

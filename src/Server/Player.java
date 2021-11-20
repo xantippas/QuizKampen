@@ -1,20 +1,40 @@
 package Server;
 
+import Client.GameStatusPage;
+
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Runnable{
     private int questionCounter;
     private int playerPoints;
     private String currentCategory;
     private boolean hasAnswered;
-    private List<String> playersInGame = new ArrayList<>();
     String name;
+    Socket socket;
+    List<String> listOf = new ArrayList<>();
 
-    public void setPlayer(String name){
+    //testing
+    JLabel currentState = new JLabel();
+
+    public Player(){
+
+    }
+
+    public Player(Socket socket, String name){
+        this.socket = socket;
         this.name = name;
-        this.playersInGame.add(name);
-        System.out.println(playersInGame.toString());
+        this.listOf.add(name);
+    }
+
+    public List<String> getListOf() {
+        return listOf;
     }
 
     public int getQuestionCounter() {
@@ -49,15 +69,45 @@ public class Player {
         this.hasAnswered = hasAnswered;
     }
 
-    public List<String> getPlayersInGame() {
-        return playersInGame;
-    }
-
-    public void setPlayersInGame(List<String> playersInGame) {
-        this.playersInGame = playersInGame;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public JLabel sendState(){
+        if (this.listOf.size() >= 2){
+            currentState.setText("Ready to Play");
+        } else {
+            currentState.setText("Waiting for opponent...");
+        }
+
+        return currentState;
+    }
+
+    @Override
+    public void run() {
+        try{
+            /*PrintWriter out = new PrintWriter(socket.getOutputStream());
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));*/
+
+            sendState();
+
+            //currentPlayers.add(new JLabel("Hello"));
+            /*if (this.listOf.size() >= 2) {
+                play.addActionListener(playButtonListener);
+                buttonToPlay.add(play);
+                currentState.setText("Ready to play!");
+            } else {
+                currentState.setText("Waiting for opponent...");
+            }
+            mainPanel.revalidate();
+            mainPanel.repaint();*/
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }
