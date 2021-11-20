@@ -13,11 +13,8 @@ public class PropertiesHandler {
     }
 
     public void readPropertiesFromPropertyFile () {
-        FileInputStream fileInputStream;
-        try {
-            fileInputStream = new FileInputStream("gameConfig.properties");
+        try ( FileInputStream fileInputStream = new FileInputStream("gameConfig.properties")){
             properties.load(fileInputStream);
-            fileInputStream.close();
         }
         catch (
                 FileNotFoundException e) {
