@@ -86,6 +86,8 @@ public class QuizPanel extends JFrame{
         choice2.setText(quiz[questionCounter][2]);
         choice3.setText(quiz[questionCounter][3]);
         choice4.setText(quiz[questionCounter][4]);
+
+        showScoreCard();
     }
 
     public void initData(){
@@ -106,6 +108,16 @@ public class QuizPanel extends JFrame{
         quiz[1][0] = "Vilken stad var den första kapitalen i USA?";
         quiz[1][1] = "Washington DC"; quiz[1][2] = "New York"; quiz[1][3] = "Boston"; quiz[1][4] = "San Francisco";
         quiz[1][5] = "2";
+    }
+
+    public JPanel showScoreCard(){
+        if (questionCounter == 2){
+            mainPanel.removeAll();
+            mainPanel.repaint();
+            mainPanel.add(new JLabel("Your score" + score));
+            return mainPanel;
+        }
+        return null;
     }
 
     ActionListener button1 = e -> {
