@@ -8,15 +8,18 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Server {
     public static void main(String[]args) throws IOException {
         List<Player> playerList = new ArrayList<>();
         Game game = new Game();
+        Questions questions = new Questions();
         int portNummer = 8765;
         ServerSocket serverSocket = new ServerSocket();
         serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
+
 
         try (
                 Socket socket = serverSocket.accept();
@@ -34,7 +37,8 @@ public class Server {
 
                             switch (num) {
                                 case 1:
-                                    printWriter.println("server get num 1 from client");
+                                    List<String> categories = questions.getCategory();
+                                    printWriter.println(Arrays.toString(categories.toArray()));
                                     break;
                                 case 2:
                                     printWriter.println("server get num 2 from client");
