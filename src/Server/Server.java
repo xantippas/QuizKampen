@@ -4,40 +4,58 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Server {
     public static void main(String[]args) throws IOException {
         List<Player> playerList = new ArrayList<>();
-
-        int portNummer = 12345;
-        ServerSocket serverSocket = new ServerSocket(portNummer);
-
-        while (true) {
-
-            try (
-                    Socket socket = serverSocket.accept();
-                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
-
-                String toClient;
-                BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-                Game game = new Game();
-
-                while ((toClient = in.readLine()) != null) {
-                    printWriter.println(toClient);
-                    //Game game = new Game(Player)
-                }
+        Game game = new Game();
+        Questions questions = new Questions();
+        int portNummer = 8765;
+        ServerSocket serverSocket = new ServerSocket();
+        serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+        try (
+                Socket socket = serverSocket.accept();
+                // from server to client
+                PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
+                // from client to server
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                ) {
+            System.out.println("socket is open in server");
+                    String fromClient;
+                    while (true) {
+                        fromClient = bufferedReader.readLine();
+                        try{
+                            int num = Integer.parseInt(fromClient);
+
+                            switch (num) {
+                                case 1:
+                                    List<String> categories = questions.getCategory();
+                                    printWriter.println(Arrays.toString(categories.toArray()));
+                                    break;
+                                case 2:
+                                    printWriter.println("server get num 2 from client");
+                                    break;
+                                default:
+                                    printWriter.println("server get unregistered number from client");
+                            }
+                        }catch(NumberFormatException e){
+                            printWriter.println("should be a number");
+                        }
+                        if(fromClient.equals("bye")) {
+                            break;
+                        }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         }
     }
-}

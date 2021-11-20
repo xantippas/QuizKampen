@@ -19,6 +19,10 @@ public class Questions {
         return this;
     }
 
+    public List<String> getCategory() {
+        return this.category;
+    }
+
     public void scienceQuestions(){
 
         List<String> scienceQ = new ArrayList<>();
