@@ -7,13 +7,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends JFrame {
-
+    ClientSocket clientSocket;
     JPanel mainPanel = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
     JPanel optionPanel = new JPanel();
     JButton play = new JButton("Spela");
 
+    public MainMenu (ClientSocket clientSocket) {
+        this.clientSocket = clientSocket;
+    }
+
     public JPanel createMenu() {
+        this.clientSocket = clientSocket;
         mainPanel.setLayout(new GridLayout(2,1));
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setBorder(new EmptyBorder(20,20,20,20));
@@ -49,6 +54,7 @@ public class MainMenu extends JFrame {
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(gameStatus.currentGameStatus());
+                clientSocket.sendDataToServer("1");
                 //mainPanel.revalidate();
                 //mainPanel.repaint();
 
