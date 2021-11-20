@@ -14,12 +14,11 @@ import java.util.List;
 public class Server {
     public static void main(String[]args) throws IOException {
         List<Player> playerList = new ArrayList<>();
-        Game game = new Game();
+        Game game;
         Questions questions = new Questions();
         int portNummer = 8765;
         ServerSocket serverSocket = new ServerSocket();
         serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
-
 
         try (
                 Socket socket = serverSocket.accept();
@@ -37,11 +36,12 @@ public class Server {
 
                             switch (num) {
                                 case 1:
-                                    List<String> categories = questions.getCategory();
-                                    printWriter.println(Arrays.toString(categories.toArray()));
+                                    printWriter.println("Move to the game!");
+                                    game = new Game();
                                     break;
                                 case 2:
-                                    printWriter.println("server get num 2 from client");
+                                    List<String> categories = questions.getCategory();
+                                    printWriter.println(Arrays.toString(categories.toArray()));
                                     break;
                                 default:
                                     printWriter.println("server get unregistered number from client");
