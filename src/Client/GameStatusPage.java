@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameStatusPage extends JPanel implements Runnable{
 
-    Thread aktivitet = new Thread(this);
+public class GameStatusPage extends JPanel{
+
     JPanel mainPanel = new JPanel();
     JPanel currentPlayers = new JPanel();
     JPanel buttonToPlay = new JPanel();
@@ -19,16 +19,7 @@ public class GameStatusPage extends JPanel implements Runnable{
     JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
 
-    Player player = new Player();
-
-    List<String> amountOfPlayers = new ArrayList<>();
-    String name;
-
-    public void getListOfPlayers(){
-        //this.name = player.getName();
-        amountOfPlayers.add("One");
-        amountOfPlayers.add("Two");
-    }
+    private List<Player> amountOfPlayers = new ArrayList<>();
 
     public JPanel currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
@@ -37,10 +28,6 @@ public class GameStatusPage extends JPanel implements Runnable{
         mainPanel.add(showState, BorderLayout.NORTH);
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
-
-        getListOfPlayers();
-        aktivitet.start();
-
 
         return mainPanel;
     }
@@ -55,15 +42,13 @@ public class GameStatusPage extends JPanel implements Runnable{
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(chooseCategory.categoryPicker());
-                //mainPanel.revalidate();
-                //mainPanel.repaint();
 
             }
         }
     };
 
 
-    @Override
+    /*@Override
     public void run() {
         //currentPlayers.add(new JLabel("Hello"));
         if (amountOfPlayers.size() >= 2) {
@@ -75,7 +60,7 @@ public class GameStatusPage extends JPanel implements Runnable{
         }
         mainPanel.revalidate();
         mainPanel.repaint();
-    }
+    }*/
 
 }
 
