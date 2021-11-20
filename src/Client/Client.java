@@ -48,6 +48,12 @@ public class Client extends JFrame {
             e.printStackTrace();
         }*/
 
+
+        PropertiesHandler propertiesHandler = new PropertiesHandler();
+        propertiesHandler.readPropertiesFromPropertyFile();
+        String quizNumInRound = propertiesHandler.getProperty("quizNumInRound");
+        String roundNum = propertiesHandler.getProperty("roundNum");
+
         Client client = new Client();
 
     }
