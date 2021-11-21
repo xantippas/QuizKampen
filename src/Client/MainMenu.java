@@ -5,20 +5,32 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class MainMenu extends JFrame {
-    ClientSocket clientSocket;
+    Socket socket;
+    PrintWriter printWriter;
+    BufferedReader bufferedReader;
     JPanel mainPanel = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
     JPanel optionPanel = new JPanel();
     JButton play = new JButton("Spela");
+    GameStatusPage gameStatus;
 
-    public MainMenu (ClientSocket clientSocket) {
-        this.clientSocket = clientSocket;
+    public MainMenu (Socket socket,    PrintWriter printWriter,
+            BufferedReader bufferedReader) {
+        this.socket = socket;
+        this.printWriter = printWriter;
+        this.bufferedReader = bufferedReader;
+    }
+
+    public GameStatusPage getGameStatusPage() {
+        return this.gameStatus;
     }
 
     public JPanel createMenu() {
-        this.clientSocket = clientSocket;
         mainPanel.setLayout(new GridLayout(2,1));
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setBorder(new EmptyBorder(20,20,20,20));
@@ -48,13 +60,14 @@ public class MainMenu extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == play) {
-                GameStatusPage gameStatus = new GameStatusPage();
+                gameStatus = new GameStatusPage(printWriter);
                 mainPanel.removeAll();
                 mainPanel.setLayout(new GridLayout(1,1));
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(gameStatus.currentGameStatus());
-                clientSocket.sendDataToServer("1");
+                printWriter.println("1");
+
                 //mainPanel.revalidate();
                 //mainPanel.repaint();
 

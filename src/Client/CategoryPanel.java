@@ -48,6 +48,10 @@ public class CategoryPanel extends JPanel implements ActionListener{
     }
 
 
+    public JButton getCategoryHistory() {
+        return categoryHistory;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == categoryHistory){

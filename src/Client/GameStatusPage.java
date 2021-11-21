@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +19,21 @@ public class GameStatusPage extends JPanel implements Runnable{
     JPanel showState = new JPanel();
     JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
+    PrintWriter printWriter;
+    CategoryPanel chooseCategory;
 
     Player player = new Player();
 
     List<String> amountOfPlayers = new ArrayList<>();
     String name;
+
+    GameStatusPage(PrintWriter printWriter) {
+        this.printWriter = printWriter;
+    }
+
+    public CategoryPanel getChooseCategory() {
+        return this.chooseCategory;
+    }
 
     public void getListOfPlayers(){
         //this.name = player.getName();
@@ -50,14 +61,14 @@ public class GameStatusPage extends JPanel implements Runnable{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == play){
-                CategoryPanel chooseCategory = new CategoryPanel();
+                chooseCategory = new CategoryPanel();
                 mainPanel.removeAll();
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(chooseCategory.categoryPicker());
                 //mainPanel.revalidate();
                 //mainPanel.repaint();
-
+                printWriter.println("2");
             }
         }
     };
