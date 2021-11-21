@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class GameStatusPage extends JPanel{
@@ -19,8 +17,6 @@ public class GameStatusPage extends JPanel{
     JButton play = new JButton("Spela");
     JLabel currentState = new JLabel();
 
-    private List<String> amountOfPlayers = new ArrayList<>();
-
     public JPanel currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
         currentPlayers.setLayout(new GridLayout(4,1));
@@ -28,16 +24,19 @@ public class GameStatusPage extends JPanel{
         mainPanel.add(showState, BorderLayout.NORTH);
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
-        amountOfPlayers.add("1");
-        amountOfPlayers.add("2");
 
-        if (amountOfPlayers.size() >= 2) {
+        currentState.setText("Waiting for opponent...");
+        play.addActionListener(playButtonListener);
+        buttonToPlay.add(play);
+
+
+        /*if (amountOfPlayers.size() >= 2) {
             play.addActionListener(playButtonListener);
             buttonToPlay.add(play);
             currentState.setText("Ready to play!");
         } else {
             currentState.setText("Waiting for opponent...");
-        }
+        }*/
 
         return mainPanel;
     }
@@ -56,7 +55,6 @@ public class GameStatusPage extends JPanel{
             }
         }
     };
-
 
     /*@Override
     public void run() {

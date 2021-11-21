@@ -1,42 +1,70 @@
 package Server;
 
+import Client.GameStatusPage;
+import Client.MainMenu;
+
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.List;
 
-public class Player implements Runnable {
-    String text;
+public class Player extends Thread{
 
     private int questionCounter;
-    private int playerPoints;
+    private int playerPoints=0;
     private String currentCategory;
     private boolean hasAnswered;
+    JFrame frame = new JFrame();
 
-    private List<String> playersInGame;
+
     private String name;
     private Socket socket;
 
     BufferedReader input;
     PrintWriter output;
-
+    GameStatusPage status = new GameStatusPage();
 
     public Player(Socket socket, String name){
         this.socket = socket;
         this.name = name;
-        this.playersInGame.add(name);
+        try{
+            output = new PrintWriter(socket.getOutputStream(), true);
+            output.println("waiting for opponent...");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
+    public String setText(){
+        String s = "Waiting for opponent";
+        return s;
+    }
+
+
+    @Override
     public void run(){
-        Game game = new Game();
+        /*frame.setTitle("Quiz Kampen");
+        //frame.add(menu.createMenu());
+        //add(panel.quizWindow());
 
+        frame.setResizable(false);
+        frame.setVisible(true);
+        frame.setSize(420,420);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        try{
+            GameStatusPage status = new GameStatusPage();
+            status.currentGameStatus();
+            //add all class methods in order of run
+        } catch (Exception e){
+            e.printStackTrace();
+        }*/
     }
 
-    public String waitingForOpponent(){
-        text = "Waiting for opponent....";
-        return text;
+    public Socket getSocket() {
+        return socket;
     }
-
 
 
     public int getQuestionCounter() {
@@ -71,11 +99,4 @@ public class Player implements Runnable {
         this.hasAnswered = hasAnswered;
     }
 
-    public List<String> getPlayersInGame() {
-        return playersInGame;
-    }
-
-    public void setPlayersInGame(List<String> playersInGame) {
-        this.playersInGame = playersInGame;
-    }
 }

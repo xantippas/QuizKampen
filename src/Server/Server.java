@@ -14,23 +14,32 @@ import java.util.List;
 public class Server {
     public static void main(String[]args) throws IOException {
         List<Player> playerList = new ArrayList<>();
-        Game game = new Game();
+        //Game game = new Game();
         Questions questions = new Questions();
         int portNummer = 8765;
-        ServerSocket serverSocket = new ServerSocket();
-        serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
+        ServerSocket serverSocket = new ServerSocket(portNummer);
+        //serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
 
 
-        try (
-                Socket socket = serverSocket.accept();
+        try //(
+                //Socket socket = serverSocket.accept();
                 // from server to client
-                PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
+                //PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
                 // from client to server
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                ) {
-            System.out.println("socket is open in server");
-                    String fromClient;
-                    while (true) {
+                //BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        //        )
+        {
+        while (true) {
+            Player player1 = new Player(serverSocket.accept(), "Player 1");
+            Player player2 = new Player(serverSocket.accept(), "Player 2");
+            Game newGame = new Game(player1, player2);
+
+            player1.start();
+            player2.start();
+            //System.out.println("socket is open in server");
+            //String fromClient;
+        }
+                    /*while (true) {
                         fromClient = bufferedReader.readLine();
                         try{
                             int num = Integer.parseInt(fromClient);
@@ -52,7 +61,7 @@ public class Server {
                         if(fromClient.equals("bye")) {
                             break;
                         }
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }

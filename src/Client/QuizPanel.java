@@ -1,5 +1,7 @@
 package Client;
 
+import Server.Player;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
@@ -9,14 +11,13 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.TimerTask;
 
-public class QuizPanel extends JFrame{
-    CategoryPanel categoryPanel = new CategoryPanel();
-    boolean roundDone=false;
+public class QuizPanel extends JPanel{
 
     JFrame frame = new JFrame();
     String[][] quiz = new String[10][6];
-    int questionCounter =0;
-    int score =0;
+    int questionCounter;
+    int score;
+    int roundsPlayed;
 
     JPanel mainPanel = new JPanel();
     JPanel bottomPanelForChoices = new JPanel();
@@ -31,7 +32,7 @@ public class QuizPanel extends JFrame{
 
     public QuizPanel(String s){
         this.category = s;
-        quizWindow();
+        //quizWindow();
         if (category.equals("history")){
             historyQuiz();
         } else if (category.equals("music")){
@@ -43,10 +44,10 @@ public class QuizPanel extends JFrame{
         }
         update();
 
-        frame.setVisible(true);
+        /*frame.setVisible(true);
         frame.setSize(420,420);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);*/
     }
 
     public JPanel quizWindow(){
@@ -80,7 +81,7 @@ public class QuizPanel extends JFrame{
         mainPanel.add(questionCard);
         mainPanel.add(bottomPanelForChoices);
 
-        frame.add(mainPanel);
+        //frame.add(mainPanel);
 
         return mainPanel;
     }
@@ -94,7 +95,9 @@ public class QuizPanel extends JFrame{
         choice3.setText(quiz[questionCounter][3]);
         choice4.setText(quiz[questionCounter][4]);
 
-        showScoreCard();
+        if (questionCounter == 2){
+            showScoreCard();
+        }
     }
 
     public void musicQuiz(){
@@ -137,15 +140,15 @@ public class QuizPanel extends JFrame{
         quiz[1][5] = "3";
     }
 
-    public JPanel showScoreCard(){
-        if (questionCounter == 2){
-            mainPanel.removeAll();
-            mainPanel.repaint();
-            mainPanel.add(new JLabel("Your score" + score));
-            roundDone = true;
-            return mainPanel;
-        }
-        return null;
+    public void showScoreCard(){
+        CategoryPanel chooseCategory = new CategoryPanel();
+        mainPanel.removeAll();
+        mainPanel.revalidate();
+        mainPanel.repaint();
+        mainPanel.setLayout(new GridLayout(1,1));
+        scoreCard.setText(String.valueOf(score));
+        chooseCategory.setScoreOfPlayer(scoreCard);
+        chooseCategory.categoryPicker();
     }
 
     ActionListener button1 = e -> {

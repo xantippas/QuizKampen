@@ -1,5 +1,7 @@
 package Client;
 
+import Server.Game;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -49,8 +51,6 @@ public class MainMenu extends JFrame {
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(gameStatus.currentGameStatus());
-                //mainPanel.revalidate();
-                //mainPanel.repaint();
 
             }
         }
