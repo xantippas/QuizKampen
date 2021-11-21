@@ -33,9 +33,4 @@ public class FinalScorePanel extends JPanel {
 
         return mainPanel;
     }
-
-    public static void main(String[] args) {
-        FinalScorePanel fin = new FinalScorePanel();
-        fin.finalScores();
-    }
 }
