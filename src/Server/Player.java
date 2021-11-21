@@ -5,6 +5,7 @@ import Client.MainMenu;
 
 import javax.swing.*;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -28,7 +29,9 @@ public class Player extends Thread{
         this.socket = socket;
         this.name = name;
         try{
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new PrintWriter(socket.getOutputStream(), true);
+            output.println("Welcome " + name);
             output.println("waiting for opponent...");
         } catch (Exception e){
             e.printStackTrace();
@@ -36,14 +39,14 @@ public class Player extends Thread{
 
     }
 
-    public String setText(){
-        String s = "Waiting for opponent";
-        return s;
-    }
-
 
     @Override
     public void run(){
+        try{
+            output.println("All players connected");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         /*frame.setTitle("Quiz Kampen");
         //frame.add(menu.createMenu());
         //add(panel.quizWindow());

@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Server {
     public static void main(String[]args) throws IOException {
-        List<Player> playerList = new ArrayList<>();
+        //List<Player> playerList = new ArrayList<>();
         //Game game = new Game();
-        Questions questions = new Questions();
+        //Questions questions = new Questions();
         int portNummer = 8765;
         ServerSocket serverSocket = new ServerSocket(portNummer);
         //serverSocket.bind(new InetSocketAddress("127.0.0.1", portNummer));
@@ -64,6 +64,8 @@ public class Server {
             }*/
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            serverSocket.close();
         }
 
         }
