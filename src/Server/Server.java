@@ -36,12 +36,12 @@ public class Server {
 
                             switch (num) {
                                 case 1:
-                                    printWriter.println("Move to the game!");
+                                    printWriter.println("1");
                                     game = new Game();
                                     break;
                                 case 2:
                                     List<String> categories = questions.getCategory();
-                                    printWriter.println(Arrays.toString(categories.toArray()));
+                                    printWriter.println("2:" + Arrays.toString(categories.toArray()));
                                     break;
                                 default:
                                     printWriter.println("server get unregistered number from client");
