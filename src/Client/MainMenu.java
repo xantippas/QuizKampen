@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends JFrame {
+public class MainMenu extends JPanel {
 
     JPanel mainPanel = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
@@ -19,7 +19,6 @@ public class MainMenu extends JFrame {
         mainPanel.setLayout(new GridLayout(2,1));
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setBorder(new EmptyBorder(20,20,20,20));
-
 
         title.setPreferredSize(new Dimension(250,200));
         title.setFont(new Font("Montserrat", Font.BOLD, 18));
@@ -51,7 +50,6 @@ public class MainMenu extends JFrame {
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 mainPanel.add(gameStatus.currentGameStatus());
-
             }
         }
     };

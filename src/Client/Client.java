@@ -16,6 +16,7 @@ public class Client extends JFrame {
     String fromServer;
     BufferedReader bufferedReader;
     PrintWriter printWriter;
+    JLabel statusMessage;
 
     public Client(String hostName){
         int portNummer = 8765;
