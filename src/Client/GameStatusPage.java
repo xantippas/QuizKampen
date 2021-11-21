@@ -56,20 +56,6 @@ public class GameStatusPage extends JPanel{
         }
     };
 
-    /*@Override
-    public void run() {
-        //currentPlayers.add(new JLabel("Hello"));
-        if (amountOfPlayers.size() >= 2) {
-            play.addActionListener(playButtonListener);
-            buttonToPlay.add(play);
-            currentState.setText("Ready to play!");
-        } else {
-            currentState.setText("Waiting for opponent...");
-        }
-        mainPanel.revalidate();
-        mainPanel.repaint();
-    }*/
-
 }
 
 
