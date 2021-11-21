@@ -1,7 +1,5 @@
 package Client;
 
-import Server.Game;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -12,6 +10,8 @@ public class MainMenu extends JPanel {
 
     JPanel mainPanel = new JPanel();
     JLabel title = new JLabel("Välkommen till QUIZ KAMPEN!", SwingConstants.CENTER);
+    String s;
+    JLabel message = new JLabel("");
     JPanel optionPanel = new JPanel();
     JButton play = new JButton("Spela");
 
@@ -54,8 +54,7 @@ public class MainMenu extends JPanel {
         }
     };
 
-
-   /* @Override
+    /* @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == play) {
             GameStatusPage gameStatus = new GameStatusPage();

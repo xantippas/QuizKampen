@@ -24,6 +24,8 @@ public class Player extends Thread{
     BufferedReader input;
     PrintWriter output;
     GameStatusPage status = new GameStatusPage();
+    MainMenu menu = new MainMenu();
+    JLabel messageToClient = new JLabel("Waiting for Opponent");
 
     public Player(Socket socket, String name){
         this.socket = socket;
@@ -32,7 +34,7 @@ public class Player extends Thread{
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new PrintWriter(socket.getOutputStream(), true);
             output.println("Welcome " + name);
-            output.println("waiting for opponent...");
+            output.println("Waiting for Opponent...");
         } catch (Exception e){
             e.printStackTrace();
         }
