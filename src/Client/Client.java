@@ -62,7 +62,8 @@ public class Client extends JFrame {
                         System.out.println(line);
                         break;
                     case '2':
-                        menu.getGameStatusPage().getChooseCategory().getCategoryHistory().setText(line);
+                        String[] extractedCategories = line.substring(3, line.length()-1).split(",");
+                        menu.getGameStatusPage().getChooseCategory().getCategoryHistory().setText(extractedCategories[3]);
                         break;
                     default:
                         System.out.println("To be implemented");
