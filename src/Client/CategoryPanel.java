@@ -12,6 +12,8 @@ public class CategoryPanel extends JPanel implements ActionListener{
     JPanel mainPanel = new JPanel();
     JPanel headerPanel = new JPanel();
     JPanel categoryPanel = new JPanel();
+    JPanel scorePanel = new JPanel();
+    JLabel scoreOfPlayer = new JLabel("");
     JLabel header = new JLabel("Pick a category");
     JButton categoryHistory = new JButton("History");
     JButton categoryScience = new JButton("Science");
@@ -22,7 +24,6 @@ public class CategoryPanel extends JPanel implements ActionListener{
         mainPanel.removeAll();
         mainPanel.revalidate();
         mainPanel.repaint();
-        mainPanel.setBorder(new EmptyBorder(10,20,20,20));
         mainPanel.setBackground(new Color(0,162,255));
         mainPanel.setLayout(new BorderLayout(5,5));
         header.setFont(new Font("Montserrat", Font.BOLD, 18));
@@ -30,11 +31,18 @@ public class CategoryPanel extends JPanel implements ActionListener{
         headerPanel.setBackground(Color.BLUE);
         headerPanel.add(header);
         mainPanel.add(headerPanel, BorderLayout.NORTH);
+        scorePanel.add(scoreOfPlayer);
+        mainPanel.add(scorePanel, BorderLayout.WEST);
 
         categoryHistory.setPreferredSize(new Dimension(180,40));
         categoryScience.setPreferredSize(new Dimension(180,40));
         categoryGaming.setPreferredSize(new Dimension(180,40));
         categoryMusic.setPreferredSize(new Dimension(180,40));
+
+        categoryHistory.addActionListener(this);
+        categoryScience.addActionListener(this);
+        categoryGaming.addActionListener(this);
+        categoryMusic.addActionListener(this);
 
         categoryPanel.add(categoryHistory);
         categoryPanel.add(categoryScience);
@@ -51,16 +59,42 @@ public class CategoryPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == categoryHistory){
-            categoryChosen = "History";
+            categoryChosen = "history";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            mainPanel.remove(categoryHistory);
+            QuizPanel quiz = new QuizPanel(categoryChosen);
+            mainPanel.add(quiz.quizWindow());
+
         }
         else if (e.getSource() == categoryGaming){
-            categoryChosen = "Gaming";
+            categoryChosen = "gaming";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
+            mainPanel.add(quiz.quizWindow());
         }
         else if (e.getSource() == categoryMusic){
-            categoryChosen = "Music";
+            categoryChosen = "music";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
+            mainPanel.add(quiz.quizWindow());
         }
         else if (e.getSource() == categoryScience) {
-            categoryChosen = "Science";
+            categoryChosen = "science";
+            mainPanel.removeAll();
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            QuizPanel quiz = new QuizPanel(categoryChosen);
+            mainPanel.add(quiz.quizWindow());
         }
+    }
+
+    public void setScoreOfPlayer(JLabel scoreOfPlayer) {
+        this.scoreOfPlayer = scoreOfPlayer;
     }
 }

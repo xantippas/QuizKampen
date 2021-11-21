@@ -1,21 +1,80 @@
 package Server;
 
-import java.util.ArrayList;
-import java.util.List;
+import Client.Client;
+import Client.GameStatusPage;
+import Client.MainMenu;
+import com.sun.tools.javac.Main;
 
-public class Player {
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class Player extends Thread{
+
     private int questionCounter;
-    private int playerPoints;
+    private int playerPoints=0;
     private String currentCategory;
     private boolean hasAnswered;
-    private List<String> playersInGame = new ArrayList<>();
-    String name;
+    JFrame frame = new JFrame();
+    public Client client;
 
-    public void setPlayer(String name){
+
+    private String name;
+    private Socket socket;
+
+    BufferedReader input;
+    PrintWriter output;
+    GameStatusPage status = new GameStatusPage();
+    JLabel messageToClient = new JLabel("Waiting for Opponent");
+    MainMenu menu = new MainMenu();
+
+    public Player(Socket socket, String name){
+        this.socket = socket;
         this.name = name;
-        this.playersInGame.add(name);
-        System.out.println(playersInGame.toString());
+        try{
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            output = new PrintWriter(socket.getOutputStream(), true);
+            output.println("Welcome " + name);
+            output.println("Waiting for Opponent...");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
+
+
+    @Override
+    public void run(){
+        try{
+            output.println("All players connected");
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        /*frame.setTitle("Quiz Kampen");
+        //frame.add(menu.createMenu());
+        //add(panel.quizWindow());
+
+        frame.setResizable(false);
+        frame.setVisible(true);
+        frame.setSize(420,420);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        try{
+            GameStatusPage status = new GameStatusPage();
+            status.currentGameStatus();
+            //add all class methods in order of run
+        } catch (Exception e){
+            e.printStackTrace();
+        }*/
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
 
     public int getQuestionCounter() {
         return questionCounter;
@@ -49,15 +108,4 @@ public class Player {
         this.hasAnswered = hasAnswered;
     }
 
-    public List<String> getPlayersInGame() {
-        return playersInGame;
-    }
-
-    public void setPlayersInGame(List<String> playersInGame) {
-        this.playersInGame = playersInGame;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
