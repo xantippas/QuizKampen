@@ -1,7 +1,9 @@
 package Server;
 
+import Client.Client;
 import Client.GameStatusPage;
 import Client.MainMenu;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -16,6 +18,7 @@ public class Player extends Thread{
     private String currentCategory;
     private boolean hasAnswered;
     JFrame frame = new JFrame();
+    public Client client;
 
 
     private String name;
@@ -24,8 +27,8 @@ public class Player extends Thread{
     BufferedReader input;
     PrintWriter output;
     GameStatusPage status = new GameStatusPage();
-    MainMenu menu = new MainMenu();
     JLabel messageToClient = new JLabel("Waiting for Opponent");
+    MainMenu menu = new MainMenu();
 
     public Player(Socket socket, String name){
         this.socket = socket;
@@ -46,6 +49,7 @@ public class Player extends Thread{
     public void run(){
         try{
             output.println("All players connected");
+
         } catch (Exception e){
             e.printStackTrace();
         }

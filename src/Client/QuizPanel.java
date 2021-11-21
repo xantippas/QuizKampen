@@ -53,7 +53,6 @@ public class QuizPanel extends JPanel{
     public JPanel quizWindow(){
         mainPanel.setBackground(new Color(135,200,255));
         mainPanel.setLayout(new GridLayout(2,1, 5, 5));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
         questionCard.setOpaque(true);
         questionCard.setBackground(Color.white);

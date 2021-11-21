@@ -15,7 +15,7 @@ public class GameStatusPage extends JPanel{
     JPanel buttonToPlay = new JPanel();
     JPanel showState = new JPanel();
     JButton play = new JButton("Spela");
-    JLabel currentState = new JLabel();
+    public JLabel currentState = new JLabel();
 
     public JPanel currentGameStatus(){
         mainPanel.setLayout(new BorderLayout());
@@ -25,7 +25,7 @@ public class GameStatusPage extends JPanel{
         mainPanel.add(currentPlayers, BorderLayout.CENTER);
         mainPanel.add(buttonToPlay, BorderLayout.SOUTH);
 
-        currentState.setText("Waiting for opponent...");
+        currentState.setText("Ready to play!");
         play.addActionListener(playButtonListener);
         buttonToPlay.add(play);
 

@@ -13,10 +13,13 @@ import java.net.Socket;
 public class Client extends JFrame {
 
     MainMenu menu = new MainMenu();
+    JPanel mainPanel = new JPanel(new GridLayout(1,1));
     String fromServer;
     BufferedReader bufferedReader;
     PrintWriter printWriter;
     JLabel statusMessage;
+    public boolean state=false;
+    GameStatusPage status = new GameStatusPage();
 
     public Client(String hostName){
         int portNummer = 8765;
@@ -62,12 +65,13 @@ public class Client extends JFrame {
     }
 
     public void play() throws IOException {
-        add(menu.createMenu());
+        mainPanel.add(menu.createMenu());
         while (true){
             if ((fromServer = bufferedReader.readLine()) != null) {
                 System.out.println("the response from Server " + fromServer);
             }
         }
+
 
     }
 
@@ -75,11 +79,20 @@ public class Client extends JFrame {
     public static void main(String[] args) throws IOException {
             String hostName = "192.168.0.101";
             Client c = new Client(hostName);
+            c.add(c.mainPanel);
             c.setResizable(false);
             c.setVisible(true);
             c.setSize(420,420);
             c.setDefaultCloseOperation(EXIT_ON_CLOSE);
             c.setLocationRelativeTo(null);
             c.play();
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 }
