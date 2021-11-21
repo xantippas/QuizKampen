@@ -32,7 +32,8 @@ public class Server {
         while (true) {
             Player player1 = new Player(serverSocket.accept(), "Player 1");
             Player player2 = new Player(serverSocket.accept(), "Player 2");
-            Game newGame = new Game(player1, player2);
+            Game newGame = new Game();
+            newGame.setCurrentplayer(player1);
 
             player1.start();
             player2.start();

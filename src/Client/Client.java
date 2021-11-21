@@ -45,9 +45,12 @@ public class Client extends JFrame {
                 if(toServer.equals("bye")){
                     break;
                 }*/
-                if ((fromServer = bufferedReader.readLine()) != null) {
-                    System.out.println("the response from Server " + fromServer);
+                while (true){
+                    if ((fromServer = bufferedReader.readLine()) != null) {
+                        System.out.println("the response from Server " + fromServer);
+                    }
                 }
+
 
 
                 //}

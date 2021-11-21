@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game extends Thread{
+public class Game {
 
     MainMenu menu = new MainMenu();
 
@@ -20,9 +20,9 @@ public class Game extends Thread{
     Player opponent;
     Socket socket;
 
-    public Game(Player player1, Player player2){
-        this.currentplayer=player1;
-        this.opponent=player2;
+    public Game(){
+        /*this.currentplayer=player1;
+        this.opponent=player2;*/
     }
 
     //when client is started
@@ -40,12 +40,11 @@ public class Game extends Thread{
 
     }
 
-    @Override
-    public void run(){
-
-
+    public Player getCurrentplayer() {
+        return currentplayer;
     }
 
-
-
+    public void setCurrentplayer(Player currentplayer) {
+        this.currentplayer = currentplayer;
+    }
 }
