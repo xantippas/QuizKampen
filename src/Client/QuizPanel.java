@@ -42,7 +42,7 @@ public class QuizPanel extends JPanel{
         } else if (category.equals("gaming")){
             gamingQuiz();
         }
-        update();
+
 
         /*frame.setVisible(true);
         frame.setSize(420,420);
@@ -108,6 +108,7 @@ public class QuizPanel extends JPanel{
         quiz[1][0] = "Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?";
         quiz[1][1] = "Folsom Prison"; quiz[1][2] = "The ADX"; quiz[1][3] = "Bangkok Hilton"; quiz[1][4] = "Walnut Grove";
         quiz[1][5] = "1";
+        update();
     }
 
     public void historyQuiz(){
@@ -118,6 +119,7 @@ public class QuizPanel extends JPanel{
         quiz[1][0] = "Vilken stad var den första kapitalen i USA?";
         quiz[1][1] = "Washington DC"; quiz[1][2] = "New York"; quiz[1][3] = "Boston"; quiz[1][4] = "San Francisco";
         quiz[1][5] = "2";
+        update();
     }
 
     public void scienceQuiz(){
@@ -128,6 +130,7 @@ public class QuizPanel extends JPanel{
         quiz[1][0] = "Vilken planet är närmst solen?";
         quiz[1][1] = "Pluto"; quiz[1][2] = "Mars"; quiz[1][3] = "Mercurius"; quiz[1][4] = "Venus";
         quiz[1][5] = "3";
+        update();
     }
 
     public void gamingQuiz(){
@@ -138,6 +141,7 @@ public class QuizPanel extends JPanel{
         quiz[1][0] = "Vilken är världens mest bästsäljande spelkonsol?";
         quiz[1][1] = "Playstation 4"; quiz[1][2] = "Super Nintendo"; quiz[1][3] = "Playstation 2"; quiz[1][4] = "Nintendo-64";
         quiz[1][5] = "3";
+        update();
     }
 
     public void showScoreCard(){
@@ -148,7 +152,7 @@ public class QuizPanel extends JPanel{
         mainPanel.setLayout(new GridLayout(1,1));
         scoreCard.setText(String.valueOf(score));
         chooseCategory.setScoreOfPlayer(scoreCard);
-        chooseCategory.categoryPicker();
+        mainPanel.add(chooseCategory.categoryPicker());
     }
 
     ActionListener button1 = e -> {
