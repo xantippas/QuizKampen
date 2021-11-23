@@ -66,7 +66,7 @@ public class Client extends JFrame {
                 repaint();
 
                 //quiz window starting
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 2; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
                     QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
