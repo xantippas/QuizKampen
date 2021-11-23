@@ -68,7 +68,7 @@ public class Game extends Thread {
             //starting window
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
-
+            while (counter < 2) {
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -143,12 +143,24 @@ public class Game extends Thread {
                     e.printStackTrace();
                 }
 
-                //counter++;
+                playerOneScoreRoundOne=0;
+                playerTwoScoreRoundOne=0;
+                counter++;
+            }
+
+            finalScores.add(playerOneScoreRoundOne);
+            finalScores.add(playerTwoScoreRoundOne);
+            //finalScores.add(playerOneScoreRoundTwo);
+            //finalScores.add(playerTwoScoreRoundTwo);
+
+            System.out.println(finalScores);
+            objectOutputPlayerOne.writeObject(finalScores);
+            objectOutputPlayerTwo.writeObject(finalScores);
 
 
             //NEW ROUND not setup in client
             //category window
-            objectOutputPlayerOne.writeObject(q.myCategories());
+            /*objectOutputPlayerOne.writeObject(q.myCategories());
             objectOutputPlayerTwo.writeObject(q.myCategories());
 
             //player one chooses category
@@ -207,15 +219,15 @@ public class Game extends Thread {
                     counter++;
                 }
 
-            }
-            finalScores.add(playerOneScoreRoundOne);
+            }*/
+            /*finalScores.add(playerOneScoreRoundOne);
             finalScores.add(playerTwoScoreRoundOne);
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
 
             System.out.println(finalScores);
             objectOutputPlayerOne.writeObject(finalScores);
-            objectOutputPlayerTwo.writeObject(finalScores);
+            objectOutputPlayerTwo.writeObject(finalScores);*/
 
 
 

@@ -83,7 +83,6 @@ public class Client extends JFrame {
                 }
 
                 //score board
-
                 System.out.println(playerScore);
                 if (playerScore == 1){
                     List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
