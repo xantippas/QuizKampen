@@ -27,6 +27,8 @@ public class FinalScoreBoardPanel extends JPanel {
         mainPanel.add(titleTwo);
         scoreOne.setText(scores.get(0).toString());
         scoreTwo.setText(scores.get(1).toString());
+        scoreOne.setFont(new Font("Arial", Font.BOLD, 18));
+        scoreTwo.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.add(scoreOne);
         mainPanel.add(scoreOne);
         mainPanel2.add(titleOne);
@@ -37,6 +39,6 @@ public class FinalScoreBoardPanel extends JPanel {
         mainPanel2.add(scoreTwoFinal);
 
         add(mainPanel, BorderLayout.CENTER);
-        add(mainPanel2, BorderLayout.CENTER);
+        //add(mainPanel2, BorderLayout.CENTER);
     }
 }

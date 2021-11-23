@@ -10,8 +10,7 @@ public class Game extends Thread {
     List<Integer> scores = new ArrayList<>();
     List<Integer> finalScores = new ArrayList<>();
 
-    int playerOneScoreRoundOne = 0;
-    int playerTwoScoreRoundOne = 0;
+
     int playerOneScoreRoundTwo = 0;
     int playerTwoScoreRoundTwo = 0;
     PrintWriter outPlayerOne;
@@ -66,9 +65,12 @@ public class Game extends Thread {
     public void run() {
         try {
             //starting window
+
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
             while (counter < 2) {
+                int playerOneScoreRoundOne=0;
+                int playerTwoScoreRoundOne=0;
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -149,6 +151,8 @@ public class Game extends Thread {
                 }
                 scores.add(playerOneScoreRoundOne);
                 scores.add(playerTwoScoreRoundOne);
+                finalScores.add(playerOneScoreRoundOne);
+                finalScores.add(playerTwoScoreRoundOne);
 
                 System.out.println(scores);
                 objectOutputPlayerOne.writeObject(scores);
@@ -160,13 +164,12 @@ public class Game extends Thread {
                     e.printStackTrace();
                 }
 
-                playerOneScoreRoundOne=0;
-                playerTwoScoreRoundOne=0;
+                //playerOneScoreRoundOne=0;
+                //playerTwoScoreRoundOne=0;
                 counter++;
             }
 
-            finalScores.add(playerOneScoreRoundOne);
-            finalScores.add(playerTwoScoreRoundOne);
+            //
             //finalScores.add(playerOneScoreRoundTwo);
             //finalScores.add(playerTwoScoreRoundTwo);
 
