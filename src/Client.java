@@ -1,20 +1,16 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
-import java.util.Properties;
 
 public class Client extends JFrame {
 
     List<Integer> myScores;
-    Properties properties = new Properties();
 
     BufferedReader in;
     PrintWriter out;
     String toServer = "";
-    //String fromServer;
+    String fromServer;
     BufferedReader inputConsole;
 
     public int questionCounter = 0;
@@ -23,30 +19,18 @@ public class Client extends JFrame {
     JPanel mainPanel = new JPanel();
     JLabel statusWaiting = new JLabel("Waiting for Opponent");
 
-
     public Client() {
         int portNumber = 4444;
         String hostName = "192.168.0.101";
 
-        //setLayout(new FlowLayout());
-        statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
-        mainPanel.setBackground(new Color(135,200,255));
         mainPanel.add(statusWaiting);
-        mainPanel.setBorder(new LineBorder(Color.BLACK));
         add(mainPanel);
         setVisible(true);
         setSize(420, 420);
-        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        String key = readPropertiesFromPropertyFile("roundNum");
-        int amountOfRounds = Integer.parseInt(key);
-
-        key = readPropertiesFromPropertyFile("quizNumInRound");
-        int amountOfQuestions = Integer.parseInt(key);
-
-        while (playerScore < amountOfRounds) {
+        while (playerScore < 2) {
             try {
                 Socket socket = new Socket(hostName, portNumber);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -82,7 +66,7 @@ public class Client extends JFrame {
                 repaint();
 
                 //quiz window starting
-                for (int i = 0; i < amountOfQuestions; i++) {
+                for (int i = 0; i < 4; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
                     QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
@@ -92,7 +76,6 @@ public class Client extends JFrame {
                         e.printStackTrace();
                     }
                     mainPanel.removeAll();
-                    mainPanel.setLayout(new GridLayout(1,1));
                     mainPanel.add(playQuiz);
                     mainPanel.revalidate();
                     mainPanel.repaint();
@@ -101,7 +84,7 @@ public class Client extends JFrame {
 
                 //score board
                 System.out.println(playerScore);
-                if (playerScore == 1) {
+                if (playerScore == 1){
                     List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
                     FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
                     mainPanel.removeAll();
@@ -118,9 +101,9 @@ public class Client extends JFrame {
                     mainPanel.repaint();
                     repaint();
 
-                    try {
+                    try{
                         Thread.sleep(2000);
-                    } catch (Exception e) {
+                    } catch (Exception e){
                         e.printStackTrace();
                     }
                 }
@@ -177,19 +160,11 @@ public class Client extends JFrame {
 
     }
 
-    public String readPropertiesFromPropertyFile(String s) {
-        try (FileInputStream fileInputStream = new FileInputStream("src/gameConfig.properties")) {
+    public int getQuestionCounter() {
+        return questionCounter;
+    }
 
-            properties.load(fileInputStream);
-            String value = properties.getProperty(s);
-            return value;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return null;
+    public void setQuestionCounter(int questionCounter) {
+        this.questionCounter = questionCounter;
     }
 }
-
