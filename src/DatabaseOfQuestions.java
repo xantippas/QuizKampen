@@ -89,9 +89,9 @@ public class DatabaseOfQuestions {
 
     public List<String> historyQ3Answers(){
         List<String> a = new ArrayList<>();
-        a.add("Santa Maria, Santa Clara och Pinta");
+        a.add("Santa Maria, Santa Clara\n och Pinta");
         a.add("Piff, Paff och Puff");
-        a.add("Saint John, Saint Mary");
+        a.add("Saint John,\n Saint Mary");
         a.add("The Blackpearl");
 
         return a;

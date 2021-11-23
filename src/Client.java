@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.*;
 import java.net.Socket;
@@ -29,7 +30,9 @@ public class Client extends JFrame {
 
         //setLayout(new FlowLayout());
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
+        mainPanel.setBackground(new Color(135,200,255));
         mainPanel.add(statusWaiting);
+        mainPanel.setBorder(new LineBorder(Color.BLACK));
         add(mainPanel);
         setVisible(true);
         setSize(420, 420);
@@ -89,6 +92,7 @@ public class Client extends JFrame {
                         e.printStackTrace();
                     }
                     mainPanel.removeAll();
+                    mainPanel.setLayout(new GridLayout(1,1));
                     mainPanel.add(playQuiz);
                     mainPanel.revalidate();
                     mainPanel.repaint();

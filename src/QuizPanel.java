@@ -28,9 +28,9 @@ public class QuizPanel extends JPanel implements ActionListener{
         this.out = out;
         this.correctAnswer = correctAnswer;
 
-        mainPanel.setBackground(new Color(135,200,255));
-        mainPanel.setLayout(new GridLayout(2,1, 5, 5));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        setLayout(new GridLayout(2,1, 5, 5));
+        setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        //mainPanel.setSize(new Dimension(400,400));
 
         questionCard.setOpaque(true);
         questionCard.setBackground(Color.white);
@@ -38,23 +38,23 @@ public class QuizPanel extends JPanel implements ActionListener{
 
         categoryShowing.setText(title);
 
-        question.setSize(new Dimension(150,150));
+        //question.setSize(new Dimension(200,200));
         question.setText(q);
         questionCard.add(question);
 
         choiceBar.setLayout(new GridLayout(2,2,5,5));
         choiceBar.setOpaque(true);
-        choiceBar.setBackground(new Color(135,200,255));
+        //choiceBar.setBackground(new Color(135,200,255));
 
         choice1.setText(a.get(0));
         choice2.setText(a.get(1));
         choice3.setText(a.get(2));
         choice4.setText(a.get(3));
 
-        choice1.setSize(80,40);
-        choice2.setSize(80,40);
-        choice3.setSize(80,40);
-        choice4.setSize(80,40);
+        choice1.setMargin(new Insets(0,0,0,0));
+        choice2.setMargin(new Insets(0,0,0,0));
+        choice3.setMargin(new Insets(0,0,0,0));
+        choice4.setMargin(new Insets(0,0,0,0));
 
         choice1.addActionListener(this);
         choice2.addActionListener(this);
@@ -66,10 +66,10 @@ public class QuizPanel extends JPanel implements ActionListener{
         choiceBar.add(choice3);
         choiceBar.add(choice4);
 
-        mainPanel.add(questionCard);
-        mainPanel.add(choiceBar);
+        add(questionCard);
+        add(choiceBar);
         //questionCard.add(choiceBar);
-        add(mainPanel);
+        //add(mainPanel);
     }
 
     @Override
