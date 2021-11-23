@@ -32,7 +32,7 @@ public class Client extends JFrame {
         mainPanel.add(statusWaiting);
         add(mainPanel);
         setVisible(true);
-        setSize(420, 420);
+        setSize(500, 300);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
