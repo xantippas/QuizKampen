@@ -37,13 +37,12 @@ public class Game extends Thread {
 
     Socket playerOne;
     Socket playerTwo;
-    Socket socketHolder;
 
     DatabaseOfQuestions q = new DatabaseOfQuestions();
 
     public Game(Socket playerOne, Socket playerTwo) throws IOException {
         this.playerTwo = playerTwo;
-        this.playerOne=playerOne;
+        this.playerOne = playerOne;
 
         outPlayerOne = new PrintWriter(playerOne.getOutputStream(), true);
         inPlayerOne = new BufferedReader(new InputStreamReader(playerOne.getInputStream()));
@@ -70,7 +69,7 @@ public class Game extends Thread {
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
 
-            while (counter < 2){
+            while (counter < 2) {
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -84,12 +83,7 @@ public class Game extends Thread {
                     while (counter < 4) {
                         objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                         response = inPlayerOne.readLine();
-                        if (counter != 1){
-                            playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                        } else {
-                            playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                        }
-
+                        playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
                         System.out.println(response);
                         counter++;
                     }
@@ -97,11 +91,7 @@ public class Game extends Thread {
                     while (counter < 4) {
                         objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
                         response = inPlayerTwo.readLine();
-                        if (counter != 1){
-                            playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                        } else {
-                            playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                        }
+                        playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
                         System.out.println(response);
                         counter++;
                     }
@@ -143,24 +133,26 @@ public class Game extends Thread {
                 }
                 scores.add(playerOneScoreRoundOne);
                 scores.add(playerTwoScoreRoundOne);
-                scores.add(playerOneScoreRoundTwo);
-                scores.add(playerTwoScoreRoundTwo);
+
+                finalScores.add(playerOneScoreRoundOne);
+                finalScores.add(playerTwoScoreRoundOne);
 
                 System.out.println(scores);
                 objectOutputPlayerOne.writeObject(scores);
                 objectOutputPlayerTwo.writeObject(scores);
 
-                playerOneScoreRoundOne=0;
-                playerTwoScoreRoundOne=0;
+                playerOneScoreRoundOne = 0;
+                playerTwoScoreRoundOne = 0;
 
-                try{
+                try {
                     Thread.sleep(2000);
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 counter++;
             }
+
 
             System.out.println(finalScores);
             objectOutputPlayerOne.writeObject(finalScores);

@@ -30,7 +30,7 @@ public class Client extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        while (true) {
+        while (playerScore != 2) {
             try {
                 Socket socket = new Socket(hostName, portNumber);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

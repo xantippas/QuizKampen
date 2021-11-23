@@ -31,8 +31,8 @@ public class FinalScoreBoardPanel extends JPanel {
         mainPanel.add(scoreOne);
         mainPanel2.add(titleOne);
         mainPanel2.add(titleTwo);
-        scoreOneFinal.setText(scores.get(2).toString());
-        scoreTwoFinal.setText(scores.get(3).toString());
+        /*scoreOneFinal.setText(scores.get(2).toString());
+        scoreTwoFinal.setText(scores.get(3).toString());*/
         mainPanel2.add(scoreOneFinal);
         mainPanel2.add(scoreTwoFinal);
 
