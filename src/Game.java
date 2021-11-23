@@ -69,7 +69,6 @@ public class Game extends Thread {
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
 
-            while (counter < 2) {
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -134,15 +133,9 @@ public class Game extends Thread {
                 scores.add(playerOneScoreRoundOne);
                 scores.add(playerTwoScoreRoundOne);
 
-                finalScores.add(playerOneScoreRoundOne);
-                finalScores.add(playerTwoScoreRoundOne);
-
                 System.out.println(scores);
                 objectOutputPlayerOne.writeObject(scores);
                 objectOutputPlayerTwo.writeObject(scores);
-
-                playerOneScoreRoundOne = 0;
-                playerTwoScoreRoundOne = 0;
 
                 try {
                     Thread.sleep(2000);
@@ -150,18 +143,12 @@ public class Game extends Thread {
                     e.printStackTrace();
                 }
 
-                counter++;
-            }
-
-
-            System.out.println(finalScores);
-            objectOutputPlayerOne.writeObject(finalScores);
-            objectOutputPlayerTwo.writeObject(finalScores);
+                //counter++;
 
 
             //NEW ROUND not setup in client
             //category window
-            /*objectOutputPlayerOne.writeObject(q.myCategories());
+            objectOutputPlayerOne.writeObject(q.myCategories());
             objectOutputPlayerTwo.writeObject(q.myCategories());
 
             //player one chooses category
@@ -190,7 +177,7 @@ public class Game extends Thread {
                 while (counter < 4) {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
-                    playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
+                    playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
                 }
@@ -198,7 +185,7 @@ public class Game extends Thread {
                 while (counter < 4) {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
-                    playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
+                    playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
                 }
@@ -207,24 +194,29 @@ public class Game extends Thread {
                 while (counter < 4) {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
-                    playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
+                    playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
                 }
                 counter = 0;
                 while (counter < 4) {
-                    objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
-                    response = inPlayerOne.readLine();
-                    playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
+                    objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
+                    response = inPlayerTwo.readLine();
+                    playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
                 }
 
             }
-            scores.add(playerOneScoreRoundTwo);
-            scores.add(playerTwoScoreRoundTwo);
-            objectOutputPlayerOne.writeObject(scores);
-            objectOutputPlayerTwo.writeObject(scores);*/
+            finalScores.add(playerOneScoreRoundOne);
+            finalScores.add(playerTwoScoreRoundOne);
+            finalScores.add(playerOneScoreRoundTwo);
+            finalScores.add(playerTwoScoreRoundTwo);
+
+            System.out.println(finalScores);
+            objectOutputPlayerOne.writeObject(finalScores);
+            objectOutputPlayerTwo.writeObject(finalScores);
+
 
 
         } catch (Exception e) {
