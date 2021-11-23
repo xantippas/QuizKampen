@@ -10,30 +10,41 @@ public class QuizPanel extends JPanel implements ActionListener{
 
     PrintWriter out;
 
-    JLabel categoryShowing = new JLabel();
+    JPanel mainPanel = new JPanel();
     JPanel questionCard = new JPanel();
     JPanel choiceBar = new JPanel();
+
+    JLabel categoryShowing = new JLabel();
     JLabel question = new JLabel();
+
     JButton choice1 = new JButton();
     JButton choice2 = new JButton();
     JButton choice3 = new JButton();
     JButton choice4 = new JButton();
+
     String correctAnswer;
 
     public QuizPanel(String title, String q, List<String> a, String correctAnswer, PrintWriter out){
         this.out = out;
         this.correctAnswer = correctAnswer;
 
-        questionCard.setLayout(new GridLayout(2,1,5,5));
+        mainPanel.setBackground(new Color(135,200,255));
+        mainPanel.setLayout(new GridLayout(2,1, 5, 5));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+
+        questionCard.setOpaque(true);
+        questionCard.setBackground(Color.white);
         questionCard.setBorder(new EtchedBorder(1));
+
         categoryShowing.setText(title);
 
         question.setSize(new Dimension(150,150));
-        question.setBackground(Color.WHITE);
         question.setText(q);
         questionCard.add(question);
 
         choiceBar.setLayout(new GridLayout(2,2,5,5));
+        choiceBar.setOpaque(true);
+        choiceBar.setBackground(new Color(135,200,255));
 
         choice1.setText(a.get(0));
         choice2.setText(a.get(1));
@@ -55,8 +66,10 @@ public class QuizPanel extends JPanel implements ActionListener{
         choiceBar.add(choice3);
         choiceBar.add(choice4);
 
-        questionCard.add(choiceBar);
-        add(questionCard);
+        mainPanel.add(questionCard);
+        mainPanel.add(choiceBar);
+        //questionCard.add(choiceBar);
+        add(mainPanel);
     }
 
     @Override

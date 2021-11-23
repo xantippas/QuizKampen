@@ -24,11 +24,13 @@ public class Client extends JFrame {
         int portNumber = 4444;
         String hostName = "192.168.0.101";
 
+        setLayout(new FlowLayout());
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
         add(mainPanel);
         setVisible(true);
         setSize(420, 420);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -82,6 +84,7 @@ public class Client extends JFrame {
                     mainPanel.revalidate();
                     mainPanel.repaint();
                     repaint();
+                    pack();
                 }
 
                 //score board
