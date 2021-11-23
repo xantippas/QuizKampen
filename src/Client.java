@@ -57,7 +57,7 @@ public class Client extends JFrame {
 
                 //category window
                 List<String> cats = (List<String>) objectInputStream.readObject();
-                CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), out);
+                CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
                 mainPanel.removeAll();
                 mainPanel.add(categories);
