@@ -3,11 +3,12 @@ import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
+import java.util.Properties;
 
 public class Client extends JFrame {
 
     List<Integer> myScores;
-    PropertiesHandler propertiesFile = new PropertiesHandler();
+    Properties properties = new Properties();
 
     BufferedReader in;
     PrintWriter out;
@@ -20,6 +21,7 @@ public class Client extends JFrame {
 
     JPanel mainPanel = new JPanel();
     JLabel statusWaiting = new JLabel("Waiting for Opponent");
+
 
     public Client() {
         int portNumber = 4444;
@@ -35,7 +37,13 @@ public class Client extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        while (playerScore < 2) {
+        String key = readPropertiesFromPropertyFile("roundNum");
+        int amountOfRounds = Integer.parseInt(key);
+
+        key = readPropertiesFromPropertyFile("quizNumInRound");
+        int amountOfQuestions = Integer.parseInt(key);
+
+        while (playerScore < amountOfRounds) {
             try {
                 Socket socket = new Socket(hostName, portNumber);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -71,7 +79,7 @@ public class Client extends JFrame {
                 repaint();
 
                 //quiz window starting
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < amountOfQuestions; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
                     QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
@@ -89,7 +97,7 @@ public class Client extends JFrame {
 
                 //score board
                 System.out.println(playerScore);
-                if (playerScore == 1){
+                if (playerScore == 1) {
                     List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
                     FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
                     mainPanel.removeAll();
@@ -106,9 +114,9 @@ public class Client extends JFrame {
                     mainPanel.repaint();
                     repaint();
 
-                    try{
+                    try {
                         Thread.sleep(2000);
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -165,11 +173,19 @@ public class Client extends JFrame {
 
     }
 
-    public int getQuestionCounter() {
-        return questionCounter;
-    }
+    public String readPropertiesFromPropertyFile(String s) {
+        try (FileInputStream fileInputStream = new FileInputStream("src/gameConfig.properties")) {
 
-    public void setQuestionCounter(int questionCounter) {
-        this.questionCounter = questionCounter;
+            properties.load(fileInputStream);
+            String value = properties.getProperty(s);
+            return value;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
+

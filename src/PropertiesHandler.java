@@ -1,3 +1,4 @@
+/*
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,7 +12,8 @@ public class PropertiesHandler {
     }
 
     public void readPropertiesFromPropertyFile () {
-        try ( FileInputStream fileInputStream = new FileInputStream("gameConfig.properties")){
+        try ( FileInputStream fileInputStream = new FileInputStream("src/gameConfig.properties")){
+
             properties.load(fileInputStream);
         }
         catch (
@@ -27,4 +29,4 @@ public class PropertiesHandler {
     public String getProperty (String propertyName) {
         return properties.getProperty(propertyName);
     }
-}
+}*/
