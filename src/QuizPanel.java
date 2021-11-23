@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,16 +23,27 @@ public class QuizPanel extends JPanel implements ActionListener{
     public QuizPanel(String title, String q, List<String> a, String correctAnswer, PrintWriter out){
         this.out = out;
         this.correctAnswer = correctAnswer;
-        questionCard.setLayout(new GridLayout(2,1));
+
+        questionCard.setLayout(new GridLayout(2,1,5,5));
+        questionCard.setBorder(new EtchedBorder(1));
         categoryShowing.setText(title);
+
+        question.setSize(new Dimension(150,150));
+        question.setBackground(Color.WHITE);
         question.setText(q);
         questionCard.add(question);
-        choiceBar.setLayout(new GridLayout(2,2));
+
+        choiceBar.setLayout(new GridLayout(2,2,5,5));
 
         choice1.setText(a.get(0));
         choice2.setText(a.get(1));
         choice3.setText(a.get(2));
         choice4.setText(a.get(3));
+
+        choice1.setSize(80,40);
+        choice2.setSize(80,40);
+        choice3.setSize(80,40);
+        choice4.setSize(80,40);
 
         choice1.addActionListener(this);
         choice2.addActionListener(this);

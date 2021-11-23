@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Client extends JFrame {
         int portNumber = 4444;
         String hostName = "192.168.0.101";
 
+        statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
         add(mainPanel);
         setVisible(true);
@@ -66,7 +68,7 @@ public class Client extends JFrame {
                 repaint();
 
                 //quiz window starting
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 4; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
                     QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
