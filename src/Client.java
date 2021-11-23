@@ -7,11 +7,12 @@ import java.util.List;
 public class Client extends JFrame {
 
     List<Integer> myScores;
+    PropertiesHandler propertiesFile = new PropertiesHandler();
 
     BufferedReader in;
     PrintWriter out;
     String toServer = "";
-    String fromServer;
+    //String fromServer;
     BufferedReader inputConsole;
 
     public int questionCounter = 0;
@@ -24,7 +25,7 @@ public class Client extends JFrame {
         int portNumber = 4444;
         String hostName = "192.168.0.101";
 
-        setLayout(new FlowLayout());
+        //setLayout(new FlowLayout());
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
         add(mainPanel);
@@ -84,7 +85,6 @@ public class Client extends JFrame {
                     mainPanel.revalidate();
                     mainPanel.repaint();
                     repaint();
-                    pack();
                 }
 
                 //score board
