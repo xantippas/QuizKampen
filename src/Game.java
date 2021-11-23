@@ -155,7 +155,7 @@ public class Game extends Thread {
                 objectOutputPlayerTwo.writeObject(scores);
 
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
