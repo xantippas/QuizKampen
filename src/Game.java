@@ -129,6 +129,23 @@ public class Game extends Thread {
                         counter++;
                     }
 
+                } else if (chosenCategory.equalsIgnoreCase("music")) {
+                    while (counter < 4) {
+                        objectOutputPlayerOne.writeObject(q.musicCategoryQs());
+                        response = inPlayerOne.readLine();
+                        playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
+                        System.out.println(response);
+                        counter++;
+                    }
+                    counter = 0;
+                    while (counter < 4) {
+                        objectOutputPlayerTwo.writeObject(q.musicCategoryQs());
+                        response = inPlayerTwo.readLine();
+                        playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
+                        System.out.println(response);
+                        counter++;
+                    }
+
                 }
                 scores.add(playerOneScoreRoundOne);
                 scores.add(playerTwoScoreRoundOne);
