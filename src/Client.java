@@ -30,7 +30,7 @@ public class Client extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        while (playerScore != 2) {
+        while (playerScore < 2) {
             try {
                 Socket socket = new Socket(hostName, portNumber);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -83,23 +83,8 @@ public class Client extends JFrame {
                 }
 
                 //score board
-                this.myScores = (List<Integer>) objectInputStream.readObject();
-                RoundsScorePanel scoreBoard = new RoundsScorePanel(this.myScores);
-                mainPanel.removeAll();
-                mainPanel.add(scoreBoard);
-                mainPanel.revalidate();
-                mainPanel.repaint();
-                repaint();
-
-                try{
-                    Thread.sleep(2000);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-
-                playerScore++;
                 System.out.println(playerScore);
-                if (playerScore == 2){
+                if (playerScore == 1){
                     List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
                     FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
                     mainPanel.removeAll();
@@ -107,7 +92,22 @@ public class Client extends JFrame {
                     mainPanel.revalidate();
                     mainPanel.repaint();
                     repaint();
+                } else {
+                    this.myScores = (List<Integer>) objectInputStream.readObject();
+                    RoundsScorePanel scoreBoard = new RoundsScorePanel(this.myScores);
+                    mainPanel.removeAll();
+                    mainPanel.add(scoreBoard);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                    repaint();
+
+                    try{
+                        Thread.sleep(2000);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
+                playerScore++;
 
             /*List<String> cats2 = (List<String>) objectInputStream.readObject();
             categoryPanel categories2 = new categoryPanel(cats2.get(0), cats2.get(1), cats2.get(2), out);
