@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RoundsScorePanel extends JPanel {
 
-    JPanel panell = new JPanel();
+        JPanel panell = new JPanel();
         JPanel mainPanel = new JPanel();
         JLabel titleOfWindow = new JLabel("Scores from Round:");
         JLabel titleOne = new JLabel();
