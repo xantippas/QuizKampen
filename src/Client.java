@@ -42,9 +42,7 @@ public class Client extends JFrame {
             ObjectInputStream objectInputStream = new ObjectInputStream(getObjectFromServer);
 
             OutputStream osStream = socket.getOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream); //do we need this?
-
-            BufferedReader inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream);
 
 
             String setTitleForPlayerWindow = (String) objectInputStream.readObject();
