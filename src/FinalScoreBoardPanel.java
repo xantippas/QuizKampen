@@ -15,8 +15,8 @@ public class FinalScoreBoardPanel extends JPanel {
     JPanel mainPanel = new JPanel();
 
     JLabel titleOfWindow = new JLabel("Matchen avslutad, slutresultat!");
-    JLabel titleOfRoundOne = new JLabel("Round 1 scores"); //are they needed?
-    JLabel titleOfRoundTwo = new JLabel("Round 2 scores");
+    JLabel totalTitle = new JLabel("Total", SwingConstants.CENTER);
+    JLabel emptyFiller = new JLabel(" ");
     JLabel titleOne = new JLabel("Player 1");
     JLabel titleTwo = new JLabel("Player 2");
     JLabel totalScoreHolderP1 = new JLabel();
@@ -54,6 +54,8 @@ public class FinalScoreBoardPanel extends JPanel {
         totalScoreHolderP1.setText(totalScorePlayerOne);
         totalScoreHolderP2.setText(totalScorePlayerTwo);
 
+        layoutPanel.add(totalTitle);
+        layoutPanel.add(emptyFiller);
         layoutPanel.add(totalScoreHolderP1);
         layoutPanel.add(totalScoreHolderP2);
 
