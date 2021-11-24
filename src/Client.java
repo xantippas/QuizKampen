@@ -15,17 +15,20 @@ public class Client extends JFrame {
     String toServer = "";
     BufferedReader inputConsole;
 
+    public static int amountOfClients=1;
     int roundCounter = 0;
 
     JPanel mainPanel = new JPanel();
     JLabel statusWaiting = new JLabel("Waiting for Opponent");
 
     public Client() {
+
         int portNumber = 4444;
         String hostName = "172.20.200.182";
 
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
+        //setTitle("Player " + a); //send over objects from game run to set title with
         add(mainPanel);
         setVisible(true);
         setSize(500, 300);
@@ -53,6 +56,15 @@ public class Client extends JFrame {
 
             inputConsole = new BufferedReader(new InputStreamReader(System.in));
             while (roundCounter < amountOfRounds) {
+                //title of window for player
+                String ss = (String) objectInputStream.readObject();
+
+                mainPanel.removeAll();
+                setTitle(ss);
+                mainPanel.revalidate();
+                mainPanel.repaint();
+                repaint();
+
                 //waiting window
                 String s = (String) objectInputStream.readObject();
                 WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
@@ -129,7 +141,6 @@ public class Client extends JFrame {
     
     public static void main(String[] args) {
         Client c = new Client();
-
     }
 
     public String readPropertiesFromPropertyFile(String s) {

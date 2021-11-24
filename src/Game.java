@@ -18,6 +18,8 @@ public class Game extends Thread {
     String response;
     String chosenCategory;
     String playingInProgress = "Game is starting";
+    String player1 = "Player 1";
+    String player2 = "Player 2";
 
     OutputStream osPlayerOne;
     ObjectOutputStream objectOutputPlayerOne;
@@ -62,6 +64,10 @@ public class Game extends Thread {
     @Override
     public void run() {
         try {
+            //sending player titles
+            objectOutputPlayerOne.writeObject(player1);
+            objectOutputPlayerTwo.writeObject(player2);
+
             //starting window
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
@@ -163,6 +169,11 @@ public class Game extends Thread {
             String chosenCategory2;
 
             //NEW round executed
+            //sending player titles
+            objectOutputPlayerOne.writeObject(player1);
+            objectOutputPlayerTwo.writeObject(player2);
+
+            //waiting window
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
 
