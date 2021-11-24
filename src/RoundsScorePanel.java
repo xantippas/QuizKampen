@@ -5,36 +5,49 @@ import java.util.List;
 
 public class RoundsScorePanel extends JPanel {
 
-        JPanel panell = new JPanel();
         JPanel mainPanel = new JPanel();
-        JLabel titleOfWindow = new JLabel("Scores from Round:");
+        JPanel layoutPanel = new JPanel();
+        JLabel titleOfWindow = new JLabel("Poäng:");
         JLabel titleOne = new JLabel();
         JLabel titleTwo = new JLabel();
+        JLabel playerOneScore = new JLabel();
+        JLabel playerTwoScore = new JLabel();
+
+        String scorePlayerOne;
+        String scorePlayerTwo;
 
         public RoundsScorePanel(List<Integer> scores){
-            panell.setLayout(new BorderLayout());
+            mainPanel.setLayout(new BorderLayout());
+            System.out.println(scores);
 
             titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));
 
-            mainPanel.setLayout(new GridLayout(3,3,5,5));
-            mainPanel.setPreferredSize(new Dimension(200,200));
-            mainPanel.setBorder(new LineBorder(Color.BLACK));
-            mainPanel.setBackground(Color.white);
+            layoutPanel.setLayout(new GridLayout(2,2,5,5));
+            layoutPanel.setPreferredSize(new Dimension(200,200));
+            layoutPanel.setBorder(new LineBorder(Color.BLACK));
+            layoutPanel.setBackground(Color.white);
 
             titleOne.setText("Player 1");
             titleTwo.setText("Player 2");
-            titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
-            titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
-            mainPanel.add(titleOne);
-            mainPanel.add(titleTwo);
+            //titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
+            //titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
 
-            for (Integer i:scores) {
-                mainPanel.add(new JLabel(i.toString()));
-            }
+            scorePlayerOne = scores.get(0).toString();
+            scorePlayerTwo = scores.get(1).toString();
+            playerOneScore.setText(scorePlayerOne);
+            playerTwoScore.setText(scorePlayerTwo);
 
-            panell.add(titleOfWindow, BorderLayout.NORTH);
-            panell.add(mainPanel, BorderLayout.CENTER);
-            add(panell);
+            layoutPanel.add(titleOne);
+            layoutPanel.add(playerOneScore);
+            layoutPanel.add(titleTwo);
+            layoutPanel.add(playerTwoScore);
+
+            System.out.println(scorePlayerOne);
+            System.out.println(scorePlayerTwo);
+
+            mainPanel.add(titleOfWindow, BorderLayout.NORTH);
+            mainPanel.add(layoutPanel, BorderLayout.CENTER);
+            add(mainPanel);
         }
 }
 

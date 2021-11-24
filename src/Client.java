@@ -118,7 +118,7 @@ public class Client extends JFrame {
                     repaint();
 
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(4000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
