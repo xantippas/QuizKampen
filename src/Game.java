@@ -82,7 +82,7 @@ public class Game extends Thread {
             //return category value to send correct quiz
             chosenCategory = inPlayerOne.readLine();
             //send quiz questions to player one and two
-            if (chosenCategory.equalsIgnoreCase("history")) {
+            if (chosenCategory.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
@@ -97,7 +97,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategory.equalsIgnoreCase("science")) {
+            } else if (chosenCategory.equalsIgnoreCase("naturvetenskap")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
@@ -112,7 +112,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategory.equalsIgnoreCase("gaming")) {
+            } else if (chosenCategory.equalsIgnoreCase("spel")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
@@ -127,7 +127,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategory.equalsIgnoreCase("music")) {
+            } else if (chosenCategory.equalsIgnoreCase("musik")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.musicCategoryQs());
                     response = inPlayerOne.readLine();
@@ -171,7 +171,7 @@ public class Game extends Thread {
             chosenCategoryRoundTwo = inPlayerOne.readLine();
 
             //send quiz questions to player one and two
-            if (chosenCategoryRoundTwo.equalsIgnoreCase("history")) {
+            if (chosenCategoryRoundTwo.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
@@ -186,7 +186,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("science")) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("naturvetenskap")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
@@ -201,7 +201,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("gaming")) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("spel")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
@@ -216,7 +216,7 @@ public class Game extends Thread {
                     questionCounter++;
                 }
 
-            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("music")) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("musik")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();

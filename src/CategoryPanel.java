@@ -62,16 +62,16 @@ public class CategoryPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == historyButton) {
-            setCategoryToSendToServer("history");
+            setCategoryToSendToServer("historia");
             out.println(getCategoryToSendToServer());
         } else if (e.getSource() == scienceButton) {
-            setCategoryToSendToServer("science");
+            setCategoryToSendToServer("naturvetenskap");
             out.println(getCategoryToSendToServer());
         } else if (e.getSource() == gamingButton) {
-            setCategoryToSendToServer("gaming");
+            setCategoryToSendToServer("spel");
             out.println(getCategoryToSendToServer());
         } else if (e.getSource() == musicButton) {
-            setCategoryToSendToServer("music");
+            setCategoryToSendToServer("musik");
             out.println(getCategoryToSendToServer());
         }
     }
