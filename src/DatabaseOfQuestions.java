@@ -235,10 +235,10 @@ public class DatabaseOfQuestions {
     Questions h3R2 = new Questions("Historia","Vad heter telefonens uppfinnare?", historyQ3Round2Answers(), "Alexander Graham Bell");
     Questions h4R2 = new Questions("Historia","Han tog patent på den första glödlampan 1879. Vad hette han?", historyQ4Round2Answers(), "Thomas Edison");
 
-    Questions s1R2 = new Questions("Naturvetenskap","Vad är den viktigaste gasen för liv?", scienceQ1Answers(), "syre");
-    Questions s2R2 = new Questions("Naturvetenskap","Vilken planet är närmst solen?", scienceQ2Answers(),"mercurius");
-    Questions s3R2 = new Questions("Naturvetenskap","Hur många tänder har en vuxen person?", scienceQ3Answers(), "34");
-    Questions s4R2 = new Questions("Naturvetenskap","Vilken är den största planeten i vårt solsystem?", scienceQ4Answers(), "jupiter");
+    Questions s1R2 = new Questions("Naturvetenskap","Vad uppfanns av svensken Alfred Nobel, som instiftade Nobelpriset?", scienceQ1Round2Answers(), "Dynamit");
+    Questions s2R2 = new Questions("Naturvetenskap","Vilken partikel har negativ laddning?", scienceQ2Round2Answers(),"Elektron");
+    Questions s3R2 = new Questions("Naturvetenskap","Vilken vetenskap kan beskrivas som vetenskapen om materia, energi och krafter?", scienceQ3Round2Answers(), "Fysik");
+    Questions s4R2 = new Questions("Naturvetenskap","Vilket pH-värde är neutralt?", scienceQ4Round2Answers(), "7");
 
     Questions g1R2 = new Questions("Spel","Vad hette världens första spel?", gamingQ1Answers(), "pong");
     Questions g2R2 = new Questions("Spel","Vilken är världens mest bästsäljande spelkonsol?", gamingQ2Answers(),"playstation 2");
@@ -296,6 +296,55 @@ public class DatabaseOfQuestions {
         question.add(h2R2);
         question.add(h3R2);
         question.add(h4R2);
+        return question;
+    }
+
+    public List<String> scienceQ1Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Kullagret");
+        a.add("Dynamit");
+        a.add("Blixtlås");
+        a.add("Säkerhetsbälte");
+
+        return a;
+    }
+
+    public List<String> scienceQ2Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Proton");
+        a.add("Neutron");
+        a.add("Elektron");
+        a.add("Polypeptide");
+
+        return a;
+    }
+
+    public List<String> scienceQ3Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Fysik");
+        a.add("Kemi");
+        a.add("Biologi");
+        a.add("Matematik");
+
+        return a;
+    }
+
+    public List<String> scienceQ4Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("0");
+        a.add("7");
+        a.add("14");
+        a.add("21");
+
+        return a;
+    }
+
+    public List<Questions> scienceCategoryRound2Qs(){
+        question = new ArrayList<>();
+        question.add(s1R2);
+        question.add(s2R2);
+        question.add(s3R2);
+        question.add(s4R2);
         return question;
     }
 

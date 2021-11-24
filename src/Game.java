@@ -162,14 +162,14 @@ public class Game extends Thread {
 
             } else if (chosenCategoryRoundTwo.equalsIgnoreCase("naturvetenskap")) {
                 while (questionCounter < 4) {
-                    objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
+                    objectOutputPlayerOne.writeObject(q.scienceCategoryRound2Qs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;
                 }
                 questionCounter = 0;
                 while (questionCounter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
+                    objectOutputPlayerTwo.writeObject(q.scienceCategoryRound2Qs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;
