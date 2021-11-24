@@ -12,7 +12,7 @@ public class GameStartingPanel extends JPanel {
 
         this.s = s;
 
-        currentStatus.setFont(new Font("Montserrat", Font.ITALIC, 18));
+        currentStatus.setFont(new Font("Montserrat", Font.BOLD, 18));
         currentStatus.setText(s);
 
         mainPanel.add(currentStatus);

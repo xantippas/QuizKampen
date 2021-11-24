@@ -46,6 +46,7 @@ public class Client extends JFrame {
 
             BufferedReader inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
 
+
             String settitleForPlayerWindow = (String) objectInputStream.readObject();
 
             mainPanel.removeAll();
@@ -53,7 +54,6 @@ public class Client extends JFrame {
             mainPanel.revalidate();
             mainPanel.repaint();
             repaint();
-
 
             String gameIsStartingText = (String) objectInputStream.readObject();
             GameStartingPanel gameStarting = new GameStartingPanel(gameIsStartingText);
@@ -69,11 +69,8 @@ public class Client extends JFrame {
             } catch(Exception e){
                 e.printStackTrace();
             }
-
+            
             while (roundCounter < amountOfRounds) {
-
-
-
                 List<String> cats = (List<String>) objectInputStream.readObject();
                 CategoryPanel categoriesForPlayer = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
