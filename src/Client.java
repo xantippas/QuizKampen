@@ -77,7 +77,7 @@ public class Client extends JFrame {
                 //quiz window starting
                 for (int i = 0; i < amountOfQuestions; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
-                    QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
+                    QuizPanel playQuiz = new QuizPanel(allQs.get(i).getCategoryChosen(), allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
                     try {
                         Thread.sleep(1000);
@@ -85,6 +85,7 @@ public class Client extends JFrame {
                         e.printStackTrace();
                     }
                     mainPanel.removeAll();
+                    setTitle(allQs.get(i).getCategoryChosen());
                     mainPanel.add(playQuiz);
                     mainPanel.revalidate();
                     mainPanel.repaint();

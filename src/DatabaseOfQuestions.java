@@ -5,25 +5,25 @@ import java.util.List;
 public class DatabaseOfQuestions {
     List<String> cats = new ArrayList<>();
 
-    Questions h1 = new Questions("Vilken stad var den första kapitalen i USA?", historyQ1Answers(), "new york");
-    Questions h2 = new Questions("Vem upptäckte Amerika?", historyQ2Answers(),"leif eriksson");
-    Questions h3 = new Questions("Vad hette Christofer Columbus skepp?", historyQ3Answers(), "Santa Maria, Santa Clara och Pinta");
-    Questions h4 = new Questions("Vad var det som startade den stora branden i Chicago 1871?", historyQ4Answers(), "Det är fortfarande oklart");
+    Questions h1 = new Questions("History","Vilken stad var den första kapitalen i USA?", historyQ1Answers(), "new york");
+    Questions h2 = new Questions("History","Vem upptäckte Amerika?", historyQ2Answers(),"leif eriksson");
+    Questions h3 = new Questions("History","Vad hette Christofer Columbus skepp?", historyQ3Answers(), "Santa Maria, Santa Clara och Pinta");
+    Questions h4 = new Questions("History","Vad var det som startade den stora branden i Chicago 1871?", historyQ4Answers(), "Det är fortfarande oklart");
 
-    Questions s1 = new Questions("Vad är den viktigaste gasen för liv?", scienceQ1Answers(), "syre");
-    Questions s2 = new Questions("Vilken planet är närmst solen?", scienceQ2Answers(),"mercurius");
-    Questions s3 = new Questions("Hur många tänder har en vuxen person?", scienceQ3Answers(), "34");
-    Questions s4 = new Questions("Vilken är den största planeten i vårt solsystem?", scienceQ4Answers(), "jupiter");
+    Questions s1 = new Questions("Science","Vad är den viktigaste gasen för liv?", scienceQ1Answers(), "syre");
+    Questions s2 = new Questions("Science","Vilken planet är närmst solen?", scienceQ2Answers(),"mercurius");
+    Questions s3 = new Questions("Science","Hur många tänder har en vuxen person?", scienceQ3Answers(), "34");
+    Questions s4 = new Questions("Science","Vilken är den största planeten i vårt solsystem?", scienceQ4Answers(), "jupiter");
 
-    Questions g1 = new Questions("Vad hette världens första spel?", gamingQ1Answers(), "pong");
-    Questions g2 = new Questions("Vilken är världens mest bästsäljande spelkonsol?", gamingQ2Answers(),"playstation 2");
-    Questions g3 = new Questions("Hur många gamers finns det i USA?", gamingQ3Answers(), "183 miljoner");
-    Questions g4 = new Questions("Vad var ursprungstanken med spelet The Sims?", gamingQ4Answers(),"Det skulle funka som en architektur simulator");
+    Questions g1 = new Questions("Gaming","Vad hette världens första spel?", gamingQ1Answers(), "pong");
+    Questions g2 = new Questions("Gaming","Vilken är världens mest bästsäljande spelkonsol?", gamingQ2Answers(),"playstation 2");
+    Questions g3 = new Questions("Gaming","Hur många gamers finns det i USA?", gamingQ3Answers(), "183 miljoner");
+    Questions g4 = new Questions("Gaming","Vad var ursprungstanken med spelet The Sims?", gamingQ4Answers(),"Det skulle funka som en architektur simulator");
 
-    Questions m1 = new Questions("Vilket år dog Elvis Presley?", musicQ1Answers(), "1977");
-    Questions m2 = new Questions("Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?", musicQ2Answers(), "Folsom Prison");
-    Questions m3 = new Questions("Vad är namnet på duetten som spelades in av Robbie Williams och Gary Barlow år 2010?", musicQ3Answers(), "Shame");
-    Questions m4 = new Questions("Vilket rockband grundades av Trent Reznor år 1988?", musicQ4Answers(), "Nine Inch Nails");
+    Questions m1 = new Questions("Music","Vilket år dog Elvis Presley?", musicQ1Answers(), "1977");
+    Questions m2 = new Questions("Music","Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?", musicQ2Answers(), "Folsom Prison");
+    Questions m3 = new Questions("Music","Vad är namnet på duetten som spelades in av Robbie Williams och Gary Barlow år 2010?", musicQ3Answers(), "Shame");
+    Questions m4 = new Questions("Music","Vilket rockband grundades av Trent Reznor år 1988?", musicQ4Answers(), "Nine Inch Nails");
 
     List<Questions> question = new ArrayList<>();
 

@@ -192,7 +192,7 @@ public class Game extends Thread {
                     counter++;
                 }
 
-            } else if (chosenCategory.equalsIgnoreCase("science")) {
+            } else if (chosenCategory2.equalsIgnoreCase("science")) {
                 while (counter < 4) {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
@@ -209,7 +209,24 @@ public class Game extends Thread {
                     counter++;
                 }
 
-            } else if (chosenCategory.equalsIgnoreCase("gaming")) {
+            } else if (chosenCategory2.equalsIgnoreCase("gaming")) {
+                while (counter < 4) {
+                    objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
+                    response = inPlayerTwo.readLine();
+                    playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
+                    System.out.println(response);
+                    counter++;
+                }
+                counter = 0;
+                while (counter < 4) {
+                    objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
+                    response = inPlayerTwo.readLine();
+                    playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
+                    System.out.println(response);
+                    counter++;
+                }
+
+            } else if (chosenCategory2.equalsIgnoreCase("music")) {
                 while (counter < 4) {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
@@ -227,6 +244,7 @@ public class Game extends Thread {
                 }
 
             }
+
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
 

@@ -4,14 +4,20 @@ import java.util.List;
 
 public class Questions implements Serializable {
 
+    String categoryChosen;
     String question;
     List<String> answers;
     String correctAnswerInList;
 
-    public Questions(String q, List<String> a, String i){
+    public Questions(String c, String q, List<String> a, String i){
+        categoryChosen=c;
         question=q;
         answers =a;
         correctAnswerInList=i;
+    }
+
+    public String getCategoryChosen() {
+        return categoryChosen;
     }
 
     public String getQuestion() {
