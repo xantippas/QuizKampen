@@ -21,7 +21,7 @@ public class Client extends JFrame {
 
     public Client() {
         int portNumber = 4444;
-        String hostName = "192.168.0.101";
+        String hostName = "172.20.200.182";
 
         mainPanel.add(statusWaiting);
         add(mainPanel);
