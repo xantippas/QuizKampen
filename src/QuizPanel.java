@@ -64,9 +64,9 @@ public class QuizPanel extends JPanel implements ActionListener{
         choiceBar.add(choice3);
         choiceBar.add(choice4);
 
-        add(categoryShowing, BorderLayout.NORTH);
         mainPanel.add(questionCard);
         mainPanel.add(choiceBar);
+        add(categoryShowing, BorderLayout.NORTH);
         add(mainPanel);
     }
 
