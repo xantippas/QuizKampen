@@ -268,4 +268,6 @@ public class Game extends Thread {
             e.printStackTrace();
         }
     }
+
+    //create methods for sending out each object to input in to run method for cleaner code
 }
