@@ -1,13 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class WaitingForPlayerPanel extends JPanel {
+public class GameStartingPanel extends JPanel {
 
     JPanel mainPanel = new JPanel();
     JLabel currentStatus = new JLabel("",SwingConstants.CENTER);
     String s;
 
-    public WaitingForPlayerPanel(String s) {
+    public GameStartingPanel(String s) {
         setLayout(new BorderLayout());
 
         this.s = s;

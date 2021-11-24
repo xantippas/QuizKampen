@@ -18,7 +18,7 @@ public class Game extends Thread {
     String response;
     String chosenCategory;
     String chosenCategory2;
-    String playingInProgress = "Game is starting";
+    String playingInProgress = "Välkommen till Quizkampen, Player 1 börjar...";
     String player1 = "Player 1";
     String player2 = "Player 2";
 

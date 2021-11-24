@@ -7,19 +7,19 @@ import java.io.*;
 
 public class CategoryPanel extends JPanel implements ActionListener {
 
-    JPanel mainPanel = new JPanel();
     String cat1;
     String cat2;
     String cat3;
     String cat4;
-    JLabel title = new JLabel("Choose a category:");
+    PrintWriter out;
+
+    JPanel mainPanel = new JPanel();
+    JLabel title = new JLabel("Välj en kategori:");
     JButton historyButton = new JButton();
     JButton scienceButton = new JButton();
     JButton gamingButton = new JButton();
     JButton musicButton = new JButton();
-    public String categoryToSendToServer;
-
-    PrintWriter out;
+    public String categoryToSendToServer; //does this need to be public??
 
     public CategoryPanel(String cat1, String cat2, String cat3, String cat4, PrintWriter out) {
         this.cat1 = cat1;
@@ -57,7 +57,6 @@ public class CategoryPanel extends JPanel implements ActionListener {
 
         add(title, BorderLayout.NORTH);
         add(mainPanel, BorderLayout.CENTER);
-
     }
 
     @Override

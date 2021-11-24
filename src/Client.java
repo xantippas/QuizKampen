@@ -7,18 +7,12 @@ import java.util.Properties;
 
 public class Client extends JFrame {
 
-    List<Integer> myScores; //can we put this in code??
     Properties properties = new Properties();
 
-    BufferedReader in; //do we nede this outside constructor??
-    PrintWriter out;
-    String toServer = ""; //do we need this??
-    BufferedReader inputConsole;
+    JPanel mainPanel = new JPanel();
+    JLabel statusWaiting = new JLabel("Väntar på motståndare");
 
     int roundCounter = 0;
-
-    JPanel mainPanel = new JPanel();
-    JLabel statusWaiting = new JLabel("Waiting for Opponent");
 
     public Client() {
         int portNumber = 12345;
@@ -41,8 +35,8 @@ public class Client extends JFrame {
 
         try {
             Socket socket = new Socket(hostName, portNumber);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
             InputStream getObjectFromServer = socket.getInputStream();
             ObjectInputStream objectInputStream = new ObjectInputStream(getObjectFromServer);
@@ -50,33 +44,39 @@ public class Client extends JFrame {
             OutputStream osStream = socket.getOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream); //do we need this?
 
-            inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
+            BufferedReader inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
             while (roundCounter < amountOfRounds) {
 
-                String ss = (String) objectInputStream.readObject();
+                String settitleForPlayerWindow = (String) objectInputStream.readObject();
 
                 mainPanel.removeAll();
-                setTitle(ss);
+                setTitle(settitleForPlayerWindow);
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 repaint();
 
 
-                String s = (String) objectInputStream.readObject();
-                WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
+                String gameIsStartingText = (String) objectInputStream.readObject();
+                GameStartingPanel gameStarting = new GameStartingPanel(gameIsStartingText);
 
                 mainPanel.removeAll();
-                mainPanel.add(playing);
+                mainPanel.add(gameStarting);
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 repaint();
+
+                try {
+                    Thread.sleep(2000);
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
 
 
                 List<String> cats = (List<String>) objectInputStream.readObject();
-                CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
+                CategoryPanel categoriesForPlayer = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
                 mainPanel.removeAll();
-                mainPanel.add(categories);
+                mainPanel.add(categoriesForPlayer);
                 mainPanel.revalidate();
                 mainPanel.repaint();
                 repaint();
@@ -102,16 +102,16 @@ public class Client extends JFrame {
 
 
                 if (roundCounter == 1) {
-                    List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
-                    FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
+                    List<Integer> finalScores = (List<Integer>) objectInputStream.readObject();
+                    FinalScoreBoardPanel endOfGame = new FinalScoreBoardPanel(finalScores);
                     mainPanel.removeAll();
-                    mainPanel.add(endGame);
+                    mainPanel.add(endOfGame);
                     mainPanel.revalidate();
                     mainPanel.repaint();
                     repaint();
                 } else {
-                    this.myScores = (List<Integer>) objectInputStream.readObject();
-                    RoundsScorePanel scoreBoard = new RoundsScorePanel(this.myScores);
+                    List<Integer> roundOneScores = (List<Integer>) objectInputStream.readObject();
+                    RoundsScorePanel scoreBoard = new RoundsScorePanel(roundOneScores);
                     mainPanel.removeAll();
                     mainPanel.add(scoreBoard);
                     mainPanel.revalidate();

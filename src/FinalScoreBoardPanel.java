@@ -47,7 +47,7 @@ public class FinalScoreBoardPanel extends JPanel {
 
         secondTotal = scores.get(1) + scores.get(3);
         totalScorePlayerTwo = Integer.toString(secondTotal);
-        
+
         scoreOne.setText(totalScorePlayerOne);
         scoreTwo.setText(totalScorePlayerTwo);
 
