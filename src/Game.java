@@ -192,14 +192,14 @@ public class Game extends Thread {
 
             } else if (chosenCategoryRoundTwo.equalsIgnoreCase("musik")) {
                 while (questionCounter < 4) {
-                    objectOutputPlayerOne.writeObject(q.musicCategoryQs());
+                    objectOutputPlayerOne.writeObject(q.musicCategoryRound2Qs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;
                 }
                 questionCounter = 0;
                 while (questionCounter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.musicCategoryQs());
+                    objectOutputPlayerTwo.writeObject(q.musicCategoryRound2Qs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;

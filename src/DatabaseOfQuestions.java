@@ -245,10 +245,60 @@ public class DatabaseOfQuestions {
     Questions g3R2 = new Questions("Spel","I vilket Zelda spel möter vi Ganondorf första gången?", gamingQ3Round2Answers(), "Ocarina of time");
     Questions g4R2 = new Questions("Spel","I vilket Zombie-Survival spel kan du välja att spela som: Coach,Nick,Ellis eller Rochelle?", gamingQ4Round2Answers(),"Left for Dead 2");
 
-    Questions m1R2 = new Questions("Musik","Vilket år dog Elvis Presley?", musicQ1Answers(), "1977");
-    Questions m2R2 = new Questions("Musik","Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?", musicQ2Answers(), "Folsom Prison");
-    Questions m3R2 = new Questions("Musik","Vad är namnet på duetten som spelades in av Robbie Williams och Gary Barlow år 2010?", musicQ3Answers(), "Shame");
-    Questions m4R2 = new Questions("Musik","Vilket rockband grundades av Trent Reznor år 1988?", musicQ4Answers(), "Nine Inch Nails");
+    Questions m1R2 = new Questions("Musik","Per Gessle och Marie Fredriksson bildade en världsberömd popduo. Vad hette duon?", musicQ1Round2Answers(), "Roxette");
+    Questions m2R2 = new Questions("Musik","En känd låt av The Beatles handlar om en ubåt. Vilken färg har ubåten?", musicQ2Round2Answers(), "Gul");
+    Questions m3R2 = new Questions("Musik","Bruce Dickinson är sångare i ett heavy metal-band som grundades 1975 av basisten och låtskrivaren Steve Harris. Vilket?", musicQ3Round2Answers(), "Iron Maiden");
+    Questions m4R2 = new Questions("Musik","The King of Rock ’n’ Roll, Elvis Presley, är begravd vid sitt berömda hem, som blivit en turistmagnet. Vad heter det?", musicQ4Round2Answers(), "Graceland");
+
+    public List<String> musicQ1Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Fame");
+        a.add("Roxette");
+        a.add("Icona Pop");
+        a.add("Ace of Base");
+
+        return a;
+    }
+
+    public List<String> musicQ2Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Grön");
+        a.add("Röd");
+        a.add("Blå");
+        a.add("Gul");
+
+        return a;
+    }
+
+    public List<String> musicQ3Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Kiss");
+        a.add("Iron Maiden");
+        a.add("Nirvana");
+        a.add("Metallica");
+
+        return a;
+    }
+
+    public List<String> musicQ4Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Graceland");
+        a.add("Homeland");
+        a.add("Wonderland");
+        a.add("Growingland");
+
+        return a;
+    }
+
+    public List<Questions> musicCategoryRound2Qs(){
+        question = new ArrayList<>();
+        question.add(m1R2);
+        question.add(m2R2);
+        question.add(m3R2);
+        question.add(m4R2);
+        return question;
+    }
+
 
     public List<String> historyQ1Round2Answers(){
         List<String> a = new ArrayList<>();
