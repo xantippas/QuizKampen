@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.List;
@@ -24,6 +25,7 @@ public class RoundsScorePanel extends JPanel {
 
             layoutPanel.setLayout(new GridLayout(2,2));
             layoutPanel.setPreferredSize(new Dimension(250,100));
+            layoutPanel.setBorder(new EmptyBorder(10,0,0,0));
             layoutPanel.setBackground(Color.white);
 
             scorePlayerOne = scores.get(0).toString();
@@ -35,9 +37,9 @@ public class RoundsScorePanel extends JPanel {
             playerTwoScore.setVerticalAlignment(SwingConstants.CENTER);
             playerOneScore.setHorizontalAlignment(SwingConstants.CENTER);
             playerTwoScore.setHorizontalAlignment(SwingConstants.CENTER);
+
             playerOneScore.setBorder(new LineBorder(Color.BLACK));
             playerTwoScore.setBorder(new LineBorder(Color.BLACK));
-
             titleOne.setBorder(new LineBorder(Color.BLACK));
             titleTwo.setBorder(new LineBorder(Color.BLACK));
 
