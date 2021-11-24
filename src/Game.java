@@ -147,14 +147,14 @@ public class Game extends Thread {
             chosenCategoryRoundTwo = inPlayerOne.readLine();
             if (chosenCategoryRoundTwo.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
-                    objectOutputPlayerOne.writeObject(q.historyCategoryQs());
+                    objectOutputPlayerOne.writeObject(q.historyCategoryRound2Qs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;
                 }
                 questionCounter = 0;
                 while (questionCounter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
+                    objectOutputPlayerTwo.writeObject(q.historyCategoryRound2Qs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     questionCounter++;

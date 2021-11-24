@@ -230,4 +230,74 @@ public class DatabaseOfQuestions {
         return a;
     }
 
+    Questions h1R2 = new Questions("Historia","Vad var de första tvålarna gjorda av?", historyQ1Round2Answers(), "Träaska och animaliskt fett");
+    Questions h2R2 = new Questions("Historia","De två bröderna uppfann världens första flygplan. Vad hette de?", historyQ2Round2Answers(),"Orville och Wilbur Wright");
+    Questions h3R2 = new Questions("Historia","Vad heter telefonens uppfinnare?", historyQ3Round2Answers(), "Alexander Graham Bell");
+    Questions h4R2 = new Questions("Historia","Han tog patent på den första glödlampan 1879. Vad hette han?", historyQ4Round2Answers(), "Thomas Edison");
+
+    Questions s1R2 = new Questions("Naturvetenskap","Vad är den viktigaste gasen för liv?", scienceQ1Answers(), "syre");
+    Questions s2R2 = new Questions("Naturvetenskap","Vilken planet är närmst solen?", scienceQ2Answers(),"mercurius");
+    Questions s3R2 = new Questions("Naturvetenskap","Hur många tänder har en vuxen person?", scienceQ3Answers(), "34");
+    Questions s4R2 = new Questions("Naturvetenskap","Vilken är den största planeten i vårt solsystem?", scienceQ4Answers(), "jupiter");
+
+    Questions g1R2 = new Questions("Spel","Vad hette världens första spel?", gamingQ1Answers(), "pong");
+    Questions g2R2 = new Questions("Spel","Vilken är världens mest bästsäljande spelkonsol?", gamingQ2Answers(),"playstation 2");
+    Questions g3R2 = new Questions("Spel","Hur många gamers finns det i USA?", gamingQ3Answers(), "183 miljoner");
+    Questions g4R2 = new Questions("Spel","Vad var ursprungstanken med spelet The Sims?", gamingQ4Answers(),"Det skulle funka som en architektur simulator");
+
+    Questions m1R2 = new Questions("Musik","Vilket år dog Elvis Presley?", musicQ1Answers(), "1977");
+    Questions m2R2 = new Questions("Musik","Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?", musicQ2Answers(), "Folsom Prison");
+    Questions m3R2 = new Questions("Musik","Vad är namnet på duetten som spelades in av Robbie Williams och Gary Barlow år 2010?", musicQ3Answers(), "Shame");
+    Questions m4R2 = new Questions("Musik","Vilket rockband grundades av Trent Reznor år 1988?", musicQ4Answers(), "Nine Inch Nails");
+
+    public List<String> historyQ1Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Träaska och animaliskt fett");
+        a.add("Kikärter och olja från kaprifol");
+        a.add("Oliver och ister");
+        a.add("Kokosolja och ister");
+
+        return a;
+    }
+
+    public List<String> historyQ2Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("William och Arnold Wulff");
+        a.add("Orville och Wilbur Wright");
+        a.add("Auguste och Louis Lumière");
+        a.add("Alberto Santos Dumont");
+
+        return a;
+    }
+
+    public List<String> historyQ3Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Graham Alexander Bell");
+        a.add("Bell Graham Alexander");
+        a.add("Alexander Graham Bell");
+        a.add("Elisha Gray");
+
+        return a;
+    }
+
+    public List<String> historyQ4Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Thomas Edison");
+        a.add("Joseph Swan");
+        a.add("Alessandro Volta");
+        a.add("Humphrey Davy");
+
+        return a;
+    }
+
+    public List<Questions> historyCategoryRound2Qs(){
+        question = new ArrayList<>();
+        question.add(h1R2);
+        question.add(h2R2);
+        question.add(h3R2);
+        question.add(h4R2);
+        return question;
+    }
+
+
 }
