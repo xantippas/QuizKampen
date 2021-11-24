@@ -17,26 +17,27 @@ public class FinalScoreBoardPanel extends JPanel {
     JLabel scoreTwoFinal = new JLabel();
 
     public FinalScoreBoardPanel(List<Integer> scores){
-        setLayout(new BorderLayout());
-        add(titleOfWindow, BorderLayout.NORTH);
+        System.out.println(scores);
+        //setLayout(new BorderLayout());
+        //add(titleOfWindow, BorderLayout.NORTH);
 
         mainPanel.setLayout(new GridLayout(2,2));
-        mainPanel2.setLayout(new GridLayout(2,2));
+        //mainPanel2.setLayout(new GridLayout(2,2));
 
-        mainPanel.add(titleOne);
-        mainPanel.add(titleTwo);
+        /*mainPanel.add(titleOne);
+        mainPanel.add(titleTwo);*/
         scoreOne.setText(scores.get(0).toString());
         scoreTwo.setText(scores.get(1).toString());
         mainPanel.add(scoreOne);
         mainPanel.add(scoreOne);
-        mainPanel2.add(titleOne);
-        mainPanel2.add(titleTwo);
-        /*scoreOneFinal.setText(scores.get(2).toString());
-        scoreTwoFinal.setText(scores.get(3).toString());*/
-        mainPanel2.add(scoreOneFinal);
-        mainPanel2.add(scoreTwoFinal);
+        /*mainPanel2.add(titleOne);
+        mainPanel2.add(titleTwo);*/
+        scoreOneFinal.setText(scores.get(2).toString());
+        scoreTwoFinal.setText(scores.get(3).toString());
+        mainPanel.add(scoreOneFinal);
+        mainPanel.add(scoreTwoFinal);
 
-        add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel);
         add(mainPanel2, BorderLayout.CENTER);
     }
 }
