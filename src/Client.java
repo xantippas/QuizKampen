@@ -22,7 +22,7 @@ public class Client extends JFrame {
 
     public Client() {
 
-        int portNumber = 4444;
+        int portNumber = 12345;
         String hostName = "172.20.200.182";
 
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));

@@ -182,7 +182,7 @@ public class Game extends Thread {
             objectOutputPlayerTwo.writeObject(q.myCategories());
 
             //player two chooses category this round
-            chosenCategory2 = inPlayerTwo.readLine();
+            chosenCategory2 = inPlayerOne.readLine();
 
             //send quiz questions to player one and two
             if (chosenCategory2.equalsIgnoreCase("history")) {
@@ -205,16 +205,16 @@ public class Game extends Thread {
 
             } else if (chosenCategory2.equalsIgnoreCase("science")) {
                 while (counter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
-                    response = inPlayerTwo.readLine();
+                    objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
+                    response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
                 }
                 counter = 0;
                 while (counter < 4) {
-                    objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
-                    response = inPlayerOne.readLine();
+                    objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
+                    response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
@@ -222,8 +222,8 @@ public class Game extends Thread {
 
             } else if (chosenCategory2.equalsIgnoreCase("gaming")) {
                 while (counter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
-                    response = inPlayerTwo.readLine();
+                    objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
+                    response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
@@ -239,8 +239,8 @@ public class Game extends Thread {
 
             } else if (chosenCategory2.equalsIgnoreCase("music")) {
                 while (counter < 4) {
-                    objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
-                    response = inPlayerTwo.readLine();
+                    objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
+                    response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
                     counter++;
