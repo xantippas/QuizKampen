@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class CategoryPanel extends JPanel implements ActionListener {
+public class ClientCategoryPanel extends JPanel implements ActionListener {
 
     String cat1;
     String cat2;
@@ -21,7 +21,7 @@ public class CategoryPanel extends JPanel implements ActionListener {
     JButton musicButton = new JButton();
     public String categoryToSendToServer; //does this need to be public??
 
-    public CategoryPanel(String cat1, String cat2, String cat3, String cat4, PrintWriter out) {
+    public ClientCategoryPanel(String cat1, String cat2, String cat3, String cat4, PrintWriter out) {
         this.cat1 = cat1;
         this.cat2 = cat2;
         this.cat3 = cat3;

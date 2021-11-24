@@ -4,7 +4,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.List;
 
-public class RoundsScorePanel extends JPanel {
+public class ClientRoundsScorePanel extends JPanel {
 
         JPanel mainPanel = new JPanel();
         JPanel layoutPanel = new JPanel();
@@ -18,7 +18,7 @@ public class RoundsScorePanel extends JPanel {
         String scorePlayerOne;
         String scorePlayerTwo;
 
-        public RoundsScorePanel(List<Integer> scores){
+        public ClientRoundsScorePanel(List<Integer> scores){
             mainPanel.setLayout(new BorderLayout());
 
             titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));

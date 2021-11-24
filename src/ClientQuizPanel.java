@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class QuizPanel extends JPanel implements ActionListener{
+public class ClientQuizPanel extends JPanel implements ActionListener{
 
     PrintWriter out;
 
@@ -24,7 +24,7 @@ public class QuizPanel extends JPanel implements ActionListener{
 
     String correctAnswer;
 
-    public QuizPanel(String title, String q, List<String> a, String correctAnswer, PrintWriter out){
+    public ClientQuizPanel(String title, String q, List<String> a, String correctAnswer, PrintWriter out){
         this.out = out;
         this.correctAnswer = correctAnswer;
 

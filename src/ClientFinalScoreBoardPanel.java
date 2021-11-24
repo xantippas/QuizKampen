@@ -3,7 +3,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.List;
 
-public class FinalScoreBoardPanel extends JPanel {
+public class ClientFinalScoreBoardPanel extends JPanel {
 
     int playerOneScore = 0;
     int playerTwoScore = 0;
@@ -24,7 +24,7 @@ public class FinalScoreBoardPanel extends JPanel {
 
     JLabel winnerOfGame = new JLabel();
 
-    public FinalScoreBoardPanel(List<Integer> scores){
+    public ClientFinalScoreBoardPanel(List<Integer> scores){
         mainPanel.setLayout(new BorderLayout());
 
         titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));

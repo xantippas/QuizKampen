@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameStartingPanel extends JPanel {
+public class ClientGameStartingPanel extends JPanel {
 
     String s;
 
     JPanel mainPanel = new JPanel();
     JLabel welcomeMessage = new JLabel("");
 
-    public GameStartingPanel(String s) {
+    public ClientGameStartingPanel(String s) {
         setLayout(new BorderLayout());
 
         this.s = s;

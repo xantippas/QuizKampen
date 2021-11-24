@@ -54,7 +54,7 @@ public class Client extends JFrame {
             repaint();
 
             String gameIsStartingText = (String) objectInputStream.readObject();
-            GameStartingPanel gameStarting = new GameStartingPanel(gameIsStartingText);
+            ClientGameStartingPanel gameStarting = new ClientGameStartingPanel(gameIsStartingText);
 
             mainPanel.removeAll();
             mainPanel.add(gameStarting);
@@ -70,7 +70,7 @@ public class Client extends JFrame {
 
             while (roundCounter < amountOfRounds) {
                 List<String> cats = (List<String>) objectInputStream.readObject();
-                CategoryPanel categoriesForPlayer = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
+                ClientCategoryPanel categoriesForPlayer = new ClientCategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
                 mainPanel.removeAll();
                 mainPanel.add(categoriesForPlayer);
@@ -81,7 +81,7 @@ public class Client extends JFrame {
 
                 for (int i = 0; i < amountOfQuestions; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
-                    QuizPanel playQuiz = new QuizPanel(allQs.get(i).getCategoryChosen(), allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
+                    ClientQuizPanel playQuiz = new ClientQuizPanel(allQs.get(i).getCategoryChosen(), allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
                     try {
                         Thread.sleep(1000);
@@ -100,7 +100,7 @@ public class Client extends JFrame {
 
                 if (roundCounter == 1) {
                     List<Integer> finalScores = (List<Integer>) objectInputStream.readObject();
-                    FinalScoreBoardPanel endOfGame = new FinalScoreBoardPanel(finalScores);
+                    ClientFinalScoreBoardPanel endOfGame = new ClientFinalScoreBoardPanel(finalScores);
                     mainPanel.removeAll();
                     mainPanel.add(endOfGame);
                     mainPanel.revalidate();
@@ -108,7 +108,7 @@ public class Client extends JFrame {
                     repaint();
                 } else {
                     List<Integer> roundOneScores = (List<Integer>) objectInputStream.readObject();
-                    RoundsScorePanel scoreBoard = new RoundsScorePanel(roundOneScores);
+                    ClientRoundsScorePanel scoreBoard = new ClientRoundsScorePanel(roundOneScores);
                     mainPanel.removeAll();
                     mainPanel.add(scoreBoard);
                     mainPanel.revalidate();
