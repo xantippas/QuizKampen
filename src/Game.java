@@ -12,8 +12,7 @@ public class Game extends Thread {
     List<Integer> finalScores = new ArrayList<>();
 
 
-    int playerOneScoreRoundTwo = 0;
-    int playerTwoScoreRoundTwo = 0;
+
     PrintWriter outPlayerOne;
     BufferedReader inPlayerOne;
     PrintWriter outPlayerTwo;
@@ -72,6 +71,8 @@ public class Game extends Thread {
 
                 int playerOneScoreRoundOne=0;
                 int playerTwoScoreRoundOne=0;
+            int playerOneScoreRoundTwo = 0;
+            int playerTwoScoreRoundTwo = 0;
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -155,6 +156,7 @@ public class Game extends Thread {
                 finalScores.add(playerOneScoreRoundOne);
                 finalScores.add(playerTwoScoreRoundOne);
 
+            System.out.println("final scores" + finalScores);
             System.out.println("scores list: " + scores);
             objectOutputPlayerOne.writeObject(scores);
             objectOutputPlayerTwo.writeObject(scores);
@@ -198,6 +200,7 @@ public class Game extends Thread {
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
+                    System.out.println("round 2");
                     counter++;
                 }
                 counter = 0;

@@ -30,7 +30,7 @@ public class Client extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        while (playerScore < 2) {
+
             try {
                 Socket socket = new Socket(hostName, portNumber);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -43,71 +43,73 @@ public class Client extends JFrame {
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream);
 
                 inputConsole = new BufferedReader(new InputStreamReader(System.in));
+                while (playerScore < 2) {
+                    //waiting window
+                    String s = (String) objectInputStream.readObject();
+                    WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
 
-                //waiting window
-                String s = (String) objectInputStream.readObject();
-                WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
-
-                mainPanel.removeAll();
-                mainPanel.add(playing);
-                mainPanel.revalidate();
-                mainPanel.repaint();
-                repaint();
+                    mainPanel.removeAll();
+                    mainPanel.add(playing);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                    repaint();
 
 
-                //category window
-                List<String> cats = (List<String>) objectInputStream.readObject();
-                CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
+                    //category window
+                    List<String> cats = (List<String>) objectInputStream.readObject();
+                    CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
-                mainPanel.removeAll();
-                mainPanel.add(categories);
-                mainPanel.revalidate();
-                mainPanel.repaint();
-                repaint();
+                    mainPanel.removeAll();
+                    mainPanel.add(categories);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                    repaint();
 
-                //quiz window starting
-                for (int i = 0; i < 4; i++) {
-                    List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
-                    QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
+                    //quiz window starting
+                    for (int i = 0; i < 4; i++) {
+                        List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
+                        QuizPanel playQuiz = new QuizPanel(toServer, allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
 
-                    try {
-                        Thread.sleep(1000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        mainPanel.removeAll();
+                        mainPanel.add(playQuiz);
+                        mainPanel.revalidate();
+                        mainPanel.repaint();
+                        repaint();
                     }
-                    mainPanel.removeAll();
-                    mainPanel.add(playQuiz);
-                    mainPanel.revalidate();
-                    mainPanel.repaint();
-                    repaint();
-                }
 
-                //score board
-                System.out.println(playerScore);
-                if (playerScore == 1){
-                    List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
-                    FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
-                    mainPanel.removeAll();
-                    mainPanel.add(endGame);
-                    mainPanel.revalidate();
-                    mainPanel.repaint();
-                    repaint();
-                } else {
-                    this.myScores = (List<Integer>) objectInputStream.readObject();
-                    RoundsScorePanel scoreBoard = new RoundsScorePanel(this.myScores);
-                    mainPanel.removeAll();
-                    mainPanel.add(scoreBoard);
-                    mainPanel.revalidate();
-                    mainPanel.repaint();
-                    repaint();
+                    //score board
+                    System.out.println(playerScore);
+                    if (playerScore == 1) {
+                        List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
+                        FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);
+                        mainPanel.removeAll();
+                        mainPanel.add(endGame);
+                        mainPanel.revalidate();
+                        mainPanel.repaint();
+                        repaint();
+                    } else {
+                        this.myScores = (List<Integer>) objectInputStream.readObject();
+                        RoundsScorePanel scoreBoard = new RoundsScorePanel(this.myScores);
+                        mainPanel.removeAll();
+                        mainPanel.add(scoreBoard);
+                        mainPanel.revalidate();
+                        mainPanel.repaint();
+                        repaint();
 
-                    try{
-                        Thread.sleep(2000);
-                    } catch (Exception e){
-                        e.printStackTrace();
+                        try {
+                            Thread.sleep(2000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
+
+                    playerScore++;
                 }
-                playerScore++;
 
             /*List<String> cats2 = (List<String>) objectInputStream.readObject();
             categoryPanel categories2 = new categoryPanel(cats2.get(0), cats2.get(1), cats2.get(2), out);
@@ -152,7 +154,7 @@ public class Client extends JFrame {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+
     }
 
     public static void main(String[] args) {
