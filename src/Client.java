@@ -27,7 +27,6 @@ public class Client extends JFrame {
 
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
-        //setTitle("Player " + a); //send over objects from game run to set title with
         add(mainPanel);
         setVisible(true);
         setSize(500, 300);
