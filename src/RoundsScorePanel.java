@@ -23,19 +23,23 @@ public class RoundsScorePanel extends JPanel {
             titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));
 
             layoutPanel.setLayout(new GridLayout(2,2));
-            layoutPanel.setPreferredSize(new Dimension(250,180));
-            layoutPanel.setBorder(new LineBorder(Color.BLACK));
+            layoutPanel.setPreferredSize(new Dimension(250,100));
             layoutPanel.setBackground(Color.white);
 
             scorePlayerOne = scores.get(0).toString();
             scorePlayerTwo = scores.get(1).toString();
             playerOneScore.setText(scorePlayerOne);
             playerTwoScore.setText(scorePlayerTwo);
-            
+
             playerOneScore.setVerticalAlignment(SwingConstants.CENTER);
             playerTwoScore.setVerticalAlignment(SwingConstants.CENTER);
             playerOneScore.setHorizontalAlignment(SwingConstants.CENTER);
             playerTwoScore.setHorizontalAlignment(SwingConstants.CENTER);
+            playerOneScore.setBorder(new LineBorder(Color.BLACK));
+            playerTwoScore.setBorder(new LineBorder(Color.BLACK));
+
+            titleOne.setBorder(new LineBorder(Color.BLACK));
+            titleTwo.setBorder(new LineBorder(Color.BLACK));
 
             layoutPanel.add(titleOne);
             layoutPanel.add(titleTwo);
