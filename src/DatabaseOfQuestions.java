@@ -6,7 +6,7 @@ public class DatabaseOfQuestions {
 
     Questions h1 = new Questions("Historia","Vilken stad var den första kapitalen i USA?", historyQ1Answers(), "new york");
     Questions h2 = new Questions("Historia","Vem upptäckte Amerika?", historyQ2Answers(),"leif eriksson");
-    Questions h3 = new Questions("Historia","Vad hette Christofer Columbus skepp?", historyQ3Answers(), "Santa Maria, Santa Clara och Pinta");
+    Questions h3 = new Questions("Historia","Vad hette Christopher Columbus skepp?", historyQ3Answers(), "Santa Maria, Santa Clara och Pinta");
     Questions h4 = new Questions("Historia","Vad var det som startade den stora branden i Chicago 1871?", historyQ4Answers(), "Det är fortfarande oklart");
 
     Questions s1 = new Questions("Naturvetenskap","Vad är den viktigaste gasen för liv?", scienceQ1Answers(), "syre");
@@ -123,7 +123,7 @@ public class DatabaseOfQuestions {
     public List<String> historyQ2Answers(){
         List<String> a = new ArrayList<>();
         a.add("Leif Eriksson");
-        a.add("Christoffer Columbus");
+        a.add("Christopher Columbus");
         a.add("George Washington");
         a.add("Thomas Jefferson");
 
