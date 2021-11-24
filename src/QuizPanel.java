@@ -24,8 +24,6 @@ public class QuizPanel extends JPanel implements ActionListener{
 
     String correctAnswer;
 
-
-    //add category title to another jLabel
     public QuizPanel(String title, String q, List<String> a, String correctAnswer, PrintWriter out){
         this.out = out;
         this.correctAnswer = correctAnswer;
@@ -33,7 +31,6 @@ public class QuizPanel extends JPanel implements ActionListener{
         mainPanel.setLayout(new GridLayout(2,1, 5, 5));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        //mainPanel.setSize(new Dimension(400,400));
 
         categoryShowing.setText(title);
 
@@ -46,7 +43,6 @@ public class QuizPanel extends JPanel implements ActionListener{
 
         choiceBar.setLayout(new GridLayout(2,2,5,5));
         choiceBar.setOpaque(true);
-        //choiceBar.setBackground(new Color(135,200,255));
 
         choice1.setText(a.get(0));
         choice2.setText(a.get(1));
@@ -68,12 +64,10 @@ public class QuizPanel extends JPanel implements ActionListener{
         choiceBar.add(choice3);
         choiceBar.add(choice4);
 
-        add(categoryShowing, BorderLayout.NORTH);
         mainPanel.add(questionCard);
         mainPanel.add(choiceBar);
+        add(categoryShowing, BorderLayout.NORTH);
         add(mainPanel);
-        /*add(questionCard);
-        add(choiceBar);*/
     }
 
     @Override
@@ -86,7 +80,6 @@ public class QuizPanel extends JPanel implements ActionListener{
                 choice1.setBackground(Color.RED);
                 out.println("0");
             }
-
         } else if (e.getSource() == choice2){
             if (choice2.getText().equalsIgnoreCase(correctAnswer)){
                 choice2.setBackground(Color.GREEN);

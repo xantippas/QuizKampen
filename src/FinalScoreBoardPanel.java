@@ -5,68 +5,72 @@ import java.util.List;
 
 public class FinalScoreBoardPanel extends JPanel {
 
-    int totalScore=0;
-    int secondTotal =0;
+    int playerOneScore = 0;
+    int playerTwoScore = 0;
+
     String totalScorePlayerOne;
     String totalScorePlayerTwo;
+
+    JPanel layoutPanel = new JPanel();
     JPanel mainPanel = new JPanel();
-    JPanel panell = new JPanel();
-    JLabel titleOfWindow = new JLabel("Game finished, Final scores!");
-    JLabel titleOfRoundOne = new JLabel("Round 1 scores");
-    JLabel titleOfRoundTwo = new JLabel("Round 2 scores");
-    JLabel titleOne = new JLabel("PLayer 1");
+
+    JLabel titleOfWindow = new JLabel("Matchen avslutad, slutresultat!");
+    JLabel totalTitle = new JLabel("Total", SwingConstants.CENTER);
+    JLabel emptyFiller = new JLabel(" ");
+    JLabel titleOne = new JLabel("Player 1");
     JLabel titleTwo = new JLabel("Player 2");
-    JLabel scoreOne = new JLabel();
-    JLabel scoreTwo = new JLabel();
+    JLabel totalScoreHolderP1 = new JLabel();
+    JLabel totalScoreHolderP2 = new JLabel();
 
     JLabel winnerOfGame = new JLabel();
 
-
     public FinalScoreBoardPanel(List<Integer> scores){
-        panell.setLayout(new BorderLayout());
+        mainPanel.setLayout(new BorderLayout());
 
         titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));
 
-        mainPanel.setLayout(new GridLayout(5,2,5,5));
-        mainPanel.setPreferredSize(new Dimension(200,200));
-        mainPanel.setBorder(new LineBorder(Color.BLACK));
-        mainPanel.setBackground(Color.white);
+        layoutPanel.setLayout(new GridLayout(5,2,5,5));
+        layoutPanel.setPreferredSize(new Dimension(200,200));
+        layoutPanel.setBorder(new LineBorder(Color.BLACK));
+        layoutPanel.setBackground(Color.white);
 
         titleOne.setText("Player 1");
         titleTwo.setText("Player 2");
         titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
         titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
-        mainPanel.add(titleOne);
-        mainPanel.add(titleTwo);
+        layoutPanel.add(titleOne);
+        layoutPanel.add(titleTwo);
 
         for (Integer i:scores) {
-            mainPanel.add(new JLabel(i.toString()));
+            layoutPanel.add(new JLabel(i.toString()));
         }
 
-        totalScore = scores.get(0) + scores.get(2);
-        totalScorePlayerOne = Integer.toString(totalScore);
+        playerOneScore = scores.get(0) + scores.get(2);
+        totalScorePlayerOne = Integer.toString(playerOneScore);
 
-        secondTotal = scores.get(1) + scores.get(3);
-        totalScorePlayerTwo = Integer.toString(secondTotal);
+        playerTwoScore = scores.get(1) + scores.get(3);
+        totalScorePlayerTwo = Integer.toString(playerTwoScore);
 
-        System.out.println(totalScore);
-        System.out.println(secondTotal);
-        scoreOne.setText(totalScorePlayerOne);
-        scoreTwo.setText(totalScorePlayerTwo);
+        totalScoreHolderP1.setText(totalScorePlayerOne);
+        totalScoreHolderP2.setText(totalScorePlayerTwo);
 
-        mainPanel.add(scoreOne);
-        mainPanel.add(scoreTwo);
+        layoutPanel.add(totalTitle);
+        layoutPanel.add(emptyFiller);
+        layoutPanel.add(totalScoreHolderP1);
+        layoutPanel.add(totalScoreHolderP2);
 
-        if (totalScore > secondTotal){
+        if (playerOneScore > playerTwoScore){
             winnerOfGame.setText("Player 1 is the winner!");
-        } else {
+        } else if (playerTwoScore > playerOneScore){
             winnerOfGame.setText("Player 2 is the winner!");
+        } else {
+            winnerOfGame.setText("IT'S A TIE!");
         }
 
-        panell.add(titleOfWindow, BorderLayout.NORTH);
-        panell.add(mainPanel, BorderLayout.CENTER);
-        panell.add(winnerOfGame, BorderLayout.SOUTH);
-        add(panell);
+        mainPanel.add(titleOfWindow, BorderLayout.NORTH);
+        mainPanel.add(layoutPanel, BorderLayout.CENTER);
+        mainPanel.add(winnerOfGame, BorderLayout.SOUTH);
+        add(mainPanel);
     }
 }
 
