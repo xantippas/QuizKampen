@@ -97,7 +97,6 @@ public class Client extends JFrame {
                         e.printStackTrace();
                     }
                     mainPanel.removeAll();
-                    setTitle(allQs.get(i).getCategoryChosen());
                     mainPanel.add(playQuiz);
                     mainPanel.revalidate();
                     mainPanel.repaint();
