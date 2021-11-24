@@ -10,6 +10,7 @@ public class QuizPanel extends JPanel implements ActionListener{
 
     PrintWriter out;
 
+    JPanel mainPanel = new JPanel();
     JPanel questionCard = new JPanel();
     JPanel choiceBar = new JPanel();
 
@@ -29,7 +30,8 @@ public class QuizPanel extends JPanel implements ActionListener{
         this.out = out;
         this.correctAnswer = correctAnswer;
 
-        setLayout(new GridLayout(3,1, 5, 5));
+        mainPanel.setLayout(new GridLayout(2,1, 5, 5));
+        setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
         //mainPanel.setSize(new Dimension(400,400));
 
@@ -66,9 +68,12 @@ public class QuizPanel extends JPanel implements ActionListener{
         choiceBar.add(choice3);
         choiceBar.add(choice4);
 
-        add(categoryShowing);
-        add(questionCard);
-        add(choiceBar);
+        add(categoryShowing, BorderLayout.NORTH);
+        mainPanel.add(questionCard);
+        mainPanel.add(choiceBar);
+        add(mainPanel);
+        /*add(questionCard);
+        add(choiceBar);*/
     }
 
     @Override
