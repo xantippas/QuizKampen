@@ -18,8 +18,9 @@ public class FinalScoreBoardPanel extends JPanel {
     JLabel titleTwo = new JLabel("Player 2");
     JLabel scoreOne = new JLabel();
     JLabel scoreTwo = new JLabel();
-    JLabel scoreOneFinal = new JLabel();
-    JLabel scoreTwoFinal = new JLabel();
+
+    JLabel winnerOfGame = new JLabel();
+
 
     public FinalScoreBoardPanel(List<Integer> scores){
         panell.setLayout(new BorderLayout());
@@ -56,8 +57,15 @@ public class FinalScoreBoardPanel extends JPanel {
         mainPanel.add(scoreOne);
         mainPanel.add(scoreTwo);
 
+        if (totalScore > secondTotal){
+            winnerOfGame.setText("Player 1 is the winner!");
+        } else {
+            winnerOfGame.setText("Player 2 is the winner!");
+        }
+
         panell.add(titleOfWindow, BorderLayout.NORTH);
         panell.add(mainPanel, BorderLayout.CENTER);
+        panell.add(winnerOfGame, BorderLayout.SOUTH);
         add(panell);
     }
 }
