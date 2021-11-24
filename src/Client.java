@@ -14,8 +14,7 @@ public class Client extends JFrame {
     PrintWriter out;
     String toServer = "";
     BufferedReader inputConsole;
-
-    public static int amountOfClients=1;
+    
     int roundCounter = 0;
 
     JPanel mainPanel = new JPanel();
