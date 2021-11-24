@@ -45,31 +45,33 @@ public class Client extends JFrame {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream); //do we need this?
 
             BufferedReader inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
+
+            String settitleForPlayerWindow = (String) objectInputStream.readObject();
+
+            mainPanel.removeAll();
+            setTitle(settitleForPlayerWindow);
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            repaint();
+
+
+            String gameIsStartingText = (String) objectInputStream.readObject();
+            GameStartingPanel gameStarting = new GameStartingPanel(gameIsStartingText);
+
+            mainPanel.removeAll();
+            mainPanel.add(gameStarting);
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            repaint();
+
+            try {
+                Thread.sleep(2000);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+
             while (roundCounter < amountOfRounds) {
 
-                String settitleForPlayerWindow = (String) objectInputStream.readObject();
-
-                mainPanel.removeAll();
-                setTitle(settitleForPlayerWindow);
-                mainPanel.revalidate();
-                mainPanel.repaint();
-                repaint();
-
-
-                String gameIsStartingText = (String) objectInputStream.readObject();
-                GameStartingPanel gameStarting = new GameStartingPanel(gameIsStartingText);
-
-                mainPanel.removeAll();
-                mainPanel.add(gameStarting);
-                mainPanel.revalidate();
-                mainPanel.repaint();
-                repaint();
-
-                try {
-                    Thread.sleep(2000);
-                } catch(Exception e){
-                    e.printStackTrace();
-                }
 
 
                 List<String> cats = (List<String>) objectInputStream.readObject();

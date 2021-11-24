@@ -160,12 +160,12 @@ public class Game extends Thread {
 
             //NEW round executed
             //sending player titles
-            objectOutputPlayerOne.writeObject(player1);
+            /*objectOutputPlayerOne.writeObject(player1);
             objectOutputPlayerTwo.writeObject(player2);
 
             //waiting window
             objectOutputPlayerOne.writeObject(playingInProgress);
-            objectOutputPlayerTwo.writeObject(playingInProgress);
+            objectOutputPlayerTwo.writeObject(playingInProgress);*/
 
             //category window
             objectOutputPlayerOne.writeObject(q.myCategories());
