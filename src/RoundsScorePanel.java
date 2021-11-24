@@ -7,9 +7,10 @@ public class RoundsScorePanel extends JPanel {
 
         JPanel mainPanel = new JPanel();
         JPanel layoutPanel = new JPanel();
+
         JLabel titleOfWindow = new JLabel("Poäng:");
-        JLabel titleOne = new JLabel();
-        JLabel titleTwo = new JLabel();
+        JLabel titleOne = new JLabel("Player 1");
+        JLabel titleTwo = new JLabel("Player 2");
         JLabel playerOneScore = new JLabel();
         JLabel playerTwoScore = new JLabel();
 
@@ -26,9 +27,7 @@ public class RoundsScorePanel extends JPanel {
             layoutPanel.setPreferredSize(new Dimension(200,200));
             layoutPanel.setBorder(new LineBorder(Color.BLACK));
             layoutPanel.setBackground(Color.white);
-
-            titleOne.setText("Player 1");
-            titleTwo.setText("Player 2");
+            
             //titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
             //titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
 
