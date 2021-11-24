@@ -22,10 +22,9 @@ public class Client extends JFrame {
     JPanel mainPanel = new JPanel();
     JLabel statusWaiting = new JLabel("Waiting for Opponent");
 
-
     public Client() {
         int portNumber = 4444;
-        String hostName = "192.168.0.101";
+        String hostName = "172.20.200.182";
 
         //setLayout(new FlowLayout());
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
@@ -43,20 +42,20 @@ public class Client extends JFrame {
         key = readPropertiesFromPropertyFile("quizNumInRound");
         int amountOfQuestions = Integer.parseInt(key);
 
-        while (playerScore < amountOfRounds) {
-            try {
-                Socket socket = new Socket(hostName, portNumber);
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(socket.getOutputStream(), true);
 
-                InputStream getObjectFromServer = socket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(getObjectFromServer);
+        try {
+            Socket socket = new Socket(hostName, portNumber);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
 
-                OutputStream osStream = socket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream);
+            InputStream getObjectFromServer = socket.getInputStream();
+            ObjectInputStream objectInputStream = new ObjectInputStream(getObjectFromServer);
 
-                inputConsole = new BufferedReader(new InputStreamReader(System.in));
+            OutputStream osStream = socket.getOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream);
 
+            inputConsole = new BufferedReader(new InputStreamReader(System.in));
+            while (playerScore < amountOfRounds) {
                 //waiting window
                 String s = (String) objectInputStream.readObject();
                 WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
@@ -120,7 +119,9 @@ public class Client extends JFrame {
                         e.printStackTrace();
                     }
                 }
+
                 playerScore++;
+            }
 
             /*List<String> cats2 = (List<String>) objectInputStream.readObject();
             categoryPanel categories2 = new categoryPanel(cats2.get(0), cats2.get(1), cats2.get(2), out);
@@ -157,16 +158,17 @@ public class Client extends JFrame {
             mainPanel.repaint();
             repaint();*/
 
-                //initialize another round of quiz game
-                //add category panel
-                //add quiz panel
-                //add final score page that shows points for round one and round two separately
+            //initialize another round of quiz game
+            //add category panel
+            //add quiz panel
+            //add final score page that shows points for round one and round two separately
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
+
 
     public static void main(String[] args) {
         Client c = new Client();

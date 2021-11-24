@@ -6,13 +6,13 @@ import java.util.List;
 public class Game extends Thread {
 
     int counter = 0;
+    int rounds=0;
 
     List<Integer> scores = new ArrayList<>();
     List<Integer> finalScores = new ArrayList<>();
 
 
-    int playerOneScoreRoundTwo = 0;
-    int playerTwoScoreRoundTwo = 0;
+
     PrintWriter outPlayerOne;
     BufferedReader inPlayerOne;
     PrintWriter outPlayerTwo;
@@ -68,9 +68,11 @@ public class Game extends Thread {
 
             objectOutputPlayerOne.writeObject(playingInProgress);
             objectOutputPlayerTwo.writeObject(playingInProgress);
-            while (counter < 2) {
+
                 int playerOneScoreRoundOne=0;
                 int playerTwoScoreRoundOne=0;
+            int playerOneScoreRoundTwo = 0;
+            int playerTwoScoreRoundTwo = 0;
                 //category window
                 objectOutputPlayerOne.writeObject(q.myCategories());
                 objectOutputPlayerTwo.writeObject(q.myCategories());
@@ -154,46 +156,51 @@ public class Game extends Thread {
                 finalScores.add(playerOneScoreRoundOne);
                 finalScores.add(playerTwoScoreRoundOne);
 
-                System.out.println(scores);
-                objectOutputPlayerOne.writeObject(scores);
-                objectOutputPlayerTwo.writeObject(scores);
+            System.out.println("final scores" + finalScores);
+            System.out.println("scores list: " + scores);
+            objectOutputPlayerOne.writeObject(scores);
+            objectOutputPlayerTwo.writeObject(scores);
 
-                try {
+
+                /*try {
                     Thread.sleep(3000);
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
+                }*/
 
-                //playerOneScoreRoundOne=0;
-                //playerTwoScoreRoundOne=0;
-                counter++;
-            }
+                //rounds++;
+            counter=0;
+            String chosenCategory2;
 
-            //
+            /*finalScores.add(playerOneScoreRoundOne);
+            finalScores.add(playerTwoScoreRoundOne);
             //finalScores.add(playerOneScoreRoundTwo);
             //finalScores.add(playerTwoScoreRoundTwo);
 
             System.out.println(finalScores);
             objectOutputPlayerOne.writeObject(finalScores);
-            objectOutputPlayerTwo.writeObject(finalScores);
+            objectOutputPlayerTwo.writeObject(finalScores);*/
+            objectOutputPlayerOne.writeObject(playingInProgress);
+            objectOutputPlayerTwo.writeObject(playingInProgress);
 
 
             //NEW ROUND not setup in client
             //category window
-            /*objectOutputPlayerOne.writeObject(q.myCategories());
+            objectOutputPlayerOne.writeObject(q.myCategories());
             objectOutputPlayerTwo.writeObject(q.myCategories());
 
             //player one chooses category
             //return category value to send correct quiz
-            chosenCategory = inPlayerOne.readLine();
+            chosenCategory2 = inPlayerTwo.readLine();
 
             //send quiz questions to player one and two
-            if (chosenCategory.equalsIgnoreCase("history")) {
+            if (chosenCategory2.equalsIgnoreCase("history")) {
                 while (counter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
                     System.out.println(response);
+                    System.out.println("round 2");
                     counter++;
                 }
                 counter = 0;
@@ -239,21 +246,46 @@ public class Game extends Thread {
                     counter++;
                 }
 
-            }*/
-            /*finalScores.add(playerOneScoreRoundOne);
-            finalScores.add(playerTwoScoreRoundOne);
+            }
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
 
             System.out.println(finalScores);
             objectOutputPlayerOne.writeObject(finalScores);
-            objectOutputPlayerTwo.writeObject(finalScores);*/
+            objectOutputPlayerTwo.writeObject(finalScores);
 
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void createFilePlayerOne(int a,int b) throws IOException {
+        PrintWriter printWriter = new PrintWriter(new FileOutputStream(new File("myFile.txt"),true));
+        printWriter.println(a);
+        printWriter.println(b);
+        printWriter.close();
+    }
+
+    public List<String> readFromFile(){
+        String currentLine;
+
+        List<String> toSend = new ArrayList<>();
+
+        try(BufferedReader instream = new BufferedReader(new FileReader("myFile.txt"))){
+            while ((currentLine = instream.readLine()) != null){
+                toSend.add(currentLine);
+            }
+
+        } catch (FileNotFoundException e){
+            System.out.println("File not found..." + e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return toSend;
+
     }
 
 
