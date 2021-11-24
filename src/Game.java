@@ -65,20 +65,24 @@ public class Game extends Thread {
     public void run() {
         try {
             //sending player titles
-            objectOutputPlayerOne.writeObject(player1);
-            objectOutputPlayerTwo.writeObject(player2);
+            /*objectOutputPlayerOne.writeObject(player1);
+            objectOutputPlayerTwo.writeObject(player2);*/
+            setPlayerTitleForGUI();
 
             //starting window
-            objectOutputPlayerOne.writeObject(playingInProgress);
-            objectOutputPlayerTwo.writeObject(playingInProgress);
+            /*objectOutputPlayerOne.writeObject(playingInProgress);
+            objectOutputPlayerTwo.writeObject(playingInProgress);*/
+            gameIsStartingWindow();
 
             int playerOneScoreRoundOne = 0;
             int playerTwoScoreRoundOne = 0;
             int playerOneScoreRoundTwo = 0;
             int playerTwoScoreRoundTwo = 0;
+
             //category window
-            objectOutputPlayerOne.writeObject(q.myCategories());
-            objectOutputPlayerTwo.writeObject(q.myCategories());
+            /*objectOutputPlayerOne.writeObject(q.myCategories());
+            objectOutputPlayerTwo.writeObject(q.myCategories());*/
+            chooseCategoryWindow();
 
             //player one chooses category
             //return category value to send correct quiz
@@ -270,4 +274,24 @@ public class Game extends Thread {
     }
 
     //create methods for sending out each object to input in to run method for cleaner code
+    public void setPlayerTitleForGUI() throws IOException {
+        objectOutputPlayerOne.writeObject(player1);
+        objectOutputPlayerTwo.writeObject(player2);
+    }
+
+    public void gameIsStartingWindow() throws IOException {
+        objectOutputPlayerOne.writeObject(playingInProgress);
+        objectOutputPlayerTwo.writeObject(playingInProgress);
+    }
+
+    public void chooseCategoryWindow() throws IOException {
+        objectOutputPlayerOne.writeObject(q.myCategories());
+        objectOutputPlayerTwo.writeObject(q.myCategories());
+    }
+
+    public void roundOneQuizQuestions(){
+        
+    }
+
+
 }
