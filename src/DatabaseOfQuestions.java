@@ -250,56 +250,6 @@ public class DatabaseOfQuestions {
     Questions m3R2 = new Questions("Musik","Bruce Dickinson är sångare i ett heavy metal-band som grundades 1975 av basisten och låtskrivaren Steve Harris. Vilket?", musicQ3Round2Answers(), "Iron Maiden");
     Questions m4R2 = new Questions("Musik","The King of Rock ’n’ Roll, Elvis Presley, är begravd vid sitt berömda hem, som blivit en turistmagnet. Vad heter det?", musicQ4Round2Answers(), "Graceland");
 
-    public List<String> musicQ1Round2Answers(){
-        List<String> a = new ArrayList<>();
-        a.add("Fame");
-        a.add("Roxette");
-        a.add("Icona Pop");
-        a.add("Ace of Base");
-
-        return a;
-    }
-
-    public List<String> musicQ2Round2Answers(){
-        List<String> a = new ArrayList<>();
-        a.add("Grön");
-        a.add("Röd");
-        a.add("Blå");
-        a.add("Gul");
-
-        return a;
-    }
-
-    public List<String> musicQ3Round2Answers(){
-        List<String> a = new ArrayList<>();
-        a.add("Kiss");
-        a.add("Iron Maiden");
-        a.add("Nirvana");
-        a.add("Metallica");
-
-        return a;
-    }
-
-    public List<String> musicQ4Round2Answers(){
-        List<String> a = new ArrayList<>();
-        a.add("Graceland");
-        a.add("Homeland");
-        a.add("Wonderland");
-        a.add("Growingland");
-
-        return a;
-    }
-
-    public List<Questions> musicCategoryRound2Qs(){
-        question = new ArrayList<>();
-        question.add(m1R2);
-        question.add(m2R2);
-        question.add(m3R2);
-        question.add(m4R2);
-        return question;
-    }
-
-
     public List<String> historyQ1Round2Answers(){
         List<String> a = new ArrayList<>();
         a.add("Träaska och animaliskt fett");
@@ -444,6 +394,55 @@ public class DatabaseOfQuestions {
         question.add(g2R2);
         question.add(g3R2);
         question.add(g4R2);
+        return question;
+    }
+
+    public List<String> musicQ1Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Fame");
+        a.add("Roxette");
+        a.add("Icona Pop");
+        a.add("Ace of Base");
+
+        return a;
+    }
+
+    public List<String> musicQ2Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Grön");
+        a.add("Röd");
+        a.add("Blå");
+        a.add("Gul");
+
+        return a;
+    }
+
+    public List<String> musicQ3Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Kiss");
+        a.add("Iron Maiden");
+        a.add("Nirvana");
+        a.add("Metallica");
+
+        return a;
+    }
+
+    public List<String> musicQ4Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Graceland");
+        a.add("Homeland");
+        a.add("Wonderland");
+        a.add("Growingland");
+
+        return a;
+    }
+
+    public List<Questions> musicCategoryRound2Qs(){
+        question = new ArrayList<>();
+        question.add(m1R2);
+        question.add(m2R2);
+        question.add(m3R2);
+        question.add(m4R2);
         return question;
     }
 
