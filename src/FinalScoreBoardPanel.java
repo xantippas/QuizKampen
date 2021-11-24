@@ -61,6 +61,8 @@ public class FinalScoreBoardPanel extends JPanel {
         layoutPanel.add(totalScoreHolderP1);
         layoutPanel.add(totalScoreHolderP2);
 
+        winnerOfGame.setForeground(Color.BLUE);
+
         if (playerOneScore > playerTwoScore){
             winnerOfGame.setText("Player 1 is the winner!");
         } else if (playerTwoScore > playerOneScore){
