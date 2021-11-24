@@ -15,12 +15,12 @@ public class FinalScoreBoardPanel extends JPanel {
     JPanel mainPanel = new JPanel();
 
     JLabel titleOfWindow = new JLabel("Matchen avslutad, slutresultat!");
-    JLabel totalTitle = new JLabel("Total", SwingConstants.CENTER);
+    JLabel totalTitle = new JLabel("TOTAL");
     JLabel emptyFiller = new JLabel(" ");
-    JLabel titleOne = new JLabel("Player 1");
-    JLabel titleTwo = new JLabel("Player 2");
-    JLabel totalScoreHolderP1 = new JLabel();
-    JLabel totalScoreHolderP2 = new JLabel();
+    JLabel titleOne = new JLabel("Player 1", SwingConstants.CENTER);
+    JLabel titleTwo = new JLabel("Player 2", SwingConstants.CENTER);
+    JLabel totalScoreHolderP1 = new JLabel("",SwingConstants.CENTER);
+    JLabel totalScoreHolderP2 = new JLabel("",SwingConstants.CENTER);
 
     JLabel winnerOfGame = new JLabel();
 
@@ -28,6 +28,7 @@ public class FinalScoreBoardPanel extends JPanel {
         mainPanel.setLayout(new BorderLayout());
 
         titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));
+        totalTitle.setFont(new Font("Montserrat", Font.BOLD, 18));
 
         layoutPanel.setLayout(new GridLayout(5,2,5,5));
         layoutPanel.setPreferredSize(new Dimension(200,200));
@@ -36,13 +37,14 @@ public class FinalScoreBoardPanel extends JPanel {
 
         titleOne.setText("Player 1");
         titleTwo.setText("Player 2");
-        titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
-        titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
+        titleOne.setFont(new Font("Montserrat", Font.BOLD, 12));
+        titleTwo.setFont(new Font("Montserrat", Font.BOLD, 12));
+
         layoutPanel.add(titleOne);
         layoutPanel.add(titleTwo);
 
         for (Integer i:scores) {
-            layoutPanel.add(new JLabel(i.toString()));
+            layoutPanel.add(new JLabel(i.toString(),SwingConstants.CENTER));
         }
 
         playerOneScore = scores.get(0) + scores.get(2);
