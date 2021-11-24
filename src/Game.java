@@ -64,14 +64,14 @@ public class Game extends Thread {
         try {
 
             sendTitlesForPlayerWindow();
-            gameStartingWindow();
+            sendGameStartingWindow();
 
             int playerOneScoreRoundOne = 0;
             int playerTwoScoreRoundOne = 0;
             int playerOneScoreRoundTwo = 0;
             int playerTwoScoreRoundTwo = 0;
 
-            categoryWindow();
+            sendCategoryWindow();
             chosenCategory = inPlayerOne.readLine();
             if (chosenCategory.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
@@ -143,7 +143,7 @@ public class Game extends Thread {
 
             questionCounter = 0;
 
-            categoryWindow();
+            sendCategoryWindow();
             chosenCategoryRoundTwo = inPlayerOne.readLine();
             if (chosenCategoryRoundTwo.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
@@ -221,12 +221,12 @@ public class Game extends Thread {
         objectOutputPlayerTwo.writeObject(player2);
     }
 
-    public void gameStartingWindow() throws IOException {
+    public void sendGameStartingWindow() throws IOException {
         objectOutputPlayerOne.writeObject(gameStartingText);
         objectOutputPlayerTwo.writeObject(gameStartingText);
     }
 
-    public void categoryWindow() throws IOException {
+    public void sendCategoryWindow() throws IOException {
         objectOutputPlayerOne.writeObject(q.myCategories());
         objectOutputPlayerTwo.writeObject(q.myCategories());
     }
