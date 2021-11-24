@@ -5,6 +5,10 @@ import java.util.List;
 
 public class FinalScoreBoardPanel extends JPanel {
 
+    int totalScore=0;
+    int secondTotal =0;
+    String totalScorePlayerOne;
+    String totalScorePlayerTwo;
     JPanel mainPanel = new JPanel();
     JPanel panell = new JPanel();
     JLabel titleOfWindow = new JLabel("Game finished, Final scores!");
@@ -22,7 +26,7 @@ public class FinalScoreBoardPanel extends JPanel {
 
         titleOfWindow.setFont(new Font("Montserrat", Font.BOLD, 18));
 
-        mainPanel.setLayout(new GridLayout(5,3,5,5));
+        mainPanel.setLayout(new GridLayout(5,2,5,5));
         mainPanel.setPreferredSize(new Dimension(200,200));
         mainPanel.setBorder(new LineBorder(Color.BLACK));
         mainPanel.setBackground(Color.white);
@@ -38,38 +42,23 @@ public class FinalScoreBoardPanel extends JPanel {
             mainPanel.add(new JLabel(i.toString()));
         }
 
-        /*scoreOne.setText(scores.get(0).toString());
-        scoreTwo.setText(scores.get(1).toString());
+        totalScore = scores.get(0) + scores.get(2);
+        totalScorePlayerOne = Integer.toString(totalScore);
+
+        secondTotal = scores.get(1) + scores.get(3);
+        totalScorePlayerTwo = Integer.toString(secondTotal);
+
+        System.out.println(totalScore);
+        System.out.println(secondTotal);
+        scoreOne.setText(totalScorePlayerOne);
+        scoreTwo.setText(totalScorePlayerTwo);
+
         mainPanel.add(scoreOne);
-        mainPanel.add(scoreTwo);*/
+        mainPanel.add(scoreTwo);
 
         panell.add(titleOfWindow, BorderLayout.NORTH);
         panell.add(mainPanel, BorderLayout.CENTER);
         add(panell);
-        /*System.out.println(scores);
-        setLayout(new BorderLayout());
-        add(titleOfWindow, BorderLayout.NORTH);
-
-        mainPanel.setLayout(new GridLayout(2,2));
-        //mainPanel2.setLayout(new GridLayout(2,2));
-
-        //mainPanel.add(titleOne);
-        //mainPanel.add(titleTwo);
-        scoreOne.setText(scores.get(0).toString());
-        scoreTwo.setText(scores.get(1).toString());
-        scoreOne.setFont(new Font("Arial", Font.BOLD, 18));
-        scoreTwo.setFont(new Font("Arial", Font.BOLD, 18));
-        mainPanel.add(scoreOne);
-        mainPanel.add(scoreOne);
-        mainPanel2.add(titleOne);
-        mainPanel2.add(titleTwo);
-        scoreOneFinal.setText(scores.get(2).toString());
-        scoreTwoFinal.setText(scores.get(3).toString());
-        mainPanel.add(scoreOneFinal);
-        mainPanel.add(scoreTwoFinal);
-
-        add(mainPanel, BorderLayout.CENTER);
-        //add(mainPanel2, BorderLayout.CENTER);*/
     }
 }
 
