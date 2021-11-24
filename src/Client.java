@@ -47,10 +47,10 @@ public class Client extends JFrame {
             BufferedReader inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
 
 
-            String settitleForPlayerWindow = (String) objectInputStream.readObject();
+            String setTitleForPlayerWindow = (String) objectInputStream.readObject();
 
             mainPanel.removeAll();
-            setTitle(settitleForPlayerWindow);
+            setTitle(setTitleForPlayerWindow);
             mainPanel.revalidate();
             mainPanel.repaint();
             repaint();
