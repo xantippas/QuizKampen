@@ -24,7 +24,6 @@ public class Client extends JFrame {
         int portNumber = 4444;
         String hostName = "172.20.200.182";
 
-        //setLayout(new FlowLayout());
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
         add(mainPanel);
@@ -126,8 +125,7 @@ public class Client extends JFrame {
         }
     }
 
-
-
+    
     public static void main(String[] args) {
         Client c = new Client();
 
