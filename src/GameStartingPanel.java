@@ -3,19 +3,20 @@ import java.awt.*;
 
 public class GameStartingPanel extends JPanel {
 
-    JPanel mainPanel = new JPanel();
-    JLabel currentStatus = new JLabel("",SwingConstants.CENTER);
     String s;
+
+    JPanel mainPanel = new JPanel();
+    JLabel welcomeMessage = new JLabel("");
 
     public GameStartingPanel(String s) {
         setLayout(new BorderLayout());
 
         this.s = s;
 
-        currentStatus.setFont(new Font("Montserrat", Font.BOLD, 18));
-        currentStatus.setText(s);
+        welcomeMessage.setFont(new Font("Montserrat", Font.BOLD, 18));
+        welcomeMessage.setText(s);
 
-        mainPanel.add(currentStatus);
+        mainPanel.add(welcomeMessage);
         add(mainPanel, BorderLayout.CENTER);
     }
 }
