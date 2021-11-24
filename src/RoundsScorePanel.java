@@ -41,9 +41,6 @@ public class RoundsScorePanel extends JPanel {
             layoutPanel.add(titleTwo);
             layoutPanel.add(playerTwoScore);
 
-            System.out.println(scorePlayerOne);
-            System.out.println(scorePlayerTwo);
-
             mainPanel.add(titleOfWindow, BorderLayout.NORTH);
             mainPanel.add(layoutPanel, BorderLayout.CENTER);
             add(mainPanel);
