@@ -237,18 +237,18 @@ public class DatabaseOfQuestions {
 
     Questions s1R2 = new Questions("Naturvetenskap","Vad uppfanns av svensken Alfred Nobel, som instiftade Nobelpriset?", scienceQ1Round2Answers(), "Dynamit");
     Questions s2R2 = new Questions("Naturvetenskap","Vilken partikel har negativ laddning?", scienceQ2Round2Answers(),"Elektron");
-    Questions s3R2 = new Questions("Naturvetenskap","Vilken vetenskap kan beskrivas som vetenskapen om materia, energi och krafter?", scienceQ3Round2Answers(), "Fysik");
+    Questions s3R2 = new Questions("Naturvetenskap","Vilken vetenskap kan beskrivas som vetenskapen om materia, energi & krafter?", scienceQ3Round2Answers(), "Fysik");
     Questions s4R2 = new Questions("Naturvetenskap","Vilket pH-värde är neutralt?", scienceQ4Round2Answers(), "7");
 
     Questions g1R2 = new Questions("Spel","I vilket online-spel hittar du banor som dust och assualt?", gamingQ1Round2Answers(), "Counter Strike");
     Questions g2R2 = new Questions("Spel","Vad heter prinsessan i det första Super Mario Bros-spelet till NES? (Nintendo 8-bit)", gamingQ2Round2Answers(),"Toadstool");
     Questions g3R2 = new Questions("Spel","I vilket Zelda spel möter vi Ganondorf första gången?", gamingQ3Round2Answers(), "Ocarina of time");
-    Questions g4R2 = new Questions("Spel","I vilket Zombie-Survival spel kan du välja att spela som: Coach,Nick,Ellis eller Rochelle?", gamingQ4Round2Answers(),"Left for Dead 2");
+    Questions g4R2 = new Questions("Spel","Vilket Zombie-Survival spel kan du välja att spela som: Coach,Nick,Ellis, Rochelle?", gamingQ4Round2Answers(),"Left for Dead 2");
 
     Questions m1R2 = new Questions("Musik","Per Gessle och Marie Fredriksson bildade en världsberömd popduo. Vad hette duon?", musicQ1Round2Answers(), "Roxette");
     Questions m2R2 = new Questions("Musik","En känd låt av The Beatles handlar om en ubåt. Vilken färg har ubåten?", musicQ2Round2Answers(), "Gul");
-    Questions m3R2 = new Questions("Musik","Bruce Dickinson är sångare i ett heavy metal-band som grundades 1975 av basisten och låtskrivaren Steve Harris. Vilket?", musicQ3Round2Answers(), "Iron Maiden");
-    Questions m4R2 = new Questions("Musik","The King of Rock ’n’ Roll, Elvis Presley, är begravd vid sitt berömda hem, som blivit en turistmagnet. Vad heter det?", musicQ4Round2Answers(), "Graceland");
+    Questions m3R2 = new Questions("Musik","Vilken artist, som ofta sjunger vid sitt piano, föddes som Reginald Dwight?", musicQ3Round2Answers(), "Elton John");
+    Questions m4R2 = new Questions("Musik","Vad heter Rolling Stones-medlemmarna Keith och Mick i efternamn?", musicQ4Round2Answers(), "Richards och Jagger");
 
     public List<String> historyQ1Round2Answers(){
         List<String> a = new ArrayList<>();
@@ -419,20 +419,20 @@ public class DatabaseOfQuestions {
 
     public List<String> musicQ3Round2Answers(){
         List<String> a = new ArrayList<>();
-        a.add("Kiss");
-        a.add("Iron Maiden");
-        a.add("Nirvana");
-        a.add("Metallica");
+        a.add("Bobby Johnson");
+        a.add("Elton John");
+        a.add("Barry Manilow");
+        a.add("Billy Joel");
 
         return a;
     }
 
     public List<String> musicQ4Round2Answers(){
         List<String> a = new ArrayList<>();
-        a.add("Graceland");
-        a.add("Homeland");
-        a.add("Wonderland");
-        a.add("Growingland");
+        a.add("Richards och Jagger");
+        a.add("Jones och Wood");
+        a.add("Richards och Cheadle");
+        a.add("Jagger och Andersen");
 
         return a;
     }
