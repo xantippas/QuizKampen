@@ -69,7 +69,7 @@ public class Client extends JFrame {
             } catch(Exception e){
                 e.printStackTrace();
             }
-            
+
             while (roundCounter < amountOfRounds) {
                 List<String> cats = (List<String>) objectInputStream.readObject();
                 CategoryPanel categoriesForPlayer = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);

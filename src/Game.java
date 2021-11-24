@@ -5,22 +5,22 @@ import java.util.List;
 
 public class Game extends Thread {
 
-    int counter = 0;
-    int rounds = 0; //do we need this??
-
-    List<Integer> scores = new ArrayList<>();
+    List<Integer> firstRoundScores = new ArrayList<>();
     List<Integer> finalScores = new ArrayList<>();
 
     PrintWriter outPlayerOne;
     BufferedReader inPlayerOne;
     PrintWriter outPlayerTwo;
     BufferedReader inPlayerTwo;
+
     String response;
     String chosenCategory;
-    String chosenCategory2;
-    String playingInProgress = "Lets play a game | Player 1 börjar";
+    String chosenCategoryRoundTwo;
+    String gameStartingText = "Lets play a game | Player 1 börjar";
     String player1 = "Player 1";
     String player2 = "Player 2";
+
+    int questionCounter = 0;
 
     OutputStream osPlayerOne;
     ObjectOutputStream objectOutputPlayerOne;
@@ -70,8 +70,8 @@ public class Game extends Thread {
             objectOutputPlayerTwo.writeObject(player2);
 
             //starting window
-            objectOutputPlayerOne.writeObject(playingInProgress);
-            objectOutputPlayerTwo.writeObject(playingInProgress);
+            objectOutputPlayerOne.writeObject(gameStartingText);
+            objectOutputPlayerTwo.writeObject(gameStartingText);
 
             int playerOneScoreRoundOne = 0;
             int playerTwoScoreRoundOne = 0;
@@ -87,76 +87,76 @@ public class Game extends Thread {
 
             //send quiz questions to player one and two
             if (chosenCategory.equalsIgnoreCase("history")) {
-                while (counter < 4) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
             } else if (chosenCategory.equalsIgnoreCase("science")) {
-                while (counter < 4) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
             } else if (chosenCategory.equalsIgnoreCase("gaming")) {
-                while (counter < 4) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
             } else if (chosenCategory.equalsIgnoreCase("music")) {
-                while (counter < 4) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.musicCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.musicCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
             }
-            scores.add(playerOneScoreRoundOne);
-            scores.add(playerTwoScoreRoundOne);
+            firstRoundScores.add(playerOneScoreRoundOne);
+            firstRoundScores.add(playerTwoScoreRoundOne);
             finalScores.add(playerOneScoreRoundOne);
             finalScores.add(playerTwoScoreRoundOne);
 
             //send firstroundscores to client
-            objectOutputPlayerOne.writeObject(scores);
-            objectOutputPlayerTwo.writeObject(scores);
+            objectOutputPlayerOne.writeObject(firstRoundScores);
+            objectOutputPlayerTwo.writeObject(firstRoundScores);
 
-            counter = 0;
+            questionCounter = 0;
 
             //NEW round executed
             //sending player titles
@@ -172,74 +172,73 @@ public class Game extends Thread {
             objectOutputPlayerTwo.writeObject(q.myCategories());
 
             //player two chooses category this round
-            chosenCategory2 = inPlayerOne.readLine();
+            chosenCategoryRoundTwo = inPlayerOne.readLine();
 
             //send quiz questions to player one and two
-            if (chosenCategory2.equalsIgnoreCase("history")) {
-                while (counter < 4) {
+            if (chosenCategoryRoundTwo.equalsIgnoreCase("history")) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
-            } else if (chosenCategory2.equalsIgnoreCase("science")) {
-                while (counter < 4) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("science")) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
-            } else if (chosenCategory2.equalsIgnoreCase("gaming")) {
-                while (counter < 4) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("gaming")) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
-            } else if (chosenCategory2.equalsIgnoreCase("music")) {
-                while (counter < 4) {
+            } else if (chosenCategoryRoundTwo.equalsIgnoreCase("music")) {
+                while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
-                counter = 0;
-                while (counter < 4) {
+                questionCounter = 0;
+                while (questionCounter < 4) {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    counter++;
+                    questionCounter++;
                 }
 
             }
 
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
-
             //final scores of all rounds sent to client
             objectOutputPlayerOne.writeObject(finalScores);
             objectOutputPlayerTwo.writeObject(finalScores);

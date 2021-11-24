@@ -56,8 +56,10 @@ public class FinalScoreBoardPanel extends JPanel {
 
         if (totalScore > secondTotal){
             winnerOfGame.setText("Player 1 is the winner!");
-        } else {
+        } else if (secondTotal > totalScore){
             winnerOfGame.setText("Player 2 is the winner!");
+        } else {
+            winnerOfGame.setText("IT'S A TIE!");
         }
 
         panell.add(titleOfWindow, BorderLayout.NORTH);
