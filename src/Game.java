@@ -18,7 +18,7 @@ public class Game extends Thread {
     String response;
     String chosenCategory;
     String chosenCategoryRoundTwo;
-    String gameStartingText = "Lets play a game | Player 1 börjar";
+    String gameStartingText = "Lets play a game | Player 1 väljer kategori";
     String player1 = "Player 1";
     String player2 = "Player 2";
 
