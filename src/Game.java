@@ -6,7 +6,7 @@ import java.util.List;
 public class Game extends Thread {
 
     int counter = 0;
-    int rounds = 0;
+    int rounds = 0; //do we need this??
 
     List<Integer> scores = new ArrayList<>();
     List<Integer> finalScores = new ArrayList<>();
@@ -17,6 +17,7 @@ public class Game extends Thread {
     BufferedReader inPlayerTwo;
     String response;
     String chosenCategory;
+    String chosenCategory2;
     String playingInProgress = "Game is starting";
     String player1 = "Player 1";
     String player2 = "Player 2";
@@ -90,7 +91,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -98,7 +98,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -107,7 +106,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -115,7 +113,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -124,7 +121,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -132,7 +128,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -141,7 +136,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.musicCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundOne = playerOneScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -149,7 +143,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.musicCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundOne = playerTwoScoreRoundOne + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -159,14 +152,11 @@ public class Game extends Thread {
             finalScores.add(playerOneScoreRoundOne);
             finalScores.add(playerTwoScoreRoundOne);
 
-            System.out.println("final scores" + finalScores);
-            System.out.println("scores list: " + scores);
+            //send firstroundscores to client
             objectOutputPlayerOne.writeObject(scores);
             objectOutputPlayerTwo.writeObject(scores);
 
-            //rounds++;
             counter = 0;
-            String chosenCategory2;
 
             //NEW round executed
             //sending player titles
@@ -190,8 +180,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
-                    System.out.println("round 2");
                     counter++;
                 }
                 counter = 0;
@@ -199,7 +187,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.historyCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -208,7 +195,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.scienceCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -216,7 +202,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.scienceCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -225,7 +210,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -233,7 +217,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -242,7 +225,6 @@ public class Game extends Thread {
                     objectOutputPlayerOne.writeObject(q.gamingCategoryQs());
                     response = inPlayerOne.readLine();
                     playerOneScoreRoundTwo = playerOneScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
                 counter = 0;
@@ -250,7 +232,6 @@ public class Game extends Thread {
                     objectOutputPlayerTwo.writeObject(q.gamingCategoryQs());
                     response = inPlayerTwo.readLine();
                     playerTwoScoreRoundTwo = playerTwoScoreRoundTwo + Integer.parseInt(response);
-                    System.out.println(response);
                     counter++;
                 }
 
@@ -259,7 +240,7 @@ public class Game extends Thread {
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
 
-            System.out.println(finalScores);
+            //final scores of all rounds sent to client
             objectOutputPlayerOne.writeObject(finalScores);
             objectOutputPlayerTwo.writeObject(finalScores);
 
@@ -269,5 +250,4 @@ public class Game extends Thread {
         }
     }
 
-    //create methods for sending out each object to input in to run method for cleaner code
 }

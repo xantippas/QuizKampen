@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FinalScoreBoardPanel extends JPanel {
 
-    int totalScore=0;
-    int secondTotal =0;
+    int totalScore = 0;
+    int secondTotal = 0;
     String totalScorePlayerOne;
     String totalScorePlayerTwo;
     JPanel mainPanel = new JPanel();
@@ -20,7 +20,6 @@ public class FinalScoreBoardPanel extends JPanel {
     JLabel scoreTwo = new JLabel();
 
     JLabel winnerOfGame = new JLabel();
-
 
     public FinalScoreBoardPanel(List<Integer> scores){
         panell.setLayout(new BorderLayout());
@@ -48,9 +47,7 @@ public class FinalScoreBoardPanel extends JPanel {
 
         secondTotal = scores.get(1) + scores.get(3);
         totalScorePlayerTwo = Integer.toString(secondTotal);
-
-        System.out.println(totalScore);
-        System.out.println(secondTotal);
+        
         scoreOne.setText(totalScorePlayerOne);
         scoreTwo.setText(totalScorePlayerTwo);
 

@@ -7,12 +7,12 @@ import java.util.Properties;
 
 public class Client extends JFrame {
 
-    List<Integer> myScores;
+    List<Integer> myScores; //can we put this in code??
     Properties properties = new Properties();
 
-    BufferedReader in;
+    BufferedReader in; //do we nede this outside constructor??
     PrintWriter out;
-    String toServer = "";
+    String toServer = ""; //do we need this??
     BufferedReader inputConsole;
 
     int roundCounter = 0;
@@ -21,9 +21,8 @@ public class Client extends JFrame {
     JLabel statusWaiting = new JLabel("Waiting for Opponent");
 
     public Client() {
-
         int portNumber = 12345;
-        String hostName = "172.20.200.182";
+        String hostName = "192.168.0.100";
 
         statusWaiting.setFont(new Font("Montserrat", Font.BOLD, 18));
         mainPanel.add(statusWaiting);
@@ -40,7 +39,6 @@ public class Client extends JFrame {
         key = readPropertiesFromPropertyFile("quizNumInRound");
         int amountOfQuestions = Integer.parseInt(key);
 
-
         try {
             Socket socket = new Socket(hostName, portNumber);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -50,11 +48,11 @@ public class Client extends JFrame {
             ObjectInputStream objectInputStream = new ObjectInputStream(getObjectFromServer);
 
             OutputStream osStream = socket.getOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(osStream); //do we need this?
 
-            inputConsole = new BufferedReader(new InputStreamReader(System.in));
+            inputConsole = new BufferedReader(new InputStreamReader(System.in)); //do we need this?
             while (roundCounter < amountOfRounds) {
-                //title of window for player
+
                 String ss = (String) objectInputStream.readObject();
 
                 mainPanel.removeAll();
@@ -63,7 +61,7 @@ public class Client extends JFrame {
                 mainPanel.repaint();
                 repaint();
 
-                //waiting window
+
                 String s = (String) objectInputStream.readObject();
                 WaitingForPlayerPanel playing = new WaitingForPlayerPanel(s);
 
@@ -74,7 +72,6 @@ public class Client extends JFrame {
                 repaint();
 
 
-                //category window
                 List<String> cats = (List<String>) objectInputStream.readObject();
                 CategoryPanel categories = new CategoryPanel(cats.get(0), cats.get(1), cats.get(2), cats.get(3), out);
 
@@ -84,7 +81,7 @@ public class Client extends JFrame {
                 mainPanel.repaint();
                 repaint();
 
-                //quiz window starting
+
                 for (int i = 0; i < amountOfQuestions; i++) {
                     List<Questions> allQs = (List<Questions>) objectInputStream.readObject();
                     QuizPanel playQuiz = new QuizPanel(allQs.get(i).getCategoryChosen(), allQs.get(i).getQuestion(), allQs.get(i).getAnswers(), allQs.get(i).getCorrectAnswerInList(), out);
@@ -94,15 +91,16 @@ public class Client extends JFrame {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                     mainPanel.removeAll();
                     mainPanel.add(playQuiz);
                     mainPanel.revalidate();
                     mainPanel.repaint();
                     repaint();
+
                 }
 
-                //score board
-                System.out.println(roundCounter);
+
                 if (roundCounter == 1) {
                     List<Integer> finalScore = (List<Integer>) objectInputStream.readObject();
                     FinalScoreBoardPanel endGame = new FinalScoreBoardPanel(finalScore);

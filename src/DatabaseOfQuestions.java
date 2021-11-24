@@ -27,6 +27,50 @@ public class DatabaseOfQuestions {
 
     List<Questions> question = new ArrayList<>();
 
+    public List<Questions> historyCategoryQs(){
+        question = new ArrayList<>();
+        question.add(h1);
+        question.add(h2);
+        question.add(h3);
+        question.add(h4);
+        return question;
+    }
+
+    public List<Questions> scienceCategoryQs(){
+        question = new ArrayList<>();
+        question.add(s1);
+        question.add(s2);
+        question.add(s3);
+        question.add(s4);
+        return question;
+    }
+
+    public List<Questions> gamingCategoryQs(){
+        question = new ArrayList<>();
+        question.add(g1);
+        question.add(g2);
+        question.add(g3);
+        question.add(g4);
+        return question;
+    }
+
+    public List<Questions> musicCategoryQs(){
+        question = new ArrayList<>();
+        question.add(m1);
+        question.add(m2);
+        question.add(m3);
+        question.add(m4);
+        return question;
+    }
+
+    public List<String> myCategories(){
+        cats.add("History");
+        cats.add("Science");
+        cats.add("Gaming");
+        cats.add("Music");
+        return cats;
+    }
+
     public List<String> gamingQ1Answers(){
         List<String> a = new ArrayList<>();
         a.add("Pong");
@@ -185,51 +229,6 @@ public class DatabaseOfQuestions {
         a.add("Nine Inch Nails");
 
         return a;
-    }
-
-
-    public List<Questions> historyCategoryQs(){
-        question = new ArrayList<>();
-        question.add(h1);
-        question.add(h2);
-        question.add(h3);
-        question.add(h4);
-        return question;
-    }
-
-    public List<Questions> scienceCategoryQs(){
-        question = new ArrayList<>();
-        question.add(s1);
-        question.add(s2);
-        question.add(s3);
-        question.add(s4);
-        return question;
-    }
-
-    public List<Questions> gamingCategoryQs(){
-        question = new ArrayList<>();
-        question.add(g1);
-        question.add(g2);
-        question.add(g3);
-        question.add(g4);
-        return question;
-    }
-
-    public List<Questions> musicCategoryQs(){
-        question = new ArrayList<>();
-        question.add(m1);
-        question.add(m2);
-        question.add(m3);
-        question.add(m4);
-        return question;
-    }
-
-    public List<String> myCategories(){
-        cats.add("History");
-        cats.add("Science");
-        cats.add("Gaming");
-        cats.add("Music");
-        return cats;
     }
 
 }
