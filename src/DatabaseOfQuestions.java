@@ -240,10 +240,10 @@ public class DatabaseOfQuestions {
     Questions s3R2 = new Questions("Naturvetenskap","Vilken vetenskap kan beskrivas som vetenskapen om materia, energi och krafter?", scienceQ3Round2Answers(), "Fysik");
     Questions s4R2 = new Questions("Naturvetenskap","Vilket pH-värde är neutralt?", scienceQ4Round2Answers(), "7");
 
-    Questions g1R2 = new Questions("Spel","Vad hette världens första spel?", gamingQ1Answers(), "pong");
-    Questions g2R2 = new Questions("Spel","Vilken är världens mest bästsäljande spelkonsol?", gamingQ2Answers(),"playstation 2");
-    Questions g3R2 = new Questions("Spel","Hur många gamers finns det i USA?", gamingQ3Answers(), "183 miljoner");
-    Questions g4R2 = new Questions("Spel","Vad var ursprungstanken med spelet The Sims?", gamingQ4Answers(),"Det skulle funka som en architektur simulator");
+    Questions g1R2 = new Questions("Spel","I vilket online-spel hittar du banor som dust och assualt?", gamingQ1Round2Answers(), "Counter Strike");
+    Questions g2R2 = new Questions("Spel","Vad heter prinsessan i det första Super Mario Bros-spelet till NES? (Nintendo 8-bit)", gamingQ2Round2Answers(),"Toadstool");
+    Questions g3R2 = new Questions("Spel","I vilket Zelda spel möter vi Ganondorf första gången?", gamingQ3Round2Answers(), "Ocarina of time");
+    Questions g4R2 = new Questions("Spel","I vilket Zombie-Survival spel kan du välja att spela som: Coach,Nick,Ellis eller Rochelle?", gamingQ4Round2Answers(),"Left for Dead 2");
 
     Questions m1R2 = new Questions("Musik","Vilket år dog Elvis Presley?", musicQ1Answers(), "1977");
     Questions m2R2 = new Questions("Musik","Vilket fängelse sjöng Johnny Cash om i sin låt från 1955?", musicQ2Answers(), "Folsom Prison");
@@ -345,6 +345,55 @@ public class DatabaseOfQuestions {
         question.add(s2R2);
         question.add(s3R2);
         question.add(s4R2);
+        return question;
+    }
+
+    public List<String> gamingQ1Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Counter Strike");
+        a.add("Battlefield 1");
+        a.add("Call of Duty Infinite warfare");
+        a.add("Gears of War");
+
+        return a;
+    }
+
+    public List<String> gamingQ2Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Daisy");
+        a.add("Pear");
+        a.add("Toadstool");
+        a.add("Toadette");
+
+        return a;
+    }
+
+    public List<String> gamingQ3Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Breath of the Wild 2");
+        a.add("Majora's mask");
+        a.add("A link of the past");
+        a.add("Ocarina of time");
+
+        return a;
+    }
+
+    public List<String> gamingQ4Round2Answers(){
+        List<String> a = new ArrayList<>();
+        a.add("Left for Dead 2");
+        a.add("Dead Island");
+        a.add("Contagion");
+        a.add("Dead trigger 2");
+
+        return a;
+    }
+
+    public List<Questions> gamingCategoryRound2Qs(){
+        question = new ArrayList<>();
+        question.add(g1R2);
+        question.add(g2R2);
+        question.add(g3R2);
+        question.add(g4R2);
         return question;
     }
 
