@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Game extends Thread {
 
+    DatabaseOfQuestions q = new DatabaseOfQuestions();
+
     List<Integer> firstRoundScores = new ArrayList<>();
     List<Integer> finalScores = new ArrayList<>();
 
@@ -28,7 +30,6 @@ public class Game extends Thread {
     OutputStream osPlayerTwo;
     ObjectOutputStream objectOutputPlayerTwo;
 
-    //input streams
     InputStream getObjectFromServerPlayerOne;
     ObjectInputStream objectInputPlayerOne;
 
@@ -37,8 +38,6 @@ public class Game extends Thread {
 
     Socket playerOne;
     Socket playerTwo;
-
-    DatabaseOfQuestions q = new DatabaseOfQuestions();
 
     public Game(Socket playerOne, Socket playerTwo) throws IOException {
         this.playerTwo = playerTwo;
@@ -51,13 +50,11 @@ public class Game extends Thread {
 
         osPlayerOne = playerOne.getOutputStream();
         objectOutputPlayerOne = new ObjectOutputStream(osPlayerOne);
-
         osPlayerTwo = playerTwo.getOutputStream();
         objectOutputPlayerTwo = new ObjectOutputStream(osPlayerTwo);
 
         getObjectFromServerPlayerOne = playerOne.getInputStream();
         objectInputPlayerOne = new ObjectInputStream(getObjectFromServerPlayerOne);
-
         getObjectFromServerPlayerTwo = playerTwo.getInputStream();
         objectInputPlayerTwo = new ObjectInputStream(getObjectFromServerPlayerTwo);
     }
@@ -84,7 +81,6 @@ public class Game extends Thread {
             //player one chooses category
             //return category value to send correct quiz
             chosenCategory = inPlayerOne.readLine();
-
             //send quiz questions to player one and two
             if (chosenCategory.equalsIgnoreCase("history")) {
                 while (questionCounter < 4) {
