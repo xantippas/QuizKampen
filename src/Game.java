@@ -62,26 +62,17 @@ public class Game extends Thread {
     @Override
     public void run() {
         try {
-            //sending player titles
-            objectOutputPlayerOne.writeObject(player1);
-            objectOutputPlayerTwo.writeObject(player2);
 
-            //starting window
-            objectOutputPlayerOne.writeObject(gameStartingText);
-            objectOutputPlayerTwo.writeObject(gameStartingText);
+            sendTitlesForPlayerWindow();
+            sendGameStartingWindow();
 
             int playerOneScoreRoundOne = 0;
             int playerTwoScoreRoundOne = 0;
             int playerOneScoreRoundTwo = 0;
             int playerTwoScoreRoundTwo = 0;
-            //category window
-            objectOutputPlayerOne.writeObject(q.myCategories());
-            objectOutputPlayerTwo.writeObject(q.myCategories());
 
-            //player one chooses category
-            //return category value to send correct quiz
+            sendCategoryWindow();
             chosenCategory = inPlayerOne.readLine();
-            //send quiz questions to player one and two
             if (chosenCategory.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
@@ -148,29 +139,12 @@ public class Game extends Thread {
             finalScores.add(playerOneScoreRoundOne);
             finalScores.add(playerTwoScoreRoundOne);
 
-            //send firstroundscores to client
-            objectOutputPlayerOne.writeObject(firstRoundScores);
-            objectOutputPlayerTwo.writeObject(firstRoundScores);
+            sendFirstRoundScores();
 
             questionCounter = 0;
 
-            //NEW round executed
-            //sending player titles
-            /*objectOutputPlayerOne.writeObject(player1);
-            objectOutputPlayerTwo.writeObject(player2);
-
-            //waiting window
-            objectOutputPlayerOne.writeObject(playingInProgress);
-            objectOutputPlayerTwo.writeObject(playingInProgress);*/
-
-            //category window
-            objectOutputPlayerOne.writeObject(q.myCategories());
-            objectOutputPlayerTwo.writeObject(q.myCategories());
-
-            //player two chooses category this round
+            sendCategoryWindow();
             chosenCategoryRoundTwo = inPlayerOne.readLine();
-
-            //send quiz questions to player one and two
             if (chosenCategoryRoundTwo.equalsIgnoreCase("historia")) {
                 while (questionCounter < 4) {
                     objectOutputPlayerOne.writeObject(q.historyCategoryQs());
@@ -232,17 +206,39 @@ public class Game extends Thread {
                 }
 
             }
-
             finalScores.add(playerOneScoreRoundTwo);
             finalScores.add(playerTwoScoreRoundTwo);
-            //final scores of all rounds sent to client
-            objectOutputPlayerOne.writeObject(finalScores);
-            objectOutputPlayerTwo.writeObject(finalScores);
 
+            sendScoresForAllRounds();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendTitlesForPlayerWindow() throws IOException {
+        objectOutputPlayerOne.writeObject(player1);
+        objectOutputPlayerTwo.writeObject(player2);
+    }
+
+    public void sendGameStartingWindow() throws IOException {
+        objectOutputPlayerOne.writeObject(gameStartingText);
+        objectOutputPlayerTwo.writeObject(gameStartingText);
+    }
+
+    public void sendCategoryWindow() throws IOException {
+        objectOutputPlayerOne.writeObject(q.myCategories());
+        objectOutputPlayerTwo.writeObject(q.myCategories());
+    }
+
+    public void sendFirstRoundScores() throws IOException {
+        objectOutputPlayerOne.writeObject(firstRoundScores);
+        objectOutputPlayerTwo.writeObject(firstRoundScores);
+    }
+
+    public void sendScoresForAllRounds() throws IOException {
+        objectOutputPlayerOne.writeObject(finalScores);
+        objectOutputPlayerTwo.writeObject(finalScores);
     }
 
 }
