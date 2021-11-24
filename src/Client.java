@@ -14,7 +14,7 @@ public class Client extends JFrame {
     PrintWriter out;
     String toServer = "";
     BufferedReader inputConsole;
-    
+
     int roundCounter = 0;
 
     JPanel mainPanel = new JPanel();
@@ -148,9 +148,7 @@ public class Client extends JFrame {
             String value = properties.getProperty(s);
             return value;
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
