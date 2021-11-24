@@ -27,7 +27,7 @@ public class RoundsScorePanel extends JPanel {
             layoutPanel.setPreferredSize(new Dimension(200,200));
             layoutPanel.setBorder(new LineBorder(Color.BLACK));
             layoutPanel.setBackground(Color.white);
-            
+
             //titleOne.setFont(new Font("Montserrat", Font.PLAIN, 12));
             //titleTwo.setFont(new Font("Montserrat", Font.PLAIN, 12));
 

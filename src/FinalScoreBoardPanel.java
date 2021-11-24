@@ -14,7 +14,7 @@ public class FinalScoreBoardPanel extends JPanel {
     JPanel layoutPanel = new JPanel();
     JPanel mainPanel = new JPanel();
 
-    JLabel titleOfWindow = new JLabel("Game finished, Final scores!");
+    JLabel titleOfWindow = new JLabel("Matchen avslutad, slutresultat!");
     JLabel titleOfRoundOne = new JLabel("Round 1 scores"); //are they needed?
     JLabel titleOfRoundTwo = new JLabel("Round 2 scores");
     JLabel titleOne = new JLabel("Player 1");
